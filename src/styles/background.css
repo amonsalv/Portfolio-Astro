@@ -59,7 +59,8 @@
 @property --c-0 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(291, 87%, 74%, 1);
+    /*initial-value: hsla(291, 87%, 74%, 1);*/
+    initial-value: #e583f6;
 }
 
 @property --x-0 {
@@ -89,7 +90,8 @@
 @property --c-1 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(206, 71%, 53%, 1)
+    /*initial-value: hsla(206, 71%, 53%, 1)*/
+    initial-value: #3292dc
 }
 
 @property --x-1 {
@@ -119,7 +121,8 @@
 @property --c-2 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(187, 80%, 79%, 1)
+    /*initial-value: hsla(187, 80%, 79%, 1)*/
+    initial-value: #9feaf4
 }
 
 @property --x-2 {
@@ -149,7 +152,8 @@
 @property --c-3 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(279, 78%, 92%, 1)
+    /*initial-value: hsla(279, 78%, 92%, 1)*/
+    initial-value: #efdbfb
 }
 
 @property --x-3 {
@@ -179,7 +183,8 @@
 @property --c-4 {
     syntax: '<color>';
     inherits: false;
-    initial-value: hsla(182, 98%, 90%, 1)
+    /*initial-value: hsla(182, 98%, 90%, 1)*/
+    initial-value: #cdfdfe
 }
 
 @property --x-4 {
