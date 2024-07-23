@@ -1,17 +1,18 @@
 ---
-title: Markdown Mystery Tour
-publishDate: 2020-03-02 00:00:00
+title: Quimbaya Hotels
+publishDate: 2023-06-02
 img: /assets/stock-1.jpg
-img_alt: Iridescent ripples of a bright blue and pink liquid
+img_alt: Screenshot of Hotel Quimbaya website. Top navigation bar shows options for 'Cabañas', 'Home', 'Admin Cabañas', and 'Reservas'. Main image displays interior of a wooden cabin with large windows overlooking a mountainous landscape. Centered text overlay reads 'Hotel Quimbaya' with 'Cabañas en Antioquia' below.
 description: |
-  We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
+  The goal of this project is to develop a web application using Angular that allows users to search, book and manage hotel rooms in the city of Quimbaya. The application provides an intuitive and friendly interface for users to browse different hotels, view details of available rooms, make reservations and manage their existing reservations.
 tags:
   - Design
   - Dev
-  - User Testing
+  - Angular
+  - TypeScript
 ---
 
-## Level-two heading
+## 
 
 > Tell me and I forget. Teach me and I remember. Involve me and I learn.
 
