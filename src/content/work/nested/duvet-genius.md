@@ -1,22 +1,39 @@
 ---
-title: Duvet Genius
-publishDate: 2020-03-04 00:00:00
+title: Repostrería Buen Corazón
+publishDate: 2022-03-04 
 img: /assets/stock-3.jpg
-img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+img_alt: A display case in an artisanal bakery showing a variety of desserts, including donuts decorated with icing, cream, and various toppings
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
+  Repostrería Buen Corazón is an artisanal bakery, offering products that are 100% handmade with love. This project is a web application that showcases our products and allows users to interact with our store.
+
 tags:
   - Design
   - Dev
-  - Branding
+  - Html
+  - CSS
+  - JavaScript
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+## Intention of the Project
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+This project was created to showcase the artisanal bakery products of Repostrería Buen Corazón and to provide an interactive experience for users. The web application was designed to offer a seamless shopping experience, allowing users to browse products, view detailed information, and manage their shopping cart with ease. By incorporating user authentication, the project also aims to offer a personalized experience for returning customers.
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+## Usage
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- **Viewing Products**: Browse through the products displayed on the main page.
+- **Product Details**: Click on the "Inicia" button to view detailed information about a product.
+- **Add to Cart**: Click on the "Agregar al Carrito" button to add a product to your shopping cart.
+- **View Cart**: Click on the cart icon to view the products in your cart.
+- **User Registration**: Fill out the registration form to create an account.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+## Project Structure
+
+- `index.html`: The main HTML file that contains the structure of the web application.
+- `js/controladortienda.js`: Contains the main logic for handling product interactions and the shopping cart.
+- `js/amplianinfo.js`: Contains the function to display detailed product information.
+- `js/llenadotienda.js`: Contains the function to populate the store with products.
+
+#### You can find the project at the following links
+
+- Project website: https://amonsalv.github.io/Panaderia/
+- Project repository: https://github.com/amonsalv/Panaderia
