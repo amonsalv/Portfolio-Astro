@@ -12,25 +12,37 @@ tags:
   - TypeScript
 ---
 
-## 
 
-> Tell me and I forget. Teach me and I remember. Involve me and I learn.
+> I want to thank my teacher Juan Jose Gallego, for helping us to create this project, his patience to teach and his knowledge.
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+## Intention of the Project
 
-Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel quam elementum pulvinar etiam non.
+This project originated from a course project while studying at CESDE. I intended to create an Airbnb-type page with a connection to an API to perform CRUD operations for reservations and to create reservations through forms. This was entirely developed in Angular with TypeScript to ensure better organization of components.
 
-### Level-three heading
 
-Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl pretium fusce.
+## Technologies Used
 
-### Level-three heading
+The project has been developed using the following technologies:
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+- **Angular**: An open source web application development framework based on TypeScript. Angular allows creating single page applications (SPA) in an efficient and scalable way.
+- **HTML**: Used to define the structure and content of web pages.
+- **CSS**: Used to style and design web pages.
+- **TypeScript**: A programming language based on JavaScript that adds additional features, such as static typing, providing greater robustness to the code.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+## Repository Structure
 
-#### Level-four heading
+The repository is organized as follows:
 
-- We noted this
-- And also this other point
+- `app/`: This folder contains the source code of the Angular application.
+- `docs/`: Here you will find additional documentation related to the project.
+- `tests/`: This folder contains the test files for the code.
+- `README.md`: This file, which you are currently reading, provides general information about the repository.
+
+
+#### You can find the project at the following links
+
+- Project website: https://hotelesquimbaya.vercel.app/
+- Project repository: https://github.com/amonsalv/hotelesquimbaya
+
+
+
