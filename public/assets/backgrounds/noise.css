@@ -1,0 +1,5 @@
+.noise {
+    background-color: hsla(119, 77%, 83%, 1);
+    background-image: radial-gradient(circle at 5% 1%, hsla(196, 76%, 61%, 1) 7%, transparent 84%), radial-gradient(circle at 7% 81%, hsla(130, 91%, 91%, 1) 16%, transparent 53%), radial-gradient(circle at 11% 29%, hsla(159, 97%, 75%, 1) 8%, transparent 74%), radial-gradient(circle at 39% 52%, hsla(95, 93%, 64%, 1) 6%, transparent 68%), radial-gradient(circle at 90% 50%, hsla(64, 94%, 89%, 1) 2%, transparent 85%);
+    background-blend-mode: normal, normal, normal, normal, normal;
+}
