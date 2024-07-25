@@ -21,11 +21,14 @@ const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
+title: 'Ana Monsalve | Creative Developer';
+description: "Hello, my name is Ana Monsalve. I am a Creative Developer who is currently based in Medellin, Colombia."
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
 
-<BaseLayout title="Portfolio | Ana Monsalve">
+<BaseLayout title="Ana Monsalve | Creative Developer">
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
