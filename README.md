@@ -1,30 +1,49 @@
-# Astro Starter Kit: Portfolio
+# Portfolio de Ana Monsalve
 
-```sh
-npm create astro@latest -- --template portfolio
-```
+Este es el repositorio del portafolio de Ana Monsalve, desarrollado con Astro.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/portfolio/devcontainer.json)
+## 🚀 Comenzando
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Para comenzar con el proyecto, sigue estos pasos:
 
-![portfolio](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
+1. Clona el repositorio:
+    ```sh
+    git clone https://github.com/amonsalv/portfolio-amonsalv-me.git
+    ```
+2. Navega al directorio del proyecto:
+    ```sh
+    cd portfolio-amonsalv-me
+    ```
+3. Instala las dependencias:
+    ```sh
+    npm install
+    ```
 
-## 🧞 Commands
+## 🧞 Comandos
 
-All commands are run from the root of the project, from a terminal:
+Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
 
-| Command                   | Action                                           |
+| Comando                   | Acción                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala las dependencias                         |
+| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321` |
+| `npm run build`           | Construye el sitio de producción en `./dist/`    |
+| `npm run preview`         | Previsualiza tu construcción localmente, antes de desplegar |
+| `npm run astro ...`       | Ejecuta comandos CLI como `astro add`, `astro check` |
+| `npm run astro -- --help` | Obtén ayuda usando el CLI de Astro               |
 
-## 👀 Want to learn more?
+## 📁 Estructura del Proyecto
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+La estructura del proyecto es la siguiente:
+
+.astro/ settings.json types.d.ts .gitignore astro.config.mjs extensions.json launch.json package.json public/ assets/ backgrounds/ README.md src/ components/ CallToAction.astro ContactCTA.astro Footer.astro Grid.astro Hero.astro Icon.astro IconPaths.ts MainHead.astro Nav.astro Pill.astro PortfolioPreview.astro Skills.astro ThemeToggle.astro content/ config.ts work/ env.d.ts layouts/ BaseLayout.astro pages/ 404.astro ... styles/ ... tsconfig.json
+
+
+## 📚 Más Información
+
+Para más información, consulta [la documentación de Astro](https://docs.astro.build) o únete a nuestro [servidor de Discord](https://astro.build/chat).
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+
