@@ -1,49 +1,81 @@
-# Portfolio de Ana Monsalve
+# Ana Monsalve's Portfolio
 
-Este es el repositorio del portafolio de Ana Monsalve, desarrollado con Astro.
+Welcome to the repository for Ana Monsalve's portfolio. This portfolio showcases my projects and web development skills.
 
-## 🚀 Comenzando
+🌐 View the Website
+You can view the live version of the portfolio at: https://amonsalv-portfolio.netlify.app/
 
-Para comenzar con el proyecto, sigue estos pasos:
+## 🚀 Getting Started
 
-1. Clona el repositorio:
+Follow these steps to set up the project locally:
+
+1. Clone the repository:
     ```sh
     git clone https://github.com/amonsalv/portfolio-amonsalv-me.git
     ```
-2. Navega al directorio del proyecto:
+2. Navigate to the project directory:
     ```sh
     cd portfolio-amonsalv-me
     ```
-3. Instala las dependencias:
+3. Install the dependencies:
     ```sh
     npm install
     ```
 
-## 🧞 Comandos
+## 🧞 Commands
 
-Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
+Run the following commands from the project root to manage development and deployment:
 
-| Comando                   | Acción                                           |
+| Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Instala las dependencias                         |
-| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321` |
-| `npm run build`           | Construye el sitio de producción en `./dist/`    |
-| `npm run preview`         | Previsualiza tu construcción localmente, antes de desplegar |
-| `npm run astro ...`       | Ejecuta comandos CLI como `astro add`, `astro check` |
-| `npm run astro -- --help` | Obtén ayuda usando el CLI de Astro               |
+| `npm install`             | Install dependencies                             |
+| `npm run dev`             | Start the development server                     |
+| `npm run build`           | Build the production site                        |
+| `npm run preview`         | Preview your build locally before deploying      |
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
-La estructura del proyecto es la siguiente:
+The project structure is as follows:
 
-.astro/ settings.json types.d.ts .gitignore astro.config.mjs extensions.json launch.json package.json public/ assets/ backgrounds/ README.md src/ components/ CallToAction.astro ContactCTA.astro Footer.astro Grid.astro Hero.astro Icon.astro IconPaths.ts MainHead.astro Nav.astro Pill.astro PortfolioPreview.astro Skills.astro ThemeToggle.astro content/ config.ts work/ env.d.ts layouts/ BaseLayout.astro pages/ 404.astro ... styles/ ... tsconfig.json
+```
+.
+├── .gitignore
+├── package.json
+├── public/
+│   ├── assets/
+│   └── backgrounds/
+├── README.md
+├── src/
+│   ├── components/
+│   │   ├── CallToAction.js
+│   │   ├── ContactCTA.js
+│   │   ├── Footer.js
+│   │   ├── Grid.js
+│   │   ├── Hero.js
+│   │   ├── Icon.js
+│   │   ├── MainHead.js
+│   │   ├── Nav.js
+│   │   ├── Pill.js
+│   │   ├── PortfolioPreview.js
+│   │   ├── Skills.js
+│   │   └── ThemeToggle.js
+│   ├── content/
+│   │   └── work/
+│   ├── layouts/
+│   │   └── BaseLayout.js
+│   ├── pages/
+│   │   ├── 404.js
+│   │   └── ...
+│   ├── styles/
+│   │   └── ...
+│   └── index.js
+└── types.d.ts
+```
 
+## 📚 More Information
 
-## 📚 Más Información
+For more details on the project, check out the documentation or join our community for support and discussions.
 
-Para más información, consulta [la documentación de Astro](https://docs.astro.build) o únete a nuestro [servidor de Discord](https://astro.build/chat).
+## 📄 License
 
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
+This project is licensed under the MIT License. See the LICENSE file for more details.
