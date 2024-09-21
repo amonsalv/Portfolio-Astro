@@ -3,7 +3,7 @@
 Welcome to the repository for Ana Monsalve's portfolio. This portfolio showcases my projects and web development skills.
 
 🌐 View the Website
-You can view the live version of the portfolio at: https://amonsalv-portfolio.netlify.app/
+You can view the live version of the portfolio at: https://portfolio-amonsalv.netlify.app/
 
 ## 🚀 Getting Started
 
