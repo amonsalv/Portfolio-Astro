@@ -1,8 +1,12 @@
 ---
-// Learn about using Astro layouts:
-// https://docs.astro.build/en/core-concepts/layouts/
+title: string | undefined
+description: string | undefined
+---
 
-// Component Imports
+<!-- Learn about using Astro layouts:
+https://docs.astro.build/en/core-concepts/layouts/ -->
+
+<!-- Component Imports -->
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -13,7 +17,6 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
----
 
 <html lang="en">
   <head>
@@ -57,7 +60,7 @@ const { title, description } = Astro.props;
         --bg-blend-mode: lighten;
       }
       /* These backgrounds are displayed below the fold, so we lazy load them
-			   once the `.loaded` class has been set.  */
+         once the `.loaded` class has been set.  */
       :root.loaded {
         --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-light-800w.jpg");
         --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-light-800w.jpg");
@@ -74,7 +77,7 @@ const { title, description } = Astro.props;
         min-height: 100%;
         isolation: isolate;
         background:
-					/*noise*/
+          /*noise*/
           url("/assets/backgrounds/noise.css") top center/220px repeat,
           /*footer*/ var(--bg-image-footer) bottom
             center/var(--bg-gradient-size) no-repeat,
@@ -98,7 +101,6 @@ const { title, description } = Astro.props;
           --bg-gradient-size: none;
         }
       }
-
     </style>
   </body>
 </html>
