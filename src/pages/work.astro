@@ -1,16 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+import { useTranslations } from '../utils/i18n';
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+// Default to English, will be updated by client-side script
+const t = useTranslations('en');
+
+// Get all projects and filter to show only unique projects (English versions by default)
+const allProjects = await getCollection('work');
+const uniqueProjects = allProjects
+	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
+	.sort((a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
 <BaseLayout
@@ -23,17 +28,78 @@ const projects = (await getCollection('work')).sort(
 				title="My Work"
 				tagline="See my most recent projects below to get an idea of my past experience."
 				align="start"
+				data-translate-title="work.heroTitle"
+				data-translate-tagline="work.heroTagline"
 			/>
 			<Grid variant="offset">
 				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
+					// @ts-ignore
+					uniqueProjects.map((project) => {
+						// Create corresponding Spanish project slug
+						const spanishSlug = `${project.slug}-es`;
+						// @ts-ignore
+						const spanishProject = allProjects.find(p => p.slug === spanishSlug);
+						
+						return (
+							<li class="project-item" data-en-slug={project.slug} data-es-slug={spanishSlug}>
+								<div class="project-en" style="display: block;">
+									<PortfolioPreview project={project} />
+								</div>
+								{spanishProject && (
+									<div class="project-es" style="display: none;">
+										<PortfolioPreview project={spanishProject} />
+									</div>
+								)}
+							</li>
+						);
+					})
 				}
 			</Grid>
 		</main>
 		<ContactCTA />
 	</div>
+
+	<script>
+		// @ts-ignore
+		import { useTranslations } from '../utils/i18n';
+
+		function translateWorkPage() {
+			const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+			// @ts-ignore
+			const t = useTranslations(language);
+
+			// Translate Hero title - find h1 with class "title"
+			const titleElement = document.querySelector('h1.title');
+			if (titleElement) {
+				titleElement.textContent = t.work.heroTitle;
+			}
+
+			// Translate Hero tagline - find p with class "tagline"
+			const taglineElement = document.querySelector('p.tagline');
+			if (taglineElement) {
+				taglineElement.textContent = t.work.heroTagline;
+			}
+
+			// Switch project versions
+			const projectItems = document.querySelectorAll('.project-item');
+			projectItems.forEach((item) => {
+				const enVersion = item.querySelector('.project-en') as HTMLElement;
+				const esVersion = item.querySelector('.project-es') as HTMLElement;
+				
+				if (language === 'es') {
+					if (enVersion) enVersion.style.display = 'none';
+					if (esVersion) esVersion.style.display = 'block';
+				} else {
+					if (enVersion) enVersion.style.display = 'block';
+					if (esVersion) esVersion.style.display = 'none';
+				}
+			});
+		}
+
+		// Initial translation
+		translateWorkPage();
+
+		// Listen for language change events
+		document.addEventListener('languageChanged', translateWorkPage);
+	</script>
 </BaseLayout>

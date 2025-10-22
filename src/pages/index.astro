@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -19,9 +19,11 @@ import Skills from '../components/Skills.astro';
 // i18n
 import { useTranslations } from '../utils/i18n';
 
-// Content Fetching: List four most recent work projects
-const projects = (await getCollection('work'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+// Content Fetching: List four most recent work projects (filter out Spanish versions to avoid duplicates)
+const allProjects = await getCollection('work');
+const projects = allProjects
+	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
+	.sort((a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
 // Default to English, will be updated by client-side script
@@ -67,11 +69,26 @@ const t = useTranslations('en');
 				<div class="gallery">
 					<Grid variant="offset">
 						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
+							// @ts-ignore
+							projects.map((project) => {
+								// Create corresponding Spanish project slug
+								const spanishSlug = `${project.slug}-es`;
+								// @ts-ignore
+								const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
+								
+								return (
+									<li class="project-item" data-en-slug={project.slug} data-es-slug={spanishSlug}>
+										<div class="project-en" style="display: block;">
+											<PortfolioPreview project={project} />
+										</div>
+										{spanishProject && (
+											<div class="project-es" style="display: none;">
+												<PortfolioPreview project={spanishProject} />
+											</div>
+										)}
+									</li>
+								);
+							})
 						}
 					</Grid>
 				</div>
@@ -343,6 +360,21 @@ function updatePageLanguage(language) {
 		const element = document.querySelector(`[data-translate="${key}"]`);
 		if (element) {
 			element.textContent = value;
+		}
+	});
+
+	// Switch project versions in Selected Work section
+	const projectItems = document.querySelectorAll('.project-item');
+	projectItems.forEach((item) => {
+		const enVersion = item.querySelector('.project-en') as HTMLElement;
+		const esVersion = item.querySelector('.project-es') as HTMLElement;
+		
+		if (language === 'es') {
+			if (enVersion) enVersion.style.display = 'none';
+			if (esVersion) esVersion.style.display = 'block';
+		} else {
+			if (enVersion) enVersion.style.display = 'block';
+			if (esVersion) esVersion.style.display = 'none';
 		}
 	});
 }

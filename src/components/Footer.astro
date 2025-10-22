@@ -6,15 +6,15 @@ const currentYear = new Date().getFullYear();
 <footer>
 	<div class="group">
 		<p>
-			Designed & Developed in Colombia with <a href="https://astro.build/">Astro</a>
+			<span data-translate="designedIn">Designed & Developed in Colombia with</span> <a href="https://astro.build/">Astro</a>
 			<Icon icon="rocket-launch" size="1.2em" />
 		</p>
-		<p>&copy; {currentYear} Ana Monsalve</p>
+		<p data-translate="copyright">&copy; {currentYear} Ana Monsalve</p>
 	</div>
 	<p class="socials">
-		<a href="https://x.com/_amonsalv"> Twitter</a>
-		<a href="https://github.com/amonsalv"> GitHub</a>
-		<a href="https://www.linkedin.com/in/anamonsalve/"> LinkedIn</a>
+		<a href="https://x.com/_amonsalv" data-translate="twitter"> Twitter</a>
+		<a href="https://github.com/amonsalv" data-translate="github"> GitHub</a>
+		<a href="https://www.linkedin.com/in/anamonsalve/" data-translate="linkedin"> LinkedIn</a>
 		<!--<a href="https://codepen.io/me"> CodePen</a>-->
 	</p>
 </footer>
@@ -73,3 +73,55 @@ const currentYear = new Date().getFullYear();
 		}
 	}
 </style>
+
+<script>
+// Footer translations
+const footerTranslations = {
+	en: {
+		designedIn: 'Designed & Developed in Colombia with',
+		copyright: `© ${new Date().getFullYear()} Ana Monsalve`,
+		twitter: ' Twitter',
+		github: ' GitHub',
+		linkedin: ' LinkedIn',
+	},
+	es: {
+		designedIn: 'Diseñado y Desarrollado en Colombia con',
+		copyright: `© ${new Date().getFullYear()} Ana Monsalve`,
+		twitter: ' Twitter',
+		github: ' GitHub',
+		linkedin: ' LinkedIn',
+	}
+};
+
+// @ts-ignore - Parameter type inferred from usage
+function updateFooter(language) {
+	// Use direct object access to avoid TypeScript indexing issues
+	let t;
+	if (language === 'es') {
+		t = footerTranslations.es;
+	} else {
+		t = footerTranslations.en;
+	}
+	
+	// Update all elements with data-translate attributes
+	Object.entries(t).forEach(([key, value]) => {
+		const element = document.querySelector(`footer [data-translate="${key}"]`);
+		if (element) {
+			element.textContent = value;
+		}
+	});
+}
+
+// Listen for language changes from LanguageToggle component
+window.addEventListener('languageChange', (e) => {
+	// @ts-ignore - Custom event from LanguageToggle component
+	updateFooter(e.detail.language);
+});
+
+// Initialize with saved language or browser preference
+const savedLanguage = localStorage.getItem('language');
+const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
+if (initialLanguage === 'es') {
+	updateFooter('es');
+}
+</script>

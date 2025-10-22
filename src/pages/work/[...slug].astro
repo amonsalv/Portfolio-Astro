@@ -2,11 +2,14 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
 import ContactCTA from '../../components/ContactCTA.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
+import { useTranslations } from '../../utils/i18n';
+
+// Default to English, will be updated by client-side script
+const t = useTranslations('en');
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -17,6 +20,7 @@ interface Props {
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
 	const work = await getCollection('work');
+	// @ts-ignore
 	return work.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },
@@ -32,10 +36,11 @@ const { Content } = await entry.render();
 		<div class="stack gap-15">
 			<header>
 				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
+					<a class="back-link" href="/work/" data-translate="work.backLink"><Icon icon="arrow-left" /> Work</a>
 					<Hero title={entry.data.title} align="start">
 						<div class="details">
 							<div class="tags">
+								{/* @ts-ignore */}
 								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
 							</div>
 							<p class="description">{entry.data.description}</p>
@@ -54,6 +59,37 @@ const { Content } = await entry.render();
 		</div>
 		<ContactCTA />
 	</div>
+
+	<script>
+		// @ts-ignore
+		import { useTranslations } from '../../utils/i18n';
+
+		function translateProjectPage() {
+			const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+			// @ts-ignore
+			const t = useTranslations(language);
+
+			// Translate back link
+			const backLink = document.querySelector('[data-translate="work.backLink"]');
+			if (backLink) {
+				// Keep the icon and just update the text part
+				const iconElement = backLink.querySelector('svg');
+				if (iconElement) {
+					backLink.innerHTML = '';
+					backLink.appendChild(iconElement);
+					backLink.appendChild(document.createTextNode(' ' + t.work.backLink));
+				} else {
+					backLink.textContent = t.work.backLink;
+				}
+			}
+		}
+
+		// Initial translation
+		translateProjectPage();
+
+		// Listen for language change events
+		document.addEventListener('languageChanged', translateProjectPage);
+	</script>
 </BaseLayout>
 
 <style>
