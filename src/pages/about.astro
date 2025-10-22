@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+import { useTranslations } from '../utils/i18n';
+
+// Default to English, will be updated by client-side script
+const t = useTranslations('en');
 ---
 
 <BaseLayout title="About | Ana Monsalve" description="About Ana Monsalve Developer">
@@ -10,7 +13,7 @@ import Hero from '../components/Hero.astro';
 		<main class="wrapper about">
 			<Hero
 				title="Ana Monsalve"
-				tagline="Software Development Assistant specializing in app creation and front-end, with a talent for problem-solving and collaboration."
+				tagline={t.about.heroTagline}
 			>
 			<!-- src="/assets/at-work.jpg" -->
 				<!-- <img
@@ -22,49 +25,112 @@ import Hero from '../components/Hero.astro';
 			</Hero>
 
 			<section>
-				<h2 class="section-title">Background</h2>
+				<h2 class="section-title" data-translate="backgroundTitle">Background</h2>
 				<div class="content">
-					<p>
-						Welcome! I'm Ana María Monsalve, a Technical Assistant in Software Development with a strong track record in business digital transformation. My expertise includes application creation, architecture, and frontend development. I excel in technologies like Node.js, Python, and React, with experience in version control and automation. I take pride in my problem-solving skills, attention to detail, and collaborative teamwork.
+					<p data-translate="backgroundText">
+						Software developer with experience in application creation, system architecture, and digital process improvement. I work with technologies like Node.js, React, Angular, Python, and Docker. I stand out for problem-solving, collaboration, and results orientation.
 					</p>
 				</div>
 			</section>
+
 			<section>
-				<h2 class="section-title">Education</h2>
+				<h2 class="section-title" data-translate="experienceTitle">Professional Experience</h2>
+				
 				<div class="content">
-				  <h5>Cesde Institución Educativa</h5>
-				  <p>Technical Degree in Software Development</p>
-				  <p>Medellín, Colombia</p>
-				  <p>Graduated: September 2023</p>
+					<h5 data-translate="luppiterTitle">Luppiter - Software Development and DevOps Consultant</h5>
+					<p data-translate="luppiterLocation">Medellín, Colombia</p>
+					<p data-translate="luppiterDate">July 2024 - April 2025</p>
+					<ul data-translate="luppiterDesc">
+						<li>Participated in software requirements gathering and analysis for various projects.</li>
+						<li>Implemented DevOps practices focused on more efficient integration and deployments.</li>
+						<li>Developed and optimized automations to improve internal processes and reduce delivery times.</li>
+					</ul>
+				</div>
+
+				<div class="content">
+					<h5 data-translate="cesdeDevTitle">Cesde Institución Educativa - Software Developer</h5>
+					<p data-translate="cesdeDevLocation">Medellín, Colombia</p>
+					<p data-translate="cesdeDevDate">July 2023 - May 2024</p>
+					<ul data-translate="cesdeDevDesc">
+						<li>Developed web applications with backend focus (Node.js, Python).</li>
+						<li>Optimized databases with MongoDB, Firebase, and SQL Server.</li>
+						<li>Implemented task automation and managed projects in Jira.</li>
+						<li>Created applications with AppSheet and performed quality testing.</li>
+					</ul>
+				</div>
+
+				<div class="content">
+					<h5 data-translate="grupoUribeTitle">Grupo Uribe (GCO) - Software Development Intern</h5>
+					<p data-translate="grupoUribeLocation">Medellín, Colombia</p>
+					<p data-translate="grupoUribeDate">July 2022 - December 2022</p>
+					<ul data-translate="grupoUribeDesc">
+						<li>Store support through scheduling platform, improving operational efficiency.</li>
+						<li>Generated biweekly reports in Excel, optimizing time control by 15%.</li>
+						<li>Improved platform usability by 20% with HTML and JavaScript.</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="section-title" data-translate="freelanceTitle">Freelance Experience / Service Projects</h2>
+				
+				<div class="content">
+					<h5 data-translate="invoiceAutomationTitle">Invoice Automation Refactoring - Freelance</h5>
+					<p data-translate="invoiceAutomationLocation">Medellín, Colombia</p>
+					<p data-translate="invoiceAutomationDate">February 2025 - April 2025</p>
+					<p data-translate="invoiceAutomationDesc">Refactored automation processes with Selenium, optimizing invoice forwarding to a Linux server.</p>
+				</div>
+
+				<div class="content">
+					<h5 data-translate="lowCodeTitle">Low-Code Projects - Freelance</h5>
+					<p data-translate="lowCodeLocation">Medellín, Colombia</p>
+					<p data-translate="lowCodeDate">October - December 2024</p>
+					<p data-translate="lowCodeDesc">Created applications with Codenull (low-code) and administered databases, facilitating information management.</p>
+				</div>
+
+				<div class="content">
+					<h5 data-translate="internalAutomationTitle">Internal Automations - Freelance</h5>
+					<p data-translate="internalAutomationLocation">Medellín, Colombia</p>
+					<p data-translate="internalAutomationDate">May 2024 - July 2024</p>
+					<p data-translate="internalAutomationDesc">Developed automations with Selenium and Python in a Windows Server environment, improving internal process efficiency.</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title" data-translate="educationTitle">Education</h2>
+				<div class="content">
+				  <h5 data-translate="cesdeInstitution">Cesde Institución Educativa</h5>
+				  <p data-translate="cesdeDegree">Technical Assistant in Software Development</p>
+				  <p data-translate="cesdeLocation">Medellín, Colombia</p>
+				  <p data-translate="cesdeGraduation">Graduated: September 2023</p>
 				</div>
 				<div class="content">
-				  <h5>Servicio Nacional de Aprendizaje (SENA)</h5>
-				  <p>Technology in Software Analysis and Development</p>
-				  <p>Medellín, Colombia</p>
-				  <p>Expected Graduation: october 2026</p>
+				  <h5 data-translate="senaInstitution">Servicio Nacional de Aprendizaje (SENA)</h5>
+				  <p data-translate="senaDegree">Technology in Software Analysis and Development</p>
+				  <p data-translate="senaLocation">Medellín, Colombia</p>
+				  <p data-translate="senaGraduation">July 2024 - Present</p>
 				</div>
 			  </section>
 			<section>
-				<h2 class="section-title">Skills</h2>
+				<h2 class="section-title" data-translate="skillsTitle">Additional Skills</h2>
 				<div class="content">
-					<h5>Web Development</h5>
-					<p>Proficient in both front-end and back-end development using Node.js, Python, Astro, React, HTML, and JavaScript. Skilled in creating responsive and dynamic web applications.</p>
+					<h5 data-translate="webDevTitle">Web Development</h5>
+					<p data-translate="webDevDesc">Node.js, Python, Astro, React, HTML, JavaScript</p>
 				  </div>
 				  <div class="content">
-					<h5>Databases</h5>
-					<p>Experienced in managing databases such as MongoDB, Firebase, and SQL Server, ensuring efficient data storage and retrieval.</p>
+					<h5 data-translate="databaseTitle">Databases</h5>
+					<p data-translate="databaseDesc">MongoDB, Firebase, SQL Server</p>
 				  </div>
 				  <div class="content">
-					<h5>Automation and Docker</h5>
-					<p>Implemented automation practices and containerization, optimizing workflows and improving deployment processes.</p>
+					<h5 data-translate="devopsTitle">DevOps and Automation</h5>
+					<p data-translate="devopsDesc">Docker, GitHub Actions</p>
 				  </div>
 				  <div class="content">
-					<h5>Project Management</h5>
-					<p>Adept at using Jira for planning, tracking, and managing projects, ensuring timely and efficient completion.</p>
+					<h5 data-translate="projectMgmtTitle">Project Management</h5>
+					<p data-translate="projectMgmtDesc">Jira</p>
 				  </div>
 				  <div class="content">
-					<h5>Mobile Application Development</h5>
-					<p>Created and managed mobile applications using AppSheet, enhancing user experience and functionality.</p>
+					<h5 data-translate="lowcodeTitle">Low-code Applications</h5>
+					<p data-translate="lowcodeDesc">AppSheet, Codenull</p>
 				  </div>
 				</section>
 		</main>
@@ -115,6 +181,16 @@ import Hero from '../components/Hero.astro';
 		text-decoration-color: currentColor;
 	}
 
+	.content ul {
+		margin: 0.5rem 0;
+		padding-left: 1.5rem;
+	}
+
+	.content li {
+		margin: 0.25rem 0;
+		color: var(--gray-200);
+	}
+
 	@media (min-width: 50em) {
 		.about {
 			display: grid;
@@ -131,3 +207,165 @@ import Hero from '../components/Hero.astro';
 		}
 	}
 </style>
+
+<script>
+// About page translations
+const aboutTranslations = {
+	en: {
+		heroTagline: 'Software developer with experience in application creation, system architecture, and digital process improvement.',
+		backgroundTitle: 'Background',
+		backgroundText: 'Software developer with experience in application creation, system architecture, and digital process improvement. I work with technologies like Node.js, React, Angular, Python, and Docker. I stand out for problem-solving, collaboration, and results orientation.',
+		
+		experienceTitle: 'Professional Experience',
+		luppiterTitle: 'Luppiter - Software Development and DevOps Consultant',
+		luppiterLocation: 'Medellín, Colombia',
+		luppiterDate: 'July 2024 - April 2025',
+		luppiterDesc: 'Participated in software requirements gathering and analysis for various projects. Implemented DevOps practices focused on more efficient integration and deployments. Developed and optimized automations to improve internal processes and reduce delivery times.',
+		
+		cesdeDevTitle: 'Cesde Institución Educativa - Software Developer',
+		cesdeDevLocation: 'Medellín, Colombia',
+		cesdeDevDate: 'July 2023 - May 2024',
+		cesdeDevDesc: 'Developed web applications with backend focus (Node.js, Python). Optimized databases with MongoDB, Firebase, and SQL Server. Implemented task automation and managed projects in Jira. Created applications with AppSheet and performed quality testing.',
+		
+		grupoUribeTitle: 'Grupo Uribe (GCO) - Software Development Intern',
+		grupoUribeLocation: 'Medellín, Colombia',
+		grupoUribeDate: 'July 2022 - December 2022',
+		grupoUribeDesc: 'Store support through scheduling platform, improving operational efficiency. Generated biweekly reports in Excel, optimizing time control by 15%. Improved platform usability by 20% with HTML and JavaScript.',
+		
+		freelanceTitle: 'Freelance Experience / Service Projects',
+		invoiceAutomationTitle: 'Invoice Automation Refactoring - Freelance',
+		invoiceAutomationLocation: 'Medellín, Colombia',
+		invoiceAutomationDate: 'February 2025 - April 2025',
+		invoiceAutomationDesc: 'Refactored automation processes with Selenium, optimizing invoice forwarding to a Linux server.',
+		
+		lowCodeTitle: 'Low-Code Projects - Freelance',
+		lowCodeLocation: 'Medellín, Colombia',
+		lowCodeDate: 'October - December 2024',
+		lowCodeDesc: 'Created applications with Codenull (low-code) and administered databases, facilitating information management.',
+		
+		internalAutomationTitle: 'Internal Automations - Freelance',
+		internalAutomationLocation: 'Medellín, Colombia',
+		internalAutomationDate: 'May 2024 - July 2024',
+		internalAutomationDesc: 'Developed automations with Selenium and Python in a Windows Server environment, improving internal process efficiency.',
+		
+		educationTitle: 'Education',
+		cesdeInstitution: 'Cesde Institución Educativa',
+		cesdeDegree: 'Technical Assistant in Software Development',
+		cesdeLocation: 'Medellín, Colombia',
+		cesdeGraduation: 'Graduated: September 2023',
+		senaInstitution: 'Servicio Nacional de Aprendizaje (SENA)',
+		senaDegree: 'Technology in Software Analysis and Development',
+		senaLocation: 'Medellín, Colombia',
+		senaGraduation: 'July 2024 - Present',
+		
+		skillsTitle: 'Additional Skills',
+		webDevTitle: 'Web Development',
+		webDevDesc: 'Node.js, Python, Astro, React, HTML, JavaScript',
+		databaseTitle: 'Databases',
+		databaseDesc: 'MongoDB, Firebase, SQL Server',
+		devopsTitle: 'DevOps and Automation',
+		devopsDesc: 'Docker, GitHub Actions',
+		projectMgmtTitle: 'Project Management',
+		projectMgmtDesc: 'Jira',
+		lowcodeTitle: 'Low-code Applications',
+		lowcodeDesc: 'AppSheet, Codenull',
+	},
+	es: {
+		heroTagline: 'Desarrolladora de software con experiencia en creación de aplicaciones, arquitectura de sistemas y mejora de procesos digitales.',
+		backgroundTitle: 'Antecedentes',
+		backgroundText: 'Desarrolladora de software con experiencia en creación de aplicaciones, arquitectura de sistemas y mejora de procesos digitales. Manejo tecnologías como Node.js, React, Angular, Python y Docker. Destacada por la resolución de problemas, la colaboración y la orientación a resultados.',
+		
+		experienceTitle: 'Experiencia Profesional',
+		luppiterTitle: 'Luppiter - Consultor en Desarrollo de Software y DevOps',
+		luppiterLocation: 'Medellín, Colombia',
+		luppiterDate: 'Julio 2024 - Abril 2025',
+		luppiterDesc: 'Participé en la recolección y análisis de requerimientos de software para diversos proyectos. Implementé prácticas de DevOps enfocadas en integración y despliegues más eficientes. Desarrollé y optimicé automatizaciones para mejorar procesos internos y reducir tiempos de entrega.',
+		
+		cesdeDevTitle: 'Cesde Institución Educativa - Desarrollador de Software',
+		cesdeDevLocation: 'Medellín, Colombia',
+		cesdeDevDate: 'Julio 2023 - Mayo 2024',
+		cesdeDevDesc: 'Desarrollé aplicaciones web con enfoque en backend (Node.js, Python). Optimicé bases de datos con MongoDB, Firebase y SQL Server. Implementé automatización de tareas y gestioné proyectos en Jira. Creé aplicaciones con AppSheet y realicé pruebas de calidad.',
+		
+		grupoUribeTitle: 'Grupo Uribe (GCO) - Practicante en Desarrollo de Software',
+		grupoUribeLocation: 'Medellín, Colombia',
+		grupoUribeDate: 'Julio 2022 - Diciembre 2022',
+		grupoUribeDesc: 'Soporte a tiendas mediante plataforma de horarios, mejorando eficiencia operativa. Generé reportes quincenales en Excel, optimizando control de tiempo en 15%. Mejoré la usabilidad de la plataforma en un 20% con HTML y JavaScript.',
+		
+		freelanceTitle: 'Experiencia Freelance / Proyectos por Servicios',
+		invoiceAutomationTitle: 'Refactorización de Automatización de Facturas - Freelance',
+		invoiceAutomationLocation: 'Medellín, Colombia',
+		invoiceAutomationDate: 'Febrero 2025 - Abril 2025',
+		invoiceAutomationDesc: 'Refactoricé procesos de automatización con Selenium, optimizando el reenvío de facturas hacia un servidor Linux.',
+		
+		lowCodeTitle: 'Proyectos en Low-Code - Freelance',
+		lowCodeLocation: 'Medellín, Colombia',
+		lowCodeDate: 'Octubre - Diciembre 2024',
+		lowCodeDesc: 'Creé aplicaciones con Codenull (low-code) y administré bases de datos, facilitando la gestión de información.',
+		
+		internalAutomationTitle: 'Automatizaciones Internas - Freelance',
+		internalAutomationLocation: 'Medellín, Colombia',
+		internalAutomationDate: 'Mayo 2024 - Julio 2024',
+		internalAutomationDesc: 'Desarrollé automatizaciones con Selenium y Python en un entorno Windows Server, mejorando la eficiencia de procesos internos.',
+		
+		educationTitle: 'Educación',
+		cesdeInstitution: 'Cesde Institución Educativa',
+		cesdeDegree: 'Tecnicatura, Asistente en Desarrollo de Software',
+		cesdeLocation: 'Medellín, Colombia',
+		cesdeGraduation: 'Graduada: Septiembre 2023',
+		senaInstitution: 'Servicio Nacional de Aprendizaje (SENA)',
+		senaDegree: 'Tecnología en Análisis y Desarrollo de Software',
+		senaLocation: 'Medellín, Colombia',
+		senaGraduation: 'Julio 2024 - Actualidad',
+		
+		skillsTitle: 'Habilidades Adicionales',
+		webDevTitle: 'Desarrollo Web',
+		webDevDesc: 'Node.js, Python, Astro, React, HTML, JavaScript',
+		databaseTitle: 'Bases de Datos',
+		databaseDesc: 'MongoDB, Firebase, SQL Server',
+		devopsTitle: 'DevOps y Automatización',
+		devopsDesc: 'Docker, GitHub Actions',
+		projectMgmtTitle: 'Gestión de Proyectos',
+		projectMgmtDesc: 'Jira',
+		lowcodeTitle: 'Aplicaciones Low-code',
+		lowcodeDesc: 'AppSheet, Codenull',
+	}
+};
+
+// @ts-ignore - Parameter type inferred from usage
+function updateAboutPage(language) {
+	// Use direct object access to avoid TypeScript indexing issues
+	let t;
+	if (language === 'es') {
+		t = aboutTranslations.es;
+	} else {
+		t = aboutTranslations.en;
+	}
+	
+	// Update hero tagline
+	const heroTagline = document.querySelector('.tagline');
+	if (heroTagline) {
+		heroTagline.textContent = t.heroTagline;
+	}
+	
+	// Update all elements with data-translate attributes
+	Object.entries(t).forEach(([key, value]) => {
+		const element = document.querySelector(`[data-translate="${key}"]`);
+		if (element) {
+			element.textContent = value;
+		}
+	});
+}
+
+// Listen for language changes from LanguageToggle component
+window.addEventListener('languageChange', (e) => {
+	// @ts-ignore - Custom event from LanguageToggle component
+	updateAboutPage(e.detail.language);
+});
+
+// Initialize with saved language or browser preference
+const savedLanguage = localStorage.getItem('language');
+const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
+if (initialLanguage === 'es') {
+	updateAboutPage('es');
+}
+</script>
