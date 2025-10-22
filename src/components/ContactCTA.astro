@@ -4,9 +4,9 @@ import Icon from './Icon.astro';
 ---
 
 <aside>
-	<h2 data-translate="contactTitle">Interested in working together?</h2>
+	<h2 data-translate="contactCta.title">Interested in working together?</h2>
 	<CallToAction href="https://www.linkedin.com/in/anamonsalve/">
-		<span data-translate="contactCta">Send Me a Message</span>
+		<span data-translate="contactCta.button">Send Me a Message</span>
 	</CallToAction>
 </aside>
 
@@ -43,3 +43,32 @@ import Icon from './Icon.astro';
 		}
 	}
 </style>
+
+<script>
+	// @ts-ignore
+	import { useTranslations } from '../utils/i18n';
+
+	function translateContactCTA() {
+		const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+		// @ts-ignore
+		const t = useTranslations(language);
+
+		// Translate title
+		const titleElement = document.querySelector('[data-translate="contactCta.title"]');
+		if (titleElement) {
+			titleElement.textContent = t.contactCta.title;
+		}
+
+		// Translate button
+		const buttonElement = document.querySelector('[data-translate="contactCta.button"]');
+		if (buttonElement) {
+			buttonElement.textContent = t.contactCta.button;
+		}
+	}
+
+	// Initial translation
+	translateContactCTA();
+
+	// Listen for language change events
+	document.addEventListener('languageChanged', translateContactCTA);
+</script>
