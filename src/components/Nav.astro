@@ -1,13 +1,14 @@
 ---
 import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
 import type { iconPaths } from './IconPaths';
 
 /** Main menu items */
-const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
+const textLinks: { label: string; href: string; key: string }[] = [
+	{ label: 'Home', href: '/', key: 'home' },
+	{ label: 'Work', href: '/work/', key: 'work' },
+	{ label: 'About', href: '/about/', key: 'about' },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -40,7 +41,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	<noscript>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, key }) => (
 					<li>
 						<a
 							aria-current={Astro.url.pathname === href}
@@ -53,6 +54,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 								},
 							]}
 							href={href}
+							data-translate={key}
 						>
 							{label}
 						</a>
@@ -78,7 +80,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	<div id="menu-content" hidden>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, key }) => (
 					<li>
 						<a
 							aria-current={Astro.url.pathname === href}
@@ -91,6 +93,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 								},
 							]}
 							href={href}
+							data-translate={key}
 						>
 							{label}
 						</a>
@@ -112,6 +115,9 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 
 			<div class="theme-toggle">
 				<ThemeToggle />
+			</div>
+			<div class="language-toggle">
+				<LanguageToggle />
 			</div>
 		</div>
 	</div>
@@ -152,6 +158,50 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		}
 	}
 	customElements.define('menu-button', MenuButton);
+
+	// Navigation translations
+	const navTranslations = {
+		en: { home: 'Home', work: 'Work', about: 'About' },
+		es: { home: 'Inicio', work: 'Proyectos', about: 'Acerca de' }
+	};
+
+	// @ts-ignore - Parameter type inferred from usage
+	function updateNavLanguage(language) {
+		// Use direct object access to avoid TypeScript indexing issues
+		let t;
+		if (language === 'es') {
+			t = navTranslations.es;
+		} else {
+			t = navTranslations.en;
+		}
+		
+		// Update specific navigation elements
+		const elements = {
+			home: t.home,
+			work: t.work,
+			about: t.about
+		};
+		
+		Object.entries(elements).forEach(([key, value]) => {
+			const element = document.querySelector(`nav [data-translate="${key}"]`);
+			if (element) {
+				element.textContent = value;
+			}
+		});
+	}
+
+	// Listen for language changes
+	window.addEventListener('languageChange', (e) => {
+		// @ts-ignore - Custom event from LanguageToggle component
+		updateNavLanguage(e.detail.language);
+	});
+
+	// Initialize with saved language
+	const savedLanguage = localStorage.getItem('language');
+	const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
+	if (initialLanguage === 'es') {
+		updateNavLanguage('es');
+	}
 </script>
 
 <style>
@@ -272,7 +322,8 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		color: var(--accent-text-over);
 	}
 
-	.theme-toggle {
+	.theme-toggle,
+	.language-toggle {
 		display: flex;
 		align-items: center;
 		height: calc(var(--icon-size) + 2 * var(--icon-padding));
