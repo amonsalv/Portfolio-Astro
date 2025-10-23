@@ -6,10 +6,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
-import { useTranslations } from '../../utils/i18n';
-
-// Default to English, will be updated by client-side script
-const t = useTranslations('en');
 
 interface Props {
 	entry: CollectionEntry<'work'>;

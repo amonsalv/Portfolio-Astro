@@ -6,10 +6,10 @@ import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
-import { useTranslations } from '../utils/i18n';
+// import { useTranslations } from '../utils/i18n'; // Used only in client-side script
 
 // Default to English, will be updated by client-side script
-const t = useTranslations('en');
+// const t = useTranslations('en'); // Unused in server-side rendering
 
 // Get all projects and filter to show only unique projects (English versions by default)
 const allProjects = await getCollection('work');
