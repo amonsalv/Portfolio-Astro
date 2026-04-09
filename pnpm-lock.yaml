@@ -8,7 +8,7 @@ overrides:
   ajv: 8.18.0
   mdast-util-to-hast: '>=13.2.1'
   diff: 5.2.2
-  lodash: 4.17.23
+  lodash: 4.18.0
   devalue: 5.6.4
   defu: 6.1.5
   h3: 1.15.9
@@ -1225,8 +1225,9 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.0:
+    resolution: {integrity: sha512-l1mfj2atMqndAHI3ls7XqPxEjV2J9ZkcNyHpoZA3r2T1LLwDB69jgkMWh71YKwhBbK0G2f4WSn05ahmQXVxupA==}
+    deprecated: Bad release. Please use lodash@4.17.21 instead.
 
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
@@ -3177,7 +3178,7 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.0: {}
 
   longest-streak@3.1.0: {}
 
@@ -4133,7 +4134,7 @@ snapshots:
   yaml-language-server@1.15.0:
     dependencies:
       ajv: 8.18.0
-      lodash: 4.17.23
+      lodash: 4.18.0
       request-light: 0.5.8
       vscode-json-languageservice: 4.1.8
       vscode-languageserver: 7.0.0
