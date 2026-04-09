@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactCTA from '../components/ContactCTA.astro';
 
 const allProjects = await getCollection('work');
 const uniqueProjects = allProjects
