@@ -9,43 +9,85 @@ const { data, slug } = Astro.props.project;
 ---
 
 <a class="card" href={`/work/${slug}`}>
-	<span class="title">{data.title}</span>
+	<div class="meta">
+		<div class="tags">
+			{data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+		</div>
+		<span class="title">{data.title}</span>
+		<p class="description">{data.description}</p>
+	</div>
 	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
 </a>
 
 <style>
 	.card {
 		display: grid;
-		grid-template: auto 1fr / auto 1fr;
-		height: 11rem;
-		background: var(--gradient-subtle);
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
+		grid-template: 1fr / 1fr;
+		height: 18rem;
+		background: var(--surface-container-low);
+		border-radius: var(--radius-lg);
 		overflow: hidden;
 		box-shadow: var(--shadow-sm);
+		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
 		text-decoration: none;
-		font-family: var(--font-brand);
-		font-size: var(--text-lg);
-		font-weight: 500;
-		transition: box-shadow var(--theme-transition);
+		transition: box-shadow 0.2s var(--ease-expressive), transform 0.2s var(--ease-expressive);
+		isolation: isolate;
 	}
 
 	.card:hover {
 		box-shadow: var(--shadow-md);
+		transform: translateY(-2px);
+	}
+
+	.meta {
+		grid-area: 1 / 1 / 2 / 2;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 1rem;
+		background: linear-gradient(to top, rgba(12, 14, 18, 0.56), rgba(12, 14, 18, 0.05));
+		color: #fff;
+	}
+
+	.tags {
+		display: flex;
+		gap: 0.45rem;
+		flex-wrap: wrap;
+	}
+
+	.tags span {
+		padding: 0.2rem 0.55rem;
+		font-family: var(--font-body);
+		font-size: 0.72rem;
+		font-weight: 700;
+		border-radius: var(--radius-full);
+		background: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(2px);
 	}
 
 	.title {
-		grid-area: 1 / 1 / 2 / 2;
-		z-index: 1;
-		margin: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: var(--gray-999);
-		color: var(--gray-200);
-		border-radius: 0.375rem;
+		font-family: var(--font-body);
+		font-size: var(--text-xl);
+		font-weight: 700;
+		line-height: 1.1;
+		max-width: 17ch;
+	}
+
+	.description {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		line-height: 1.45;
+		max-width: 34ch;
+		opacity: 0.95;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
 	img {
-		grid-area: 1 / 1 / 3 / 3;
+		grid-area: 1 / 1 / 2 / 2;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -53,12 +95,12 @@ const { data, slug } = Astro.props.project;
 
 	@media (min-width: 50em) {
 		.card {
-			height: 22rem;
-			border-radius: 1.5rem;
+			height: 25rem;
+			border-radius: var(--radius-xl);
 		}
 
-		.title {
-			border-radius: 0.9375rem;
+		.description {
+			font-size: var(--text-base);
 		}
 	}
 </style>

@@ -2,54 +2,83 @@
 interface Props {
 	title: string;
 	tagline?: string;
-
 	align?: 'start' | 'center';
+	titleIsHtml?: boolean;
 }
 
-const { align = 'center', tagline, title } = Astro.props;
+const { align = 'start', tagline, title, titleIsHtml = false } = Astro.props;
 ---
 
-<div class:list={['hero stack gap-4', align]}>
-	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
-		{tagline && <p class="tagline">{tagline}</p>}
+<div class:list={['hero-block', align]}>
+	<div class="hero-text">
+		{titleIsHtml ? <h1 class="hero-title" set:html={title} /> : <h1 class="hero-title">{title}</h1>}
+		{tagline && <p class="hero-tagline">{tagline}</p>}
 	</div>
-	<slot />
+	<div class="hero-extras">
+		<slot />
+	</div>
 </div>
 
 <style>
-	.hero {
-		font-size: var(--text-lg);
+	.hero-block {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.hero-title {
+		font-family: var(--font-brand);
+		font-size: clamp(2.5rem, 6vw, var(--text-5xl));
+		font-weight: 600;
+		line-height: 1.05;
+		letter-spacing: -0.03em;
+		color: var(--on-surface);
+		max-width: 18ch;
+	}
+
+	.hero-title :global(.line-greeting),
+	.hero-title :global(.line-name) {
+		display: block;
+	}
+
+	.hero-title :global(.line-greeting) {
+		color: var(--on-surface);
+	}
+
+	.hero-title :global(.line-name) {
+		color: var(--primary);
+	}
+
+	.hero-tagline {
+		font-family: var(--font-body);
+		font-size: var(--text-md);
+		font-weight: 400;
+		line-height: 1.6;
+		color: var(--on-surface-variant);
+		max-width: 48ch;
+		margin-top: 0.75rem;
+	}
+
+	.hero-extras {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	/* Center alignment variant */
+	.center {
+		align-items: center;
 		text-align: center;
 	}
 
-	.title,
-	.tagline {
-		max-width: 40ch;
+	.center .hero-title,
+	.center .hero-tagline {
 		margin-inline: auto;
 	}
 
-	.title {
-		font-size: var(--text-2xl);
-		color: var(--gray-0);
-	}
-
 	@media (min-width: 50em) {
-		.hero {
-			font-size: var(--text-lg);
-		}
-
-		.start {
-			text-align: start;
-		}
-
-		.start .title,
-		.start .tagline {
-			margin-inline: unset;
-		}
-
-		.title {
-			font-size: var(--text-4xl);
+		.hero-block {
+			gap: 2.5rem;
 		}
 	}
 </style>

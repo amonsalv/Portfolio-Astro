@@ -2,90 +2,111 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactCTA from '../components/ContactCTA.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
-// import { useTranslations } from '../utils/i18n'; // Used only in client-side script
 
-// Default to English, will be updated by client-side script
-// const t = useTranslations('en'); // Unused in server-side rendering
-
-// Get all projects and filter to show only unique projects (English versions by default)
 const allProjects = await getCollection('work');
 const uniqueProjects = allProjects
 	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
 	.sort((a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const featuredProjects = uniqueProjects.slice(0, 3);
 ---
 
-<BaseLayout
-	title="My Work | Ana Monsalve"
-	description="Learn about Ana Monsalve's most recent projects"
->
+<BaseLayout title="My Work | Ana Monsalve" description="Learn about Ana Monsalve's most recent projects">
 	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
-			<Hero
-				title="My Work"
-				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
-				data-translate-title="work.heroTitle"
-				data-translate-tagline="work.heroTagline"
-			/>
-			<Grid variant="offset">
+		<main class="work-page wrapper">
+			<header class="work-hero stack gap-3">
+				<h1><span data-translate="workTitlePrefix">Selected</span> <span class="accent" data-translate="workTitleAccent">Works.</span></h1>
+				<p class="work-subtitle" data-translate="workSubtitle">
+					A collection of digital experiences crafted with a developer's logic and a painter's eye.
+				</p>
+			</header>
+
+			<section class="work-grid" aria-label="Featured projects">
 				{
-					// @ts-ignore
-					uniqueProjects.map((project) => {
-						// Create corresponding Spanish project slug
+					featuredProjects.map((project) => {
 						const spanishSlug = `${project.slug}-es`;
 						// @ts-ignore
-						const spanishProject = allProjects.find(p => p.slug === spanishSlug);
-						
+						const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
 						return (
 							<li class="project-item" data-en-slug={project.slug} data-es-slug={spanishSlug}>
 								<div class="project-en" style="display: block;">
-									<PortfolioPreview project={project} />
+									<a class="project-card" href={`/work/${project.slug}`}>
+										<div class="meta">
+											<div class="pills">
+												{project.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+											</div>
+											<h2>{project.data.title}</h2>
+											<p>{project.data.description}</p>
+										</div>
+										<div class="img-container">
+											<img src={project.data.img} alt={project.data.img_alt || ''} loading="lazy" decoding="async" />
+										</div>
+									</a>
 								</div>
 								{spanishProject && (
 									<div class="project-es" style="display: none;">
-										<PortfolioPreview project={spanishProject} />
+										<a class="project-card" href={`/work/${spanishProject.slug}`}>
+											<div class="meta">
+												<div class="pills">
+													{spanishProject.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+												</div>
+												<h2>{spanishProject.data.title}</h2>
+												<p>{spanishProject.data.description}</p>
+											</div>
+											<div class="img-container">
+												<img src={spanishProject.data.img} alt={spanishProject.data.img_alt || ''} loading="lazy" decoding="async" />
+											</div>
+										</a>
 									</div>
 								)}
 							</li>
 						);
 					})
 				}
-			</Grid>
+
+				<li class="cta-slot">
+					<article class="project-cta-card">
+						<p class="spark">✦ ✦</p>
+						<h2 data-translate="workCtaTitle">Ready for your next digital painting?</h2>
+						<a href="mailto:hola@anamonsalve.com" data-translate="workCtaButton">Contact Ana</a>
+					</article>
+				</li>
+			</section>
 		</main>
-		<ContactCTA />
+
 	</div>
 
 	<script>
-		// @ts-ignore
-		import { useTranslations } from '../utils/i18n';
+		const workPageTranslations = {
+			en: {
+				workTitlePrefix: 'Selected',
+				workTitleAccent: 'Works.',
+				workSubtitle: "A collection of digital experiences crafted with a developer's logic and a painter's eye.",
+				workCtaTitle: 'Ready for your next digital painting?',
+				workCtaButton: 'Contact Ana',
+			},
+			es: {
+				workTitlePrefix: 'Trabajos',
+				workTitleAccent: 'Seleccionados.',
+				workSubtitle: 'Una colección de experiencias digitales creadas con la lógica de una desarrolladora y el ojo de una pintora.',
+				workCtaTitle: '¿Lista para tu próxima pintura digital?',
+				workCtaButton: 'Contactar a Ana',
+			},
+		};
 
-		function translateWorkPage() {
-			const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
-			// @ts-ignore
-			const t = useTranslations(language);
+		function translateWorkPage(language: string) {
+			const t = language === 'es' ? workPageTranslations.es : workPageTranslations.en;
+			Object.entries(t).forEach(([key, value]) => {
+				document.querySelectorAll(`[data-translate="${key}"]`).forEach((el) => {
+					el.textContent = value;
+				});
+			});
 
-			// Translate Hero title - find h1 with class "title"
-			const titleElement = document.querySelector('h1.title');
-			if (titleElement) {
-				titleElement.textContent = t.work.heroTitle;
-			}
-
-			// Translate Hero tagline - find p with class "tagline"
-			const taglineElement = document.querySelector('p.tagline');
-			if (taglineElement) {
-				taglineElement.textContent = t.work.heroTagline;
-			}
-
-			// Switch project versions
 			const projectItems = document.querySelectorAll('.project-item');
 			projectItems.forEach((item) => {
-				const enVersion = item.querySelector('.project-en') as HTMLElement;
-				const esVersion = item.querySelector('.project-es') as HTMLElement;
-				
+				const enVersion = item.querySelector('.project-en') as HTMLElement | null;
+				const esVersion = item.querySelector('.project-es') as HTMLElement | null;
+
 				if (language === 'es') {
 					if (enVersion) enVersion.style.display = 'none';
 					if (esVersion) esVersion.style.display = 'block';
@@ -96,10 +117,221 @@ const uniqueProjects = allProjects
 			});
 		}
 
-		// Initial translation
-		translateWorkPage();
-
-		// Listen for language change events
-		document.addEventListener('languageChanged', translateWorkPage);
+		const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+		translateWorkPage(language);
+		window.addEventListener('languageChange', (e) => {
+			// @ts-ignore
+			translateWorkPage(e.detail.language);
+		});
 	</script>
 </BaseLayout>
+
+<style>
+	.work-page {
+		padding-top: 3rem;
+		padding-bottom: 2rem;
+	}
+
+	.work-hero h1 {
+		font-size: clamp(2.5rem, 8vw, 5rem);
+		line-height: 0.95;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.work-hero .accent {
+		color: var(--primary);
+	}
+
+	.work-subtitle {
+		font-size: var(--text-xl);
+		max-width: 34ch;
+		color: var(--on-surface-variant);
+	}
+
+	.work-grid {
+		margin-top: 3rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.project-item:nth-child(1) .project-card {
+		background: #ebf2ff;
+	}
+
+	.project-item:nth-child(2) .project-card {
+		background: #f6efe4;
+	}
+
+	.project-item:nth-child(3) .project-card {
+		background: #f8e9e7;
+	}
+
+	.project-card {
+		display: grid;
+		gap: 1rem;
+		grid-template-rows: auto auto;
+		background: var(--surface-container-low);
+		border-radius: var(--radius-lg);
+		padding: 1rem;
+		text-decoration: none;
+		color: inherit;
+		box-shadow: var(--shadow-sm);
+		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
+		transition: transform 0.25s var(--ease-expressive), box-shadow 0.25s var(--ease-expressive);
+	}
+
+	.project-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.img-container {
+		width: 100%;
+		height: 14rem;
+		overflow: hidden;
+		border-radius: calc(var(--radius-lg) - 0.4rem);
+	}
+
+	.img-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s var(--theme-transition);
+	}
+
+	.project-card:focus-within img,
+	.project-card:hover img {
+		transform: scale(1.03);
+	}
+
+	.project-card h2 {
+		font-size: clamp(1.8rem, 3vw, 2.8rem);
+		line-height: 1.1;
+		font-weight: 600;
+		color: #17192a;
+		letter-spacing: -0.01em;
+	}
+
+	.project-card p {
+		margin-top: 0.5rem;
+		color: #2f3550;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.pills {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+	}
+
+	.pills span {
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 700;
+		background: color-mix(in srgb, var(--chroma-ocean) 18%, transparent);
+		color: var(--chroma-ocean-strong);
+	}
+
+	.project-cta-card {
+		background: #070a0e;
+		color: #d4d6da;
+		border-radius: var(--radius-lg);
+		padding: 1.5rem;
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		gap: 1rem;
+	}
+
+	.project-cta-card .spark {
+		color: var(--primary);
+		font-size: 1.2rem;
+		letter-spacing: 0.2rem;
+	}
+
+	.project-cta-card h2 {
+		font-size: clamp(1.8rem, 3vw, 3rem);
+		line-height: 1.1;
+		font-weight: 600;
+		color: #ffffff;
+		max-width: 14ch;
+	}
+
+	.project-cta-card a {
+		display: inline-flex;
+		padding: 0.6rem 1.2rem;
+		border-radius: var(--radius-full);
+		font-weight: 700;
+		color: white;
+		background: var(--chroma-ocean);
+	}
+
+	.project-item,
+	.cta-slot {
+		min-width: 0;
+	}
+
+	:root.theme-dark .work-page {
+		padding-top: 2.5rem;
+	}
+
+	:root.theme-dark .work-subtitle {
+		color: #d5ddf9;
+	}
+
+	:root.theme-dark .project-item:nth-child(1) .project-card,
+	:root.theme-dark .project-item:nth-child(2) .project-card,
+	:root.theme-dark .project-item:nth-child(3) .project-card {
+		background: #171c3f;
+		border-color: rgba(129, 146, 217, 0.35);
+	}
+
+	:root.theme-dark .project-card h2 {
+		color: #f0f4ff;
+	}
+
+	:root.theme-dark .project-card p {
+		color: #d0d9f7;
+	}
+
+	:root.theme-dark .pills span {
+		background: rgba(169, 199, 255, 0.22);
+		color: #e0ebff;
+	}
+
+	@media (min-width: 64em) {
+		.work-grid {
+			grid-template-columns: 2fr 1fr;
+			gap: 1.2rem;
+		}
+
+		.project-item:nth-child(3) .project-card {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		.project-item:nth-child(3) .img-container {
+			height: 100%;
+			min-height: 16rem;
+		}
+
+		/* Para que la CTA card esté a la derecha */
+		.cta-slot {
+			/* grid automágicamente la pondrá en fila 2, col 2 porque Buen Corazón está en col 1 */
+			display: flex; /* fill up height */
+		}
+	}
+</style>

@@ -1,371 +1,651 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
-import { useTranslations } from '../utils/i18n';
-
-// Default to English, will be updated by client-side script
-const t = useTranslations('en');
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout title="About | Ana Monsalve" description="About Ana Monsalve Developer">
 	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title="Ana Monsalve"
-				tagline={t.about.heroTagline}
-			>
-			<!-- src="/assets/at-work.jpg" -->
-				<!-- <img
-					width="1553"
-					height="873"
-					
-					alt="Ana Monsalve at work with a colleague"
-				/> -->
-			</Hero>
-
-			<section>
-				<h2 class="section-title" data-translate="backgroundTitle">Background</h2>
-				<div class="content">
-					<p data-translate="backgroundText">
-						Software developer with experience in application creation, system architecture, and digital process improvement. I work with technologies like Node.js, React, Angular, Python, and Docker. I stand out for problem-solving, collaboration, and results orientation.
+		<main class="about-page wrapper">
+			<section class="about-hero">
+				<div class="hero-copy stack gap-3">
+					<p class="eyebrow" data-translate="aboutEyebrow">FULL-STACK DEVELOPER & ARTIST</p>
+					<h1 data-translate="aboutTitle">
+						The logic of code.<br>
+						The soul of paint.
+					</h1>
+					<p class="hero-desc" data-translate="aboutDescription">
+						Building digital interfaces with the same intentionality I bring to a blank canvas. Based in Colombia, creating globally.
 					</p>
 				</div>
-			</section>
-
-			<section>
-				<h2 class="section-title" data-translate="experienceTitle">Professional Experience</h2>
-				
-				<div class="content">
-					<h5 data-translate="luppiterTitle">Luppiter - Software Development and DevOps Consultant</h5>
-					<p data-translate="luppiterLocation">Medellín, Colombia</p>
-					<p data-translate="luppiterDate">July 2024 - April 2025</p>
-					<ul data-translate="luppiterDesc">
-						<li>Participated in software requirements gathering and analysis for various projects.</li>
-						<li>Implemented DevOps practices focused on more efficient integration and deployments.</li>
-						<li>Developed and optimized automations to improve internal processes and reduce delivery times.</li>
-					</ul>
-				</div>
-
-				<div class="content">
-					<h5 data-translate="cesdeDevTitle">Cesde Institución Educativa - Software Developer</h5>
-					<p data-translate="cesdeDevLocation">Medellín, Colombia</p>
-					<p data-translate="cesdeDevDate">July 2023 - May 2024</p>
-					<ul data-translate="cesdeDevDesc">
-						<li>Developed web applications with backend focus (Node.js, Python).</li>
-						<li>Optimized databases with MongoDB, Firebase, and SQL Server.</li>
-						<li>Implemented task automation and managed projects in Jira.</li>
-						<li>Created applications with AppSheet and performed quality testing.</li>
-					</ul>
-				</div>
-
-				<div class="content">
-					<h5 data-translate="grupoUribeTitle">Grupo Uribe (GCO) - Software Development Intern</h5>
-					<p data-translate="grupoUribeLocation">Medellín, Colombia</p>
-					<p data-translate="grupoUribeDate">July 2022 - December 2022</p>
-					<ul data-translate="grupoUribeDesc">
-						<li>Store support through scheduling platform, improving operational efficiency.</li>
-						<li>Generated biweekly reports in Excel, optimizing time control by 15%.</li>
-						<li>Improved platform usability by 20% with HTML and JavaScript.</li>
-					</ul>
+				<div class="hero-art" aria-hidden="true">
+					<div class="art-frame">
+						<Icon icon="pencil-line" size="8rem" />
+					</div>
 				</div>
 			</section>
 
-			<section>
-				<h2 class="section-title" data-translate="freelanceTitle">Freelance Experience / Service Projects</h2>
-				
-				<div class="content">
-					<h5 data-translate="invoiceAutomationTitle">Invoice Automation Refactoring - Freelance</h5>
-					<p data-translate="invoiceAutomationLocation">Medellín, Colombia</p>
-					<p data-translate="invoiceAutomationDate">February 2025 - April 2025</p>
-					<p data-translate="invoiceAutomationDesc">Refactored automation processes with Selenium, optimizing invoice forwarding to a Linux server.</p>
-				</div>
+			<section class="mission-card stack gap-3">
+				<h2 data-translate="missionTitle">Why I do what I do</h2>
+				<p data-translate="missionQuote">
+					"I believe technology should be as human as the hands that build it. My mission is to bridge the gap between technical efficiency and emotional resonance, crafting tools that empower people to create more than they consume."
+				</p>
+			</section>
 
-				<div class="content">
-					<h5 data-translate="lowCodeTitle">Low-Code Projects - Freelance</h5>
-					<p data-translate="lowCodeLocation">Medellín, Colombia</p>
-					<p data-translate="lowCodeDate">October - December 2024</p>
-					<p data-translate="lowCodeDesc">Created applications with Codenull (low-code) and administered databases, facilitating information management.</p>
-				</div>
-
-				<div class="content">
-					<h5 data-translate="internalAutomationTitle">Internal Automations - Freelance</h5>
-					<p data-translate="internalAutomationLocation">Medellín, Colombia</p>
-					<p data-translate="internalAutomationDate">May 2024 - July 2024</p>
-					<p data-translate="internalAutomationDesc">Developed automations with Selenium and Python in a Windows Server environment, improving internal process efficiency.</p>
+			<section class="toolbox stack gap-4">
+				<h2 data-translate="toolboxTitle">Technical Toolbox</h2>
+				<div class="toolbox-grid">
+					<article class="tool-card frontend">
+						<div class="tool-card-header">
+							<Icon icon="pencil-line" size="1.4em" />
+							<h3>Frontend</h3>
+						</div>
+						<div class="chips">
+							<span>React</span><span>Tailwind CSS</span><span>Next.js</span><span>TypeScript</span><span>Framer Motion</span><span>Astro</span>
+						</div>
+					</article>
+					<article class="tool-card backend">
+						<div class="tool-card-header">
+							<Icon icon="database" size="1.4em" />
+							<h3>Backend</h3>
+						</div>
+						<div class="chips">
+							<span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>GraphQL</span><span>Firebase</span><span>Python</span>
+						</div>
+					</article>
+					<article class="tool-card tools">
+						<div class="tool-card-header">
+							<Icon icon="wrench" size="1.4em" />
+							<h3>Tools & DevOps</h3>
+						</div>
+						<div class="chips">
+							<span>Git</span><span>Docker</span><span>Figma</span><span>Postman</span><span>CI/CD</span><span>Jira</span>
+						</div>
+					</article>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title" data-translate="educationTitle">Education</h2>
-				<div class="content">
-				  <h5 data-translate="cesdeInstitution">Cesde Institución Educativa</h5>
-				  <p data-translate="cesdeDegree">Technical Assistant in Software Development</p>
-				  <p data-translate="cesdeLocation">Medellín, Colombia</p>
-				  <p data-translate="cesdeGraduation">Graduated: September 2023</p>
+
+			<section class="journey stack gap-4">
+				<h2 data-translate="journeyTitle">The Journey</h2>
+				<div class="timeline">
+					<article class="timeline-item left accent-primary">
+						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Jan 2026</p>
+						<h3 data-translate="journeyJobOne">Software Dev & DevOps Consultant</h3>
+						<p class="company" data-translate="journeyCompOne">Luppiter &mdash; Medellín, Colombia</p>
+						<p class="desc" data-translate="journeyDescOne">Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.</p>
+					</article>
+					<article class="timeline-item right accent-secondary">
+						<p class="period" data-translate="journeyDateTwo">Jul 2023 &mdash; May 2024</p>
+						<h3 data-translate="journeyJobTwo">Software Developer</h3>
+						<p class="company" data-translate="journeyCompTwo">Cesde Institución Educativa &mdash; Medellín, Colombia</p>
+						<p class="desc" data-translate="journeyDescTwo">Web application development with Node.js and Python. Database design (MongoDB, Firebase, SQL Server) and technical process automation. Project management via Jira.</p>
+					</article>
+					<article class="timeline-item left accent-tertiary">
+						<p class="period" data-translate="journeyDateThree">Jul 2022 &mdash; Dec 2022</p>
+						<h3 data-translate="journeyJobThree">Software Development Intern</h3>
+						<p class="company" data-translate="journeyCompThree">Grupo Uribe (GCO) &mdash; Medellín, Colombia</p>
+						<p class="desc" data-translate="journeyDescThree">Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.</p>
+					</article>
 				</div>
-				<div class="content">
-				  <h5 data-translate="senaInstitution">Servicio Nacional de Aprendizaje (SENA)</h5>
-				  <p data-translate="senaDegree">Technology in Software Analysis and Development</p>
-				  <p data-translate="senaLocation">Medellín, Colombia</p>
-				  <p data-translate="senaGraduation">July 2024 - Present</p>
+			</section>
+
+			<section class="beyond stack gap-4">
+				<h2 data-translate="beyondTitle">Beyond the Code</h2>
+				<div class="beyond-grid">
+					<article class="panel panel-painting">
+						<Icon icon="pencil-line" size="1.8em" class="panel-icon" />
+						<div class="panel-content">
+							<h3 data-translate="beyondArtTitle">Writing, Painting & Letters</h3>
+							<p data-translate="beyondArtDesc">When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and meaningful letters that connect emotion with intention.</p>
+						</div>
+					</article>
+					<article class="panel panel-crossfit">
+						<div class="icon-circle">
+							<Icon icon="dumbbell" size="1.8em" />
+						</div>
+						<h3 data-translate="beyondActiveTitle">Active Lifestyle</h3>
+						<p data-translate="beyondActiveDesc">Building discipline through movement. CrossFit, swimming, and staying active help me stay focused, resilient, and mentally strong.</p>
+					</article>
+					<article class="panel panel-community">
+						<h3 data-translate="beyondCommTitle">Community & Tech</h3>
+						<p data-translate="beyondCommDesc">Organizer at GitTogether Medellín. I enjoy creating spaces where people connect with technology and feel inspired to start their journey.</p>
+						<div class="circles-dec" aria-hidden="true">
+							<span style="background: var(--primary)"></span>
+							<span style="background: #a46100"></span>
+							<span style="background: #c71b30"></span>
+						</div>
+					</article>
+					<article class="panel panel-colombia">
+						<div class="colombia-content">
+							<h3 data-translate="beyondColTitle">Based in Colombia</h3>
+							<p data-translate="beyondColDesc">Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.</p>
+						</div>
+					</article>
 				</div>
-			  </section>
-			<section>
-				<h2 class="section-title" data-translate="skillsTitle">Additional Skills</h2>
-				<div class="content">
-					<h5 data-translate="webDevTitle">Web Development</h5>
-					<p data-translate="webDevDesc">Node.js, Python, Astro, React, HTML, JavaScript</p>
-				  </div>
-				  <div class="content">
-					<h5 data-translate="databaseTitle">Databases</h5>
-					<p data-translate="databaseDesc">MongoDB, Firebase, SQL Server</p>
-				  </div>
-				  <div class="content">
-					<h5 data-translate="devopsTitle">DevOps and Automation</h5>
-					<p data-translate="devopsDesc">Docker, GitHub Actions</p>
-				  </div>
-				  <div class="content">
-					<h5 data-translate="projectMgmtTitle">Project Management</h5>
-					<p data-translate="projectMgmtDesc">Jira</p>
-				  </div>
-				  <div class="content">
-					<h5 data-translate="lowcodeTitle">Low-code Applications</h5>
-					<p data-translate="lowcodeDesc">AppSheet, Codenull</p>
-				  </div>
-				</section>
+			</section>
 		</main>
-
-		<ContactCTA />
 	</div>
 </BaseLayout>
 
 <style>
-
-	.about {
+	.about-page {
+		padding-top: 2.25rem;
+		padding-bottom: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 3.5rem;
+		gap: 3rem;
 	}
 
-	img {
+	.eyebrow {
+		display: inline-flex;
+		width: fit-content;
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius-full);
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		background: #fae1c9;
+		color: #b26019;
+		text-transform: uppercase;
+	}
+
+	.about-hero {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.35rem;
+		align-items: center;
+	}
+
+	.about-hero h1 {
+		font-size: clamp(3rem, 8vw, 6.5rem);
+		line-height: 0.95;
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+	}
+
+	.hero-desc {
+		font-size: clamp(1.1rem, 2vw, 1.4rem);
+		max-width: 44ch;
+		line-height: 1.5;
+		color: var(--on-surface-variant);
+	}
+
+	.hero-art {
+		background: linear-gradient(150deg, #0d4aed 40%, #712433 100%);
+		border-radius: 2rem;
+		padding: 2.5rem;
+		box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+		min-height: 38rem;
+		display: flex;
+		align-items: stretch;
+	}
+
+	.art-frame {
+		flex: 1;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 1rem;
+		display: grid;
+		place-items: center;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.mission-card {
+		background: var(--surface-container-low);
+		border-radius: 2rem;
+		padding: 4.5rem 2rem;
+		text-align: center;
+	}
+
+	.mission-card h2 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		margin-bottom: 2rem;
+	}
+
+	.mission-card p {
+		font-size: clamp(1.2rem, 3vw, 1.55rem);
+		font-family: var(--font-body);
+		color: var(--primary);
+		max-width: 48ch;
+		margin: 0 auto;
+		line-height: 1.5;
+		font-weight: 500;
+	}
+
+	.toolbox-grid {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+	}
+
+	.tool-card {
+		background: var(--surface-container-low);
+		border-radius: 1.2rem;
+		padding: 2rem;
+	}
+
+	.tool-card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.tool-card-header h3 {
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--on-surface);
+	}
+
+	.frontend .tool-card-header { color: #0d4aed; }
+	.backend .tool-card-header { color: #b26019; }
+	.tools .tool-card-header { color: #d92138; }
+
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+	}
+
+	.chips span {
+		font-size: 0.9rem;
+		font-weight: 600;
+		padding: 0.5rem 1rem;
+		border-radius: 999px;
+	}
+
+	.frontend .chips span {
+		background: #c3d5ff;
+		color: #0d4aed;
+	}
+
+	.backend .chips span {
+		background: #ffe3c4;
+		color: #a46100;
+	}
+
+	.tools .chips span {
+		background: #ffc4cf;
+		color: #c71b30;
+	}
+
+	.timeline {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
 		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
 	}
 
-	section {
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 0.3rem;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: color-mix(in srgb, var(--outline-variant) 50%, transparent);
+	}
+
+	.timeline-item {
+		position: relative;
+		padding-left: 2.5rem;
+		max-width: 58ch;
+	}
+
+	.timeline-item::before {
+		content: '';
+		position: absolute;
+		left: -0.05rem; /* center the dot on the line */
+		top: 0.4rem;
+		width: 0.7rem;
+		height: 0.7rem;
+		border-radius: 50%;
+	}
+
+	.accent-primary p.period { color: #0d4aed; }
+	.accent-secondary p.period { color: #8d5b0f; }
+	.accent-tertiary p.period { color: #d92138; }
+
+	.accent-primary::before { background: #0d4aed; }
+	.accent-secondary::before { background: #8d5b0f; }
+	.accent-tertiary::before { background: #d92138; }
+
+	.timeline-item h3 {
+		font-size: var(--text-2xl);
+		margin-bottom: 0.2rem;
+		font-weight: 800;
+	}
+
+	.company {
+		font-size: var(--text-base);
+		color: var(--on-surface-variant);
+		margin-bottom: 0.8rem;
+		font-weight: 500;
+	}
+
+	.desc {
+		font-size: var(--text-md);
+		color: var(--on-surface-variant);
+		line-height: 1.6;
+	}
+
+	.period {
+		font-size: var(--text-md);
+		font-weight: 800;
+		margin-bottom: 0.4rem;
+	}
+
+	.beyond-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.panel {
+		padding: 2.2rem;
+		border-radius: 1.8rem;
+		position: relative;
+		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
+		gap: 1rem;
 	}
 
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
+	.panel h3 {
+		font-size: var(--text-2xl);
+		font-weight: 800;
+		margin-bottom: 0.5rem;
 	}
 
-	.content {
-		grid-column: 2 / 4;
+	.panel p {
+		font-size: 1.05rem;
+		line-height: 1.5;
 	}
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	.panel-painting {
+		background: linear-gradient(135deg, #de6f4f, #f39f66);
+		color: #5a1d0b;
+		justify-content: space-between;
+	}
+	.panel-painting .panel-icon {
+		margin-bottom: auto;
+	}
+	.panel-painting h3 { color: #361106; }
+
+	.panel-crossfit {
+		background: #ffeac6;
+		color: #a46100;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+	}
+	.panel-crossfit p { color: #b57a2c; }
+	.icon-circle {
+		width: 4rem; height: 4rem;
+		border-radius: 50%;
+		background: #ebd2ad;
+		display: grid; place-items: center;
+		margin-bottom: 0.5rem;
+		color: #8c5300;
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.panel-community {
+		background: var(--surface-container-low);
+		color: var(--on-surface-variant);
+	}
+	.panel-community h3 { color: var(--on-surface); }
+	.circles-dec {
+		display: flex; gap: -0.5rem; margin-top: auto; padding-top: 1.5rem;
+	}
+	.circles-dec span {
+		width: 2.2rem; height: 2.2rem; border-radius: 50%;
+		border: 3px solid var(--surface-container-low);
+		margin-left: -0.6rem;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	}
+	.circles-dec span:first-child { margin-left: 0; }
+
+	.panel-colombia {
+		background: var(--primary);
+		color: rgba(255, 255, 255, 0.9);
+		justify-content: center;
+	}
+	.panel-colombia h3 { color: #fff; }
+	.colombia-content {
+		position: relative; z-index: 2;
+	}
+	.panel-colombia::after {
+		content: '';
+		position: absolute;
+		right: 0; top: 0; bottom: 0; width: 50%;
+		background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+		background-size: 20px 20px;
+		background-position: right center;
+		z-index: 1;
 	}
 
-	.content ul {
-		margin: 0.5rem 0;
-		padding-left: 1.5rem;
+	:root.theme-dark .mission-card,
+	:root.theme-dark .tool-card {
+		background: var(--surface-container-lowest);
 	}
 
-	.content li {
-		margin: 0.25rem 0;
-		color: var(--gray-200);
+	:root.theme-dark .frontend .chips span {
+		background: rgba(13, 74, 237, 0.2);
+		color: #92b1ff;
 	}
+	
+	:root.theme-dark .backend .chips span {
+		background: rgba(255, 145, 0, 0.15);
+		color: #ffc070;
+	}
+	
+	:root.theme-dark .tools .chips span {
+		background: rgba(217, 33, 56, 0.15);
+		color: #ffa8b4;
+	}
+
+	:root.theme-dark .about-hero h1,
+	:root.theme-dark .hero-desc {
+		color: #e5e5e0;
+	}
+
+	:root.theme-dark .eyebrow {
+		background: #472c1c;
+		color: #eebb9a;
+	}
+
+	:root.theme-dark .hero-art {
+		background: linear-gradient(135deg, #2a3c73, #57203b);
+	}
+
+	:root.theme-dark .panel-community {
+		background: var(--surface-container-low);
+	}
+	:root.theme-dark .circles-dec span {
+		border-color: var(--surface-container-low);
+	}
+
+	:root.theme-dark .panel-crossfit {
+		background: rgba(255, 145, 0, 0.15);
+		color: #ffc070;
+	}
+	:root.theme-dark .icon-circle { background: rgba(255, 145, 0, 0.2); color: #ffc070; }
+	:root.theme-dark .panel-crossfit p { color: #d79848; }
+
+	:root.theme-dark .panel-colombia {
+		background: #0f1c42;
+	}
+
+	:root.theme-dark .panel-painting {
+		background: linear-gradient(135deg, #a6462c, #bc7141);
+		color: #f7f9ff;
+	}
+	:root.theme-dark .panel-painting h3 { color: #fff; }
 
 	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
+		.about-page {
+			gap: 4rem;
 		}
 
-		.about > :global(:first-child) {
-			grid-column-start: 2;
+		.about-hero {
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
 		}
 
-		section {
-			display: contents;
-			font-size: var(--text-lg);
+		.mission-card {
+			padding: 2.4rem 1.8rem;
+		}
+
+		.toolbox-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.timeline {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem; /* Gran espaciado vertical entre items */
+			margin-bottom: 3rem;
+		}
+
+		.timeline::before {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.timeline-item {
+			width: 50%;
+			max-width: none;
+		}
+
+		.timeline-item.left {
+			align-self: flex-start;
+			text-align: right;
+			padding-right: 3.5rem;
+			padding-left: 0;
+		}
+
+		.timeline-item.right {
+			align-self: flex-end;
+			padding-left: 3.5rem;
+		}
+
+		/* Re-aligning the dot for desktop */
+		.timeline-item.left::before {
+			right: -0.35rem; /* half of 0.7rem width */
+			left: auto;
+		}
+
+		.timeline-item.right::before {
+			left: -0.35rem;
+		}
+
+		.beyond-grid {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: auto auto;
+		}
+
+		.panel-painting {
+			grid-column: 1 / 3;
+			grid-row: 1;
+		}
+		
+		.panel-crossfit {
+			grid-column: 3;
+			grid-row: 1;
+		}
+
+		.panel-community {
+			grid-column: 1;
+			grid-row: 2;
+		}
+
+		.panel-colombia {
+			grid-column: 2 / 4;
+			grid-row: 2;
 		}
 	}
 </style>
 
 <script>
-// About page translations
-const aboutTranslations = {
-	en: {
-		heroTagline: 'Software developer with experience in application creation, system architecture, and digital process improvement.',
-		backgroundTitle: 'Background',
-		backgroundText: 'Software developer with experience in application creation, system architecture, and digital process improvement. I work with technologies like Node.js, React, Angular, Python, and Docker. I stand out for problem-solving, collaboration, and results orientation.',
-		
-		experienceTitle: 'Professional Experience',
-		luppiterTitle: 'Luppiter - Software Development and DevOps Consultant',
-		luppiterLocation: 'Medellín, Colombia',
-		luppiterDate: 'July 2024 - April 2025',
-		luppiterDesc: 'Participated in software requirements gathering and analysis for various projects. Implemented DevOps practices focused on more efficient integration and deployments. Developed and optimized automations to improve internal processes and reduce delivery times.',
-		
-		cesdeDevTitle: 'Cesde Institución Educativa - Software Developer',
-		cesdeDevLocation: 'Medellín, Colombia',
-		cesdeDevDate: 'July 2023 - May 2024',
-		cesdeDevDesc: 'Developed web applications with backend focus (Node.js, Python). Optimized databases with MongoDB, Firebase, and SQL Server. Implemented task automation and managed projects in Jira. Created applications with AppSheet and performed quality testing.',
-		
-		grupoUribeTitle: 'Grupo Uribe (GCO) - Software Development Intern',
-		grupoUribeLocation: 'Medellín, Colombia',
-		grupoUribeDate: 'July 2022 - December 2022',
-		grupoUribeDesc: 'Store support through scheduling platform, improving operational efficiency. Generated biweekly reports in Excel, optimizing time control by 15%. Improved platform usability by 20% with HTML and JavaScript.',
-		
-		freelanceTitle: 'Freelance Experience / Service Projects',
-		invoiceAutomationTitle: 'Invoice Automation Refactoring - Freelance',
-		invoiceAutomationLocation: 'Medellín, Colombia',
-		invoiceAutomationDate: 'February 2025 - April 2025',
-		invoiceAutomationDesc: 'Refactored automation processes with Selenium, optimizing invoice forwarding to a Linux server.',
-		
-		lowCodeTitle: 'Low-Code Projects - Freelance',
-		lowCodeLocation: 'Medellín, Colombia',
-		lowCodeDate: 'October - December 2024',
-		lowCodeDesc: 'Created applications with Codenull (low-code) and administered databases, facilitating information management.',
-		
-		internalAutomationTitle: 'Internal Automations - Freelance',
-		internalAutomationLocation: 'Medellín, Colombia',
-		internalAutomationDate: 'May 2024 - July 2024',
-		internalAutomationDesc: 'Developed automations with Selenium and Python in a Windows Server environment, improving internal process efficiency.',
-		
-		educationTitle: 'Education',
-		cesdeInstitution: 'Cesde Institución Educativa',
-		cesdeDegree: 'Technical Assistant in Software Development',
-		cesdeLocation: 'Medellín, Colombia',
-		cesdeGraduation: 'Graduated: September 2023',
-		senaInstitution: 'Servicio Nacional de Aprendizaje (SENA)',
-		senaDegree: 'Technology in Software Analysis and Development',
-		senaLocation: 'Medellín, Colombia',
-		senaGraduation: 'July 2024 - Present',
-		
-		skillsTitle: 'Additional Skills',
-		webDevTitle: 'Web Development',
-		webDevDesc: 'Node.js, Python, Astro, React, HTML, JavaScript',
-		databaseTitle: 'Databases',
-		databaseDesc: 'MongoDB, Firebase, SQL Server',
-		devopsTitle: 'DevOps and Automation',
-		devopsDesc: 'Docker, GitHub Actions',
-		projectMgmtTitle: 'Project Management',
-		projectMgmtDesc: 'Jira',
-		lowcodeTitle: 'Low-code Applications',
-		lowcodeDesc: 'AppSheet, Codenull',
-	},
-	es: {
-		heroTagline: 'Desarrolladora de software con experiencia en creación de aplicaciones, arquitectura de sistemas y mejora de procesos digitales.',
-		backgroundTitle: 'Antecedentes',
-		backgroundText: 'Desarrolladora de software con experiencia en creación de aplicaciones, arquitectura de sistemas y mejora de procesos digitales. Manejo tecnologías como Node.js, React, Angular, Python y Docker. Destacada por la resolución de problemas, la colaboración y la orientación a resultados.',
-		
-		experienceTitle: 'Experiencia Profesional',
-		luppiterTitle: 'Luppiter - Consultor en Desarrollo de Software y DevOps',
-		luppiterLocation: 'Medellín, Colombia',
-		luppiterDate: 'Julio 2024 - Abril 2025',
-		luppiterDesc: 'Participé en la recolección y análisis de requerimientos de software para diversos proyectos. Implementé prácticas de DevOps enfocadas en integración y despliegues más eficientes. Desarrollé y optimicé automatizaciones para mejorar procesos internos y reducir tiempos de entrega.',
-		
-		cesdeDevTitle: 'Cesde Institución Educativa - Desarrollador de Software',
-		cesdeDevLocation: 'Medellín, Colombia',
-		cesdeDevDate: 'Julio 2023 - Mayo 2024',
-		cesdeDevDesc: 'Desarrollé aplicaciones web con enfoque en backend (Node.js, Python). Optimicé bases de datos con MongoDB, Firebase y SQL Server. Implementé automatización de tareas y gestioné proyectos en Jira. Creé aplicaciones con AppSheet y realicé pruebas de calidad.',
-		
-		grupoUribeTitle: 'Grupo Uribe (GCO) - Practicante en Desarrollo de Software',
-		grupoUribeLocation: 'Medellín, Colombia',
-		grupoUribeDate: 'Julio 2022 - Diciembre 2022',
-		grupoUribeDesc: 'Soporte a tiendas mediante plataforma de horarios, mejorando eficiencia operativa. Generé reportes quincenales en Excel, optimizando control de tiempo en 15%. Mejoré la usabilidad de la plataforma en un 20% con HTML y JavaScript.',
-		
-		freelanceTitle: 'Experiencia Freelance / Proyectos por Servicios',
-		invoiceAutomationTitle: 'Refactorización de Automatización de Facturas - Freelance',
-		invoiceAutomationLocation: 'Medellín, Colombia',
-		invoiceAutomationDate: 'Febrero 2025 - Abril 2025',
-		invoiceAutomationDesc: 'Refactoricé procesos de automatización con Selenium, optimizando el reenvío de facturas hacia un servidor Linux.',
-		
-		lowCodeTitle: 'Proyectos en Low-Code - Freelance',
-		lowCodeLocation: 'Medellín, Colombia',
-		lowCodeDate: 'Octubre - Diciembre 2024',
-		lowCodeDesc: 'Creé aplicaciones con Codenull (low-code) y administré bases de datos, facilitando la gestión de información.',
-		
-		internalAutomationTitle: 'Automatizaciones Internas - Freelance',
-		internalAutomationLocation: 'Medellín, Colombia',
-		internalAutomationDate: 'Mayo 2024 - Julio 2024',
-		internalAutomationDesc: 'Desarrollé automatizaciones con Selenium y Python en un entorno Windows Server, mejorando la eficiencia de procesos internos.',
-		
-		educationTitle: 'Educación',
-		cesdeInstitution: 'Cesde Institución Educativa',
-		cesdeDegree: 'Tecnicatura, Asistente en Desarrollo de Software',
-		cesdeLocation: 'Medellín, Colombia',
-		cesdeGraduation: 'Graduada: Septiembre 2023',
-		senaInstitution: 'Servicio Nacional de Aprendizaje (SENA)',
-		senaDegree: 'Tecnología en Análisis y Desarrollo de Software',
-		senaLocation: 'Medellín, Colombia',
-		senaGraduation: 'Julio 2024 - Actualidad',
-		
-		skillsTitle: 'Habilidades Adicionales',
-		webDevTitle: 'Desarrollo Web',
-		webDevDesc: 'Node.js, Python, Astro, React, HTML, JavaScript',
-		databaseTitle: 'Bases de Datos',
-		databaseDesc: 'MongoDB, Firebase, SQL Server',
-		devopsTitle: 'DevOps y Automatización',
-		devopsDesc: 'Docker, GitHub Actions',
-		projectMgmtTitle: 'Gestión de Proyectos',
-		projectMgmtDesc: 'Jira',
-		lowcodeTitle: 'Aplicaciones Low-code',
-		lowcodeDesc: 'AppSheet, Codenull',
-	}
-};
+	const aboutPageTranslations = {
+		en: {
+			aboutEyebrow: 'FULL-STACK DEVELOPER & ARTIST',
+			aboutTitle: 'The logic of code.<br> The soul of paint.',
+			aboutDescription: 'Building digital interfaces with the same intentionality I bring to a blank canvas. Based in Colombia, creating globally.',
+			missionTitle: 'Why I do what I do',
+			missionQuote: '"I believe technology should be as human as the hands that build it. My mission is to bridge the gap between technical efficiency and emotional resonance, crafting tools that empower people to create more than they consume."',
+			toolboxTitle: 'Technical Toolbox',
+			journeyTitle: 'The Journey',
+			journeyDateOne: 'May 2024 &mdash; Present',
+			journeyJobOne: 'Software Dev & DevOps Consultant',
+			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
+			journeyDescOne: 'Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.',
+			journeyDateTwo: 'July 2023 &mdash; May 2024',
+			journeyJobTwo: 'Software Developer',
+			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
+			journeyDescTwo: 'Web application development with Node.js and Python. Database design (MongoDB, Firebase, SQL Server) and technical process automation. Project management via Jira.',
+			journeyDateThree: 'July 2022 &mdash; Dec 2022',
+			journeyJobThree: 'Software Development Intern',
+			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
+			journeyDescThree: 'Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.',
+			beyondTitle: 'Beyond the Code',
+			beyondArtTitle: 'Writing, Painting & Letters',
+			beyondArtDesc: 'When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and meaningful letters that connect emotion with intention.',
+			beyondActiveTitle: 'Active Lifestyle',
+			beyondActiveDesc: 'Building discipline through movement. CrossFit, swimming, and staying active help me stay focused, resilient, and mentally strong.',
+			beyondCommTitle: 'Community & Tech',
+			beyondCommDesc: 'Organizer at GitTogether Medellín. I enjoy creating spaces where people connect with technology and feel inspired to start their journey.',
+			beyondColTitle: 'Based in Colombia',
+			beyondColDesc: 'Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.',
+		},
+		es: {
+			aboutEyebrow: 'DESARROLLADORA FULL-STACK & ARTISTA',
+			aboutTitle: 'La lógica del código.<br> El alma de la pintura.',
+			aboutDescription: 'Construyo interfaces digitales con la misma intención con la que empiezo un lienzo. Desde Colombia, creando para el mundo.',
+			missionTitle: 'Por qué hago lo que hago',
+			missionQuote: '"Creo que la tecnología debe ser tan humana como las manos que la construyen. Mi misión es unir la eficiencia técnica con la resonancia emocional."',
+			toolboxTitle: 'Caja de Herramientas',
+			journeyTitle: 'El Camino',
+			journeyDateOne: 'Mayo 2024 &mdash; Enero 2026',
+			journeyJobOne: 'Consultora Dev & DevOps',
+			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
+			journeyDescOne: 'Levantamiento de requerimientos, automatización con Python y Selenium, prácticas DevOps y desarrollo en plataformas low-code (AppSheet, Codenull) en entornos Linux y Windows Server.',
+			journeyDateTwo: 'Julio 2023 &mdash; Mayo 2024',
+			journeyJobTwo: 'Desarrolladora de Software',
+			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
+			journeyDescTwo: 'Desarrollo web enfocado en backend (Node.js, Python). Diseño de BBDD (MongoDB, Firebase, SQL Server), automatización de procesos y gestión con Jira.',
+			journeyDateThree: 'Julio 2022 &mdash; Diciembre 2022',
+			journeyJobThree: 'Practicante en Desarrollo',
+			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
+			journeyDescThree: 'Soporte de plataforma interna de gestión de horarios. Automatización de reportes en Excel (optimización del 15% en control de tiempos) y mejora del 20% en usabilidad web con HTML y JS.',
+			beyondTitle: 'Más Allá del Código',
+			beyondArtTitle: 'Arte & Escritura',
+			beyondArtDesc: 'Cuando la pantalla se apaga, la creatividad toma el control. Expreso ideas a través de escritura, pintura y letras con sentido que conectan la emoción con la intención.',
+			beyondActiveTitle: 'Estilo de Vida Activo',
+			beyondActiveDesc: 'Construyendo disciplina a través del movimiento. Hacer CrossFit, nadar y mantenerme activa me ayuda a estar enfocada, resiliente y mentalmente fuerte.',
+			beyondCommTitle: 'Comunidad & Tecnología',
+			beyondCommDesc: 'Organizadora en GitTogether Medellín. Disfruto creando espacios donde la gente se conecte con la tecnología y se sienta inspirada.',
+			beyondColTitle: 'Mi base es Colombia',
+			beyondColDesc: 'Café, cultura y código con propósito. Orgullosa de mis raíces e inspirada por la energía, resiliencia y creatividad de mi país.',
+		},
+	};
 
-// @ts-ignore - Parameter type inferred from usage
-function updateAboutPage(language) {
-	// Use direct object access to avoid TypeScript indexing issues
-	let t;
-	if (language === 'es') {
-		t = aboutTranslations.es;
-	} else {
-		t = aboutTranslations.en;
+	function updateAboutLanguage(language: string) {
+		const t = language === 'es' ? aboutPageTranslations.es : aboutPageTranslations.en;
+		Object.entries(t).forEach(([key, value]) => {
+			document.querySelectorAll(`[data-translate="${key}"]`).forEach((el) => {
+				el.innerHTML = value;
+			});
+		});
 	}
-	
-	// Update hero tagline
-	const heroTagline = document.querySelector('.tagline');
-	if (heroTagline) {
-		heroTagline.textContent = t.heroTagline;
-	}
-	
-	// Update all elements with data-translate attributes
-	Object.entries(t).forEach(([key, value]) => {
-		const element = document.querySelector(`[data-translate="${key}"]`);
-		if (element) {
-			element.textContent = value;
-		}
+
+	window.addEventListener('languageChange', (e) => {
+		// @ts-ignore
+		updateAboutLanguage(e.detail.language);
 	});
-}
 
-// Listen for language changes from LanguageToggle component
-window.addEventListener('languageChange', (e) => {
-	// @ts-ignore - Custom event from LanguageToggle component
-	updateAboutPage(e.detail.language);
-});
-
-// Initialize with saved language or browser preference
-const savedLanguage = localStorage.getItem('language');
-const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
-if (initialLanguage === 'es') {
-	updateAboutPage('es');
-}
+	const savedLanguage = localStorage.getItem('language');
+	const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
+	if (initialLanguage === 'es') updateAboutLanguage('es');
 </script>

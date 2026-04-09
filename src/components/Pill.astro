@@ -1,4 +1,12 @@
-<div class="pill"><slot /></div>
+---
+export interface Props {
+	category?: 'dev' | 'design' | 'devops' | 'stack';
+}
+
+const { category } = Astro.props;
+---
+
+<div class="pill" data-category={category}><slot /></div>
 
 <style>
 	.pill {
@@ -12,5 +20,29 @@
 		font-size: var(--text-md);
 		line-height: 1.35;
 		white-space: nowrap;
+	}
+	
+	.pill[data-category="dev"] { 
+		background: #dbeafe; 
+		border-color: #dbeafe;
+		color: #1e40af; 
+	}
+	
+	.pill[data-category="design"] { 
+		background: #ede9fe; 
+		border-color: #ede9fe;
+		color: #5b21b6; 
+	}
+	
+	.pill[data-category="devops"] { 
+		background: #d1fae5; 
+		border-color: #d1fae5;
+		color: #065f46; 
+	}
+	
+	.pill[data-category="stack"] { 
+		background: #fef3c7; 
+		border-color: #fef3c7;
+		color: #92400e; 
 	}
 </style>
