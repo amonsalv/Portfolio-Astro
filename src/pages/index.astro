@@ -99,7 +99,7 @@ const projects = allProjects
 										<a class="work-card" href={`/work/${project.slug}`}>
 											<div class="meta">
 												<div class="tags">
-													{project.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+													{project.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
 												</div>
 												<h3>{project.data.title}</h3>
 												<p>{project.data.description}</p>
@@ -115,7 +115,7 @@ const projects = allProjects
 											<a class="work-card" href={`/work/${spanishProject.slug}`}>
 												<div class="meta">
 													<div class="tags">
-														{spanishProject.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+														{spanishProject.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
 													</div>
 													<h3>{spanishProject.data.title}</h3>
 													<p>{spanishProject.data.description}</p>

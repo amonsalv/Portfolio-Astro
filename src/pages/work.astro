@@ -33,7 +33,7 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 									<a class="project-card" href={`/work/${project.slug}`}>
 										<div class="meta">
 											<div class="pills">
-												{project.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+												{project.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
 											</div>
 											<h2>{project.data.title}</h2>
 											<p>{project.data.description}</p>
@@ -48,7 +48,7 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 										<a class="project-card" href={`/work/${spanishProject.slug}`}>
 											<div class="meta">
 												<div class="pills">
-													{spanishProject.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+													{spanishProject.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
 												</div>
 												<h2>{spanishProject.data.title}</h2>
 												<p>{spanishProject.data.description}</p>
