@@ -1,74 +1,174 @@
 ---
-import CallToAction from './CallToAction.astro';
-// import Icon from './Icon.astro'; // Not used in this component
+// ContactCTA — "Let's build something together"
+// Based on Stitch redesign: warm editorial minimalism
 ---
 
-<aside>
-	<h2 data-translate="contactCta.title">Interested in working together?</h2>
-	<CallToAction href="https://www.linkedin.com/in/anamonsalve/">
-		<span data-translate="contactCta.button">Send Me a Message</span>
-	</CallToAction>
-</aside>
+<section class="contact-cta">
+	<div class="cta-inner">
+		<div class="cta-text">
+			<p class="cta-label" data-translate="ctaLabel">LET'S CONNECT</p>
+			<h2 class="cta-title" data-translate="ctaTitle">Let's build something together</h2>
+			<p class="cta-subtitle" data-translate="ctaSubtitle">
+				Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.
+			</p>
+		</div>
+		<div class="cta-action">
+			<a href="mailto:hola@anamonsalve.com" class="cta-button">
+				<span data-translate="ctaButton">Get in touch</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<line x1="5" y1="12" x2="19" y2="12" />
+					<polyline points="12 5 19 12 12 19" />
+				</svg>
+			</a>
+		</div>
+	</div>
+</section>
 
 <style>
-	aside {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+	.contact-cta {
+		padding: 5rem 0 7rem;
 	}
 
-	h2 {
-		font-size: var(--text-xl);
-		text-align: center;
-		max-width: 15ch;
+	.cta-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		background: var(--accent-regular);
+		border-radius: 1.5rem;
+		padding: 2.5rem 2rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Subtle violet glow in the corner */
+	.cta-inner::before {
+		content: '';
+		position: absolute;
+		top: -40%;
+		right: -10%;
+		width: 400px;
+		height: 400px;
+		background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+		pointer-events: none;
+	}
+
+	:root.theme-dark .cta-inner::before {
+		background: radial-gradient(circle, rgba(194, 193, 255, 0.08) 0%, transparent 70%);
+	}
+
+	.cta-label {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: #ffffff;
+		text-transform: uppercase;
+		margin-bottom: 0.75rem;
+	}
+
+	.cta-title {
+		font-family: var(--font-brand);
+		font-size: clamp(2rem, 4vw, var(--text-4xl));
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.05;
+		color: #ffffff;
+		max-width: 20ch;
+	}
+
+	.cta-subtitle {
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		line-height: 1.65;
+		color: #ffffff;
+		max-width: 48ch;
+		margin-top: 1rem;
+		opacity: 0.9;
+	}
+
+	.cta-action {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.cta-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		padding: 0.875rem 2rem;
+		border-radius: var(--radius-full);
+		background: linear-gradient(135deg, var(--primary), var(--primary-container));
+		color: var(--on-primary);
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 0.2s var(--ease-expressive), box-shadow 0.2s var(--ease-expressive);
+	}
+
+	.cta-button:hover {
+		transform: scale(1.02);
+		box-shadow: var(--shadow-md);
+		color: var(--on-primary);
 	}
 
 	@media (min-width: 50em) {
-		aside {
-			padding: 7.5rem;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
+		.contact-cta {
+			padding: 6rem 0 8rem;
 		}
 
-		h2 {
-			font-size: var(--text-3xl);
-			text-align: left;
+		.cta-inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			padding: 4rem 4rem;
+			gap: 3rem;
+		}
+
+		.cta-text {
+			flex: 1;
+		}
+
+		.cta-action {
+			flex-shrink: 0;
 		}
 	}
 </style>
 
 <script>
+	const ctaTranslations = {
+		en: {
+			ctaLabel: "LET'S CONNECT",
+			ctaTitle: "Let's build something together",
+			ctaSubtitle: "Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.",
+			ctaButton: 'Get in touch',
+		},
+		es: {
+			ctaLabel: 'CONECTEMOS',
+			ctaTitle: 'Construyamos algo juntas',
+			ctaSubtitle: 'Ya sea una línea de código o un trazo de color, siempre estoy buscando la próxima colaboración significativa.',
+			ctaButton: 'Escríbeme',
+		},
+	};
+
 	// @ts-ignore
-	import { useTranslations } from '../utils/i18n';
-
-	function translateContactCTA() {
-		const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+	function updateCTALanguage(language) {
 		// @ts-ignore
-		const t = useTranslations(language);
-
-		// Translate title
-		const titleElement = document.querySelector('[data-translate="contactCta.title"]');
-		if (titleElement) {
-			titleElement.textContent = t.contactCta.title;
-		}
-
-		// Translate button
-		const buttonElement = document.querySelector('[data-translate="contactCta.button"]');
-		if (buttonElement) {
-			buttonElement.textContent = t.contactCta.button;
-		}
+		const t = language === 'es' ? ctaTranslations.es : ctaTranslations.en;
+		const keys = Object.keys(t) as Array<keyof typeof t>;
+		keys.forEach((key) => {
+			const el = document.querySelector(`[data-translate="${key}"]`);
+			// @ts-ignore
+			if (el) el.textContent = t[key];
+		});
 	}
 
-	// Initial translation
-	translateContactCTA();
+	window.addEventListener('languageChange', (e) => {
+		// @ts-ignore
+		updateCTALanguage(e.detail.language);
+	});
 
-	// Listen for language change events
-	document.addEventListener('languageChanged', translateContactCTA);
+	const saved = localStorage.getItem('language');
+	const init = saved || (navigator.language.startsWith('es') ? 'es' : 'en');
+	if (init === 'es') updateCTALanguage('es');
 </script>

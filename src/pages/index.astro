@@ -1,395 +1,1107 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Component Imports
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
 
-// Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
-
-// i18n
-import { useTranslations } from '../utils/i18n';
-
-// Content Fetching: List four most recent work projects (filter out Spanish versions to avoid duplicates)
 const allProjects = await getCollection('work');
 const projects = allProjects
 	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
-	.sort((a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
-
-// Default to English, will be updated by client-side script
-const t = useTranslations('en');
+	.sort(
+		(a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) =>
+			b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+	)
+	.slice(0, 3);
 ---
 
-<BaseLayout title="Ana Monsalve | Creative Developer">
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
-				<Hero
-					title={`${t.home.greeting} Ana Monsalve.`}
-					tagline={`${t.home.description}`}
-					align="start"
-				>
-					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> <span data-translate="developer">Developer</span></Pill>
-						<!-- <Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill> -->
-						<Pill><Icon icon="pencil-line" size="1.33em" /> <span data-translate="writer">Writer</span></Pill>
-					</div>
-				</Hero>
+<BaseLayout title="Ana Monsalve | Developer & Painter">
+	<main class="home-page">
+		<section class="hero">
+			<div class="blur blur-a" aria-hidden="true"></div>
+			<div class="blur blur-b" aria-hidden="true"></div>
+			<div class="hero-content">
+				<h1 class="hero-title" data-translate="heroTitle">
+					<span class="line-greeting">¡Hola!</span>
+					<span class="line-name">I'm <em>Ana.</em></span>
+				</h1>
+				<p class="hero-tagline" data-translate="heroTagline">
+					I build technology with <em class="tint">intention.</em> Combining the logic of code with the soul of a painter.
+				</p>
+				<a class="hero-cta" href="/work/" data-translate="heroCta">View Selected Work</a>
+			</div>
+		</section>
 
-				<!--imagen y descripcion de la imagen-->
-				<!-- <img
-					alt="Ana Monsalve"
-					width="480"
-					height="620"
-					
-				/> -->
-				<!-- src="/assets/portrait.jpg" -->
-			</header>
+		<section class="think">
+			<div class="wrapper think-inner">
+				<div class="think-head">
+					<h2 data-translate="thinkTitle">How I think</h2>
+					<p data-translate="thinkSubtitle">My philosophy isn't just about output; it's about the process behind every pixel and line.</p>
+				</div>
+				<div class="think-grid">
+					<article class="think-card curiosity">
+						<div class="icon">✦</div>
+						<h3 data-translate="thinkCuriosityTitle">Curiosity</h3>
+						<p data-translate="thinkCuriosityDesc">I approach every challenge like a blank canvas, asking the right questions before mixing the colors.</p>
+					</article>
+					<article class="think-card logic">
+						<div class="icon">▦</div>
+						<h3 data-translate="thinkLogicTitle">Logic</h3>
+						<p data-translate="thinkLogicDesc">Structured systems and scalable architecture are the foundations that allow creativity to truly fly.</p>
+					</article>
+					<article class="think-card purpose">
+						<div class="icon">◎</div>
+						<h3 data-translate="thinkPurposeTitle">Purpose</h3>
+						<p data-translate="thinkPurposeDesc">I build for humans. Technology should solve real problems and carry intention.</p>
+					</article>
+				</div>
+			</div>
+		</section>
 
-			<Skills />
-		</div>
+		<section class="growing wrapper">
+			<div class="grow-copy">
+				<p class="grow-pill" data-translate="growPill">Evolution</p>
+				<h2 data-translate="growTitle">What I'm growing into</h2>
+				<p data-translate="growDesc">I'm currently obsessed with the infrastructure that makes great apps possible. Bridging the gap between code and deployment.</p>
+				<div class="grow-tags">
+					<span class="tag-cloud"><Icon icon="cloud" size="1.2em" /> Cloud Computing</span>
+					<span class="tag-devops"><Icon icon="gear" size="1.2em" /> DevOps</span>
+					<span class="tag-auto"><Icon icon="lightning" size="1.2em" /> Automation</span>
+				</div>
+			</div>
+			<div class="grow-art" aria-hidden="true">
+				<svg class="star-icon star-1" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+				</svg>
+				<svg class="star-icon star-2" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+				</svg>
+				<svg class="star-icon star-3" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+				</svg>
+			</div>
+		</section>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3 data-translate="selectedWork">Selected Work</h3>
-					<p data-translate="workDescription">Take a look below at some of my featured work for clients from the past few years.</p>
+		<section class="selected-work">
+			<div class="wrapper">
+				<header class="work-head">
+					<h2 data-translate="workTitle">Selected Work</h2>
+					<p data-translate="workSubtitle">Take a look at some of my featured work for clients from the past few years.</p>
 				</header>
-
-				<div class="gallery">
-					<Grid variant="offset">
-						{
+				<ul class="work-bento">
+					{
+						projects.map((project, idx) => {
+							const spanishSlug = `${project.slug}-es`;
 							// @ts-ignore
-							projects.map((project) => {
-								// Create corresponding Spanish project slug
-								const spanishSlug = `${project.slug}-es`;
-								// @ts-ignore
-								const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
-								
-								return (
-									<li class="project-item" data-en-slug={project.slug} data-es-slug={spanishSlug}>
-										<div class="project-en" style="display: block;">
-											<PortfolioPreview project={project} />
-										</div>
-										{spanishProject && (
-											<div class="project-es" style="display: none;">
-												<PortfolioPreview project={spanishProject} />
+							const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
+							const slot = `slot-${idx + 1}`;
+							return (
+								<li class:list={['project-item', slot]} data-en-slug={project.slug} data-es-slug={spanishSlug}>
+									<div class="project-en" style="display: block;">
+										<a class="work-card" href={`/work/${project.slug}`}>
+											<div class="meta">
+												<div class="tags">
+													{project.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+												</div>
+												<h3>{project.data.title}</h3>
+												<p>{project.data.description}</p>
+												<span class="read-more" aria-hidden="true">View Case Study <Icon icon="arrow-right" size="1.2em" /></span>
 											</div>
-										)}
-									</li>
-								);
-							})
-						}
-					</Grid>
+											<div class="img-container">
+												<img src={project.data.img} alt={project.data.img_alt || ''} loading="lazy" decoding="async" />
+											</div>
+										</a>
+									</div>
+									{spanishProject && (
+										<div class="project-es" style="display: none;">
+											<a class="work-card" href={`/work/${spanishProject.slug}`}>
+												<div class="meta">
+													<div class="tags">
+														{spanishProject.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+													</div>
+													<h3>{spanishProject.data.title}</h3>
+													<p>{spanishProject.data.description}</p>
+													<span class="read-more" aria-hidden="true">Ver Caso de Estudio <Icon icon="arrow-right" size="1.2em" /></span>
+												</div>
+												<div class="img-container">
+													<img src={spanishProject.data.img} alt={spanishProject.data.img_alt || ''} loading="lazy" decoding="async" />
+												</div>
+											</a>
+										</div>
+									)}
+								</li>
+							);
+						})
+					}
+					<li class="project-item slot-4">
+						<div class="work-card cta-dark-card">
+							<div class="cta-dark-content">
+								<span class="stars-icon">✨</span>
+								<h3 data-translate="workCtaCard">Ready for your next digital painting?</h3>
+								<a href="mailto:hola@anamonsalve.com" class="button-contact" data-translate="ctaButton">Contact Ana</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="beyond wrapper">
+			<h2 data-translate="beyondTitle">Beyond the Code</h2>
+			<p data-translate="beyondSubtitle">The fuel for my logical engine.</p>
+			<div class="beyond-list">
+				<div><span>🎨</span><span data-translate="beyondPainting">Painting</span></div>
+				<div><span>🏋️</span><span data-translate="beyondCrossfit">CrossFit</span></div>
+				<div><span>🎮</span><span data-translate="beyondGaming">Gaming</span></div>
+				<div><span>✍️</span><span data-translate="beyondWriting">Writing</span></div>
+				<div><span>🌊</span><span data-translate="beyondNature">Nature</span></div>
+			</div>
+		</section>
+
+		<section class="home-cta-wrapper wrapper">
+			<div class="home-cta">
+				<div class="home-cta-inner">
+					<h2 data-translate="ctaTitle">Let's build something together</h2>
+					<p data-translate="ctaDesc">Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.</p>
+					<a href="mailto:hola@anamonsalve.com" class="btn-cta">
+						<span data-translate="ctaButton">Get in touch</span>
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</a>
 				</div>
-
-				<div class="cta">
-					<CallToAction href="/work/">
-						<span data-translate="viewAll">View All</span>
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
-
-			<!--<section class="section with-background bg-variant">-->
-			<!--	<header class="section-header stack gap-2 lg:gap-4">-->
-			<!--		<h3>Mentions</h3>-->
-			<!--		<p>-->
-			<!--			I have been fortunate enough to receive praise for my work in several publications. Take-->
-			<!--			a look below to learn more.-->
-			<!--		</p>-->
-			<!--	</header>-->
-
-			<!--	<div class="gallery">-->
-			<!--		<Grid variant="small">-->
-			<!--			{-->
-			<!--				['Medium', 'BuzzFeed', 'The Next Web', 'awwwards.', 'TechCrunch'].map((brand) => (-->
-			<!--					<li class="mention-card">-->
-			<!--						<p>{brand}</p>-->
-			<!--					</li>-->
-			<!--				))-->
-			<!--			}-->
-			<!--		</Grid>-->
-			<!--	</div>-->
-			<!--</section>-->
-		</main>
-
-		<ContactCTA />
-	</div>
+			</div>
+		</section>
+	</main>
 </BaseLayout>
 
 <style>
+	.home-page {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		--home-max: min(84rem, 92vw);
+	}
+
+	.home-page .wrapper {
+		max-width: var(--home-max);
+		padding-inline: clamp(1.2rem, 3vw, 3rem);
+		margin-inline: auto;
+	}
+
 	.hero {
+		position: relative;
+		padding-top: 5.2rem;
+		padding-bottom: 7.5rem;
+		overflow: hidden;
+		max-width: 100%;
+		padding-inline: clamp(1.2rem, 3vw, 3rem);
+		background: linear-gradient(180deg, color-mix(in srgb, var(--surface-container-low) 60%, transparent) 0%, transparent 100%);
+	}
+
+	.hero-content {
+		max-width: var(--home-max);
+		margin-inline: auto;
+	}
+
+	.hero-title {
+		font-size: clamp(3rem, 10vw, 7.2rem);
+		line-height: 0.86;
+		letter-spacing: -0.05em;
+		margin-bottom: 1.3rem;
+	}
+
+	:global(.hero-title .line-greeting) {
+		display: block;
+		color: var(--on-surface);
+	}
+
+	:global(.hero-title .line-name) {
+		display: block;
+		color: var(--primary); /* All of "I'm Ana" is blue to match reference image exactly */
+	}
+
+	:global(.hero-title .line-name em) {
+		font-style: normal;
+	}
+
+	.hero-tagline {
+		max-width: 34ch;
+		font-size: clamp(1.15rem, 2.3vw, 1.9rem);
+		line-height: 1.45;
+		color: var(--on-surface-variant);
+	}
+	
+	.hero-tagline em.tint {
+		font-style: italic;
+		color: var(--tertiary);
+	}
+
+	.hero-cta {
+		display: inline-flex;
+		margin-top: 2rem;
+		padding: 0.85rem 1.5rem;
+		border-radius: var(--radius-full);
+		font-weight: 800;
+		background: var(--primary);
+		color: var(--on-primary);
+		box-shadow: 0 14px 30px rgba(21, 88, 214, 0.24);
+	}
+
+	.hero-cta:hover {
+		color: var(--on-primary);
+		background: var(--chroma-ocean-strong);
+	}
+
+	.blur {
+		position: absolute;
+		border-radius: 999px;
+		filter: blur(80px);
+		pointer-events: none;
+		opacity: 0.8;
+	}
+
+	.blur-a {
+		width: 40rem;
+		height: 40rem;
+		right: -8rem;
+		top: -8rem;
+		background: color-mix(in srgb, #5b9eff 70%, transparent); /* More saturated blue */
+	}
+
+	.blur-b {
+		width: 15%;
+		height: 35rem;
+		left: -12rem;
+		bottom: 0rem;
+		background: color-mix(in srgb, #d4a574 65%, transparent); /* More saturated warm peach */
+	}
+
+	.think {
+		background: var(--surface-container-low);
+		padding: 5.5rem 0;
+	}
+
+	.think-head {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		margin-bottom: 2.2rem;
+	}
+
+	.think-head h2 {
+		font-size: clamp(2.3rem, 5vw, 3.9rem);
+	}
+
+	.think-head p {
+		max-width: 40ch;
+		font-size: var(--text-lg);
+		color: var(--on-surface-variant);
+	}
+
+	.think-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.1rem;
+	}
+
+	.think-card {
+		background: var(--surface-container-lowest);
+		border-radius: 1rem;
+		padding: 1.4rem;
+		border-top: 6px solid transparent;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.think-card .icon {
+		width: 2.4rem;
+		height: 2.4rem;
+		display: grid;
+		place-items: center;
+		font-size: 1.1rem;
+		border-radius: 0.6rem;
+		margin-bottom: 0.8rem;
+	}
+
+	.think-card h3 {
+		font-size: 1.8rem;
+		margin-bottom: 0.45rem;
+	}
+
+	.think-card p {
+		color: var(--on-surface-variant);
+		line-height: 1.5;
+	}
+
+	.think-card.curiosity {
+		border-top: 3px solid #2563eb;
+	}
+
+	.think-card.curiosity .icon {
+		background: color-mix(in srgb, var(--primary) 22%, transparent);
+		color: var(--chroma-ocean-strong);
+	}
+
+	.think-card.logic {
+		border-top: 3px solid #f59e0b;
+	}
+
+	.think-card.logic .icon {
+		background: color-mix(in srgb, var(--chroma-sunny) 28%, transparent);
+		color: #7a5200;
+	}
+
+	.think-card.purpose {
+		border-top: 3px solid #10b981;
+	}
+
+	.think-card.purpose .icon {
+		background: color-mix(in srgb, var(--tertiary) 18%, transparent);
+		color: #8b2027;
+	}
+
+	.growing {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding-top: 5.5rem;
+		padding-bottom: 5.5rem;
+	}
+
+	.grow-pill {
+		display: inline-flex;
+		padding: 0.35rem 0.9rem;
+		border-radius: var(--radius-full);
+		font-size: 0.74rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #ffffff !important;
+		background: #a93c41;
+		margin-bottom: 0.9rem;
+	}
+
+	:root.theme-dark .grow-pill {
+		color: #ffffff !important;
+		background: #8b3036;
+	}
+
+	.grow-copy h2 {
+		font-size: clamp(2.2rem, 6vw, 4.3rem);
+		line-height: 0.95;
+		margin-bottom: 0.9rem;
+	}
+
+	.grow-copy p {
+		max-width: 40ch;
+		font-size: var(--text-lg);
+		color: var(--on-surface-variant);
+	}
+
+	.grow-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: 1.5rem;
+	}
+
+	.grow-tags span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.55rem 0.9rem;
+		border-radius: 0.4rem;
+		background: var(--surface-container);
+		font-weight: 600;
+		font-size: var(--text-sm);
+	}
+	
+	.tag-cloud :global(svg) { color: #2563eb; }
+	.tag-devops :global(svg) { color: #a93c41; }
+	.tag-auto :global(svg) { color: #d97706; }
+
+	.grow-art {
+		position: relative;
+		min-height: 18rem;
+		border-radius: 1.2rem;
+		background: linear-gradient(135deg, #9caaf2 0%, #ebd7d0 100%);
+		overflow: hidden;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+	}
+
+	:global([data-theme="dark"]) .grow-art {
+		background: linear-gradient(135deg, #1e2540 0%, #3d2f2d 100%);
+	}
+
+	.star-icon {
+		position: absolute;
+		color: color-mix(in srgb, #ffffff 90%, transparent);
+	}
+
+	.star-1 {
+		width: 7rem;
+		height: 7rem;
+		right: 30%;
+		top: 50%;
+		transform: translateY(-50%) rotate(15deg);
+	}
+
+	.star-2 {
+		width: 3.5rem;
+		height: 3.5rem;
+		right: 15%;
+		top: 32%;
+		transform: rotate(-10deg);
+	}
+
+	.star-3 {
+		width: 3rem;
+		height: 3rem;
+		right: 22%;
+		bottom: 25%;
+		transform: rotate(5deg);
+	}
+
+	.selected-work {
+		background: var(--surface-container);
+		padding: 5.2rem 0;
+	}
+
+	.work-head {
+		margin-bottom: 3rem;
+		text-align: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 2rem;
 	}
 
-	.roles {
-		display: none;
+	.work-head h2 {
+		font-size: clamp(2.5rem, 6vw, 5rem);
+		line-height: 0.9;
+		margin-bottom: 0.8rem;
 	}
 
-	.hero img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		object-position: top;
+	.work-head p {
+		font-size: var(--text-xl);
+		max-width: 45ch;
+		color: var(--on-surface-variant);
+	}
+
+	.work-bento {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.work-card {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow: hidden;
+		padding: 2.2rem;
 		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+		background: var(--surface-container-lowest);
+		box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+		text-decoration: none;
+		color: inherit;
+		border: none;
+		transition: transform 0.3s var(--ease-expressive), box-shadow 0.3s var(--ease-expressive);
+	}
+
+	.work-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+	}
+
+	:global([data-theme="dark"]) .work-card {
+		background: var(--surface-container);
+		box-shadow: none;
+		border: 1px solid var(--surface-container-high);
+	}
+
+	.slot-1 .work-card {
+		background: #ffffff;
+		min-height: 22rem;
+	}
+	:global([data-theme="dark"]) .slot-1 .work-card { background: var(--surface-container); }
+
+	.slot-2 .work-card {
+		background: #ffffff;
+		min-height: 20rem;
+		flex-direction: column-reverse; /* Mobiles: pic on top */
+	}
+	:global([data-theme="dark"]) .slot-2 .work-card { background: var(--surface-container); }
+
+	.slot-3 .work-card {
+		background: #ffffff;
+		min-height: 20rem;
+	}
+	:global([data-theme="dark"]) .slot-3 .work-card { background: var(--surface-container); }
+
+	.work-card .meta {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		z-index: 2;
+	}
+
+	.work-card .tags {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-bottom: 0.3rem;
+	}
+
+	.work-card .tags span {
+		padding: 0.3rem 0.8rem;
+		border-radius: var(--radius-full);
+		font-size: 0.72rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.slot-1 .tags span { background: #dce7ff; color: #1e3a8a; }
+	.slot-2 .tags span { background: #ffc0b3; color: #9f1239; }
+	.slot-3 .tags span { background: #ffe4c4; color: #92400e; }
+
+	:global([data-theme="dark"]) .slot-1 .tags span { background: #1e3a8a; color: #dce7ff; }
+	:global([data-theme="dark"]) .slot-2 .tags span { background: #9f1239; color: #ffc0b3; }
+	:global([data-theme="dark"]) .slot-3 .tags span { background: #92400e; color: #ffe4c4; }
+
+	.slot-1 .meta { max-width: 65%; }
+	.slot-1 .img-container {
+		position: absolute;
+		right: -3rem;
+		bottom: -3rem;
+		width: 20rem;
+		height: 20rem;
+		border-radius: 50%;
+		background: #ebf2fa;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	:global([data-theme="dark"]) .slot-1 .img-container { background: #1a2332; }
+
+	.slot-1 .img-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+		opacity: 0.95;
+		mix-blend-mode: multiply;
+	}
+	:global([data-theme="dark"]) .slot-1 .img-container img { mix-blend-mode: normal; } 
+
+	.slot-2 .img-container {
+		width: 14rem;
+		height: 14rem;
+		border-radius: 50%;
+		border: 12px solid #ffffff;
+		box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+		overflow: hidden;
+		flex-shrink: 0;
+		margin-bottom: 1.5rem;
+		margin-inline: auto;
+	}
+	:global([data-theme="dark"]) .slot-2 .img-container { border-color: var(--surface); }
+
+	.slot-3 .meta { margin-bottom: 1.5rem; }
+	.slot-3 .img-container {
+		width: 100%;
+		flex-grow: 1;
+		border-radius: 1rem;
+		overflow: hidden;
+		min-height: 15rem;
+	}
+
+	.work-card img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s var(--theme-transition);
+	}
+
+	.work-card:focus-within img,
+	.work-card:hover img {
+		transform: scale(1.05);
+	}
+
+	.work-card h3 {
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+		line-height: 1.1;
+		color: var(--on-surface);
+		letter-spacing: -0.03em;
+	}
+
+	.work-card p {
+		font-size: var(--text-base);
+		line-height: 1.5;
+		color: var(--on-surface-variant);
+	}
+
+	.read-more {
+		display: none;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 1.5rem;
+		font-weight: 700;
+		font-size: 0.95rem;
+		color: #2563eb;
+	}
+	:global([data-theme="dark"]) .read-more { color: #60a5fa; }
+	.slot-1 .read-more { display: inline-flex; }
+
+	.beyond {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		text-align: center;
+	}
+
+	.beyond h2 {
+		font-size: clamp(2.4rem, 5vw, 4.4rem);
+		margin-bottom: 0.5rem;
+	}
+
+	.beyond p {
+		font-size: var(--text-lg);
+		color: var(--on-surface-variant);
+		margin-bottom: 1.5rem;
+	}
+
+	.beyond-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6rem;
+	}
+
+	.beyond-list div {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.7rem 1.4rem;
+		border-radius: 0.8rem;
+		background: var(--surface-container-low);
+		font-weight: 700;
+		color: var(--on-surface);
+	}
+
+	.home-cta-wrapper {
+		padding-top: 2rem;
+		padding-bottom: 5rem;
+	}
+
+	.home-cta {
+		position: relative;
+		overflow: hidden;
+		background: var(--primary);
+		color: #ffffff;
+		text-align: center;
+		padding: 4.5rem 1.5rem;
+		border-radius: 2rem;
+		box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+	}
+
+	.home-cta::before,
+	.home-cta::after {
+		content: '';
+		position: absolute;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.08);
+		pointer-events: none;
+	}
+
+	.home-cta::before {
+		width: 18rem;
+		height: 18rem;
+		left: -6rem;
+		top: -6rem;
+	}
+
+	.home-cta::after {
+		width: 25rem;
+		height: 25rem;
+		right: -8rem;
+		bottom: -12rem;
+	}
+
+	.home-cta-inner {
+		position: relative;
+		z-index: 2;
+		max-width: 48rem;
+		margin: 0 auto;
+	}
+
+	.home-cta-inner h2 {
+		font-size: clamp(2.4rem, 6vw, 4.2rem);
+		line-height: 1.05;
+		margin-bottom: 1.2rem;
+		color: #ffffff;
+		letter-spacing: -0.03em;
+	}
+
+	.home-cta-inner p {
+		font-size: var(--text-lg);
+		font-weight: 500;
+		opacity: 1;
+		margin-bottom: 2.5rem;
+		color: #ffffff;
+	}
+
+	.btn-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.85rem 2.2rem;
+		border-radius: var(--radius-full);
+		font-size: var(--text-base);
+		font-weight: 800;
+		background: #ffffff;
+		color: var(--primary);
+		transition: transform 0.2s var(--ease-squish), box-shadow 0.2s var(--ease-squish);
+		text-decoration: none;
+	}
+
+	.btn-cta:hover {
+		transform: scale(1.03) translateY(-2px);
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+	}
+
+	.cta-dark-card {
+		background: #0f121d !important;
+		color: #fff !important;
+		border-color: #272a38 !important;
+		display: grid;
+		place-items: center;
+		padding: 2.5rem !important;
+		text-align: center;
+	}
+
+	.cta-dark-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.2rem;
+	}
+
+	.cta-dark-content h3 {
+		color: #fff !important;
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem) !important;
+		line-height: 1.1 !important;
+	}
+
+	.stars-icon {
+		font-size: 2rem;
+	}
+
+	.button-contact {
+		display: inline-flex;
+		padding: 0.65rem 1.25rem;
+		border-radius: var(--radius-full);
+		background: var(--primary);
+		color: var(--on-primary);
+		font-weight: 700;
+		font-size: var(--text-sm);
+		text-decoration: none;
+		transition: background 0.3s;
+	}
+
+	.button-contact:hover {
+		background: var(--chroma-ocean-strong);
 	}
 
 	@media (min-width: 50em) {
 		.hero {
-			display: grid;
-			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
+			padding-top: 6.5rem;
+			padding-bottom: 7.5rem;
 		}
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
+		.think-head {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
 		}
 
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
+		.think-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.growing {
+			grid-template-columns: 1.05fr 1fr;
+			align-items: center;
+			gap: 3rem;
+		}
+
+		.grow-art {
+			min-height: 26rem;
+		}
+
+		.work-bento {
+			grid-template-columns: 1.4fr 1fr;
+			grid-template-rows: auto auto;
+			gap: 1.5rem;
+		}
+
+		.slot-1 { grid-column: 1; grid-row: 1; }
+		.slot-2 { grid-column: 1; grid-row: 2; }
+		.slot-3 { grid-column: 2; grid-row: 1 / 3; }
+		.slot-4 { grid-column: 1 / 3; grid-row: 3; }
+
+		.slot-2 .work-card {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.slot-2 .meta { width: 55%; }
+		.slot-2 .img-container {
+			margin-bottom: 0;
+			margin-left: 1.5rem;
+		}
+
+		.slot-3 .work-card {
+			height: 100%;
+		}
+
+		.home-cta {
+			padding: 7.5rem 3.5rem;
 		}
 	}
 
-	/* ====================================================== */
+	@media (min-width: 80em) {
+		.hero-title {
+			font-size: clamp(5rem, 6.5vw, 6.8rem);
+		}
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
+		.hero-tagline {
+			max-width: 38ch;
+			font-size: clamp(1.3rem, 1.9vw, 1.9rem);
+		}
 
-	.with-background {
-		position: relative;
-	}
+		.think {
+			padding: 6.5rem 0;
+		}
 
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
+		.think-head h2,
+		.grow-copy h2,
+		.work-head h2,
+		.beyond h2 {
+			font-size: clamp(3.1rem, 4.6vw, 4.8rem);
+		}
 
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url('/assets/backgrounds/noise.css') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
+		.think-card {
+			padding: 2.2rem;
+		}
 
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
-
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-	}
-
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
-
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+		.growing {
+			padding-top: 6.5rem;
+			padding-bottom: 6.5rem;
 			gap: 5rem;
 		}
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+		.grow-art {
+			min-height: 29rem;
 		}
 
-		.section-header {
-			grid-area: header;
+		.selected-work {
+			padding: 7rem 0;
+		}
+
+		.work-card {
+			padding: 1rem;
+		}
+
+		.work-card p {
 			font-size: var(--text-lg);
+			max-width: 44ch;
 		}
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
+		.slot-1 .img-container {
+			height: 19rem;
 		}
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
-
-		.gallery {
-			grid-area: gallery;
-		}
-
-		.cta {
-			grid-area: cta;
+		.home-cta {
+			padding-bottom: 6.8rem;
 		}
 	}
 
-	/* ====================================================== */
+	@media (min-width: 100em) {
+		.home-page {
+			--home-max: 88rem;
+		}
 
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
+		.hero {
+			padding-top: 7.2rem;
+			padding-bottom: 8rem;
+		}
+
+		.work-bento {
+			gap: 1.35rem;
+		}
+
+		.slot-1 .img-container {
+			height: 23rem;
+		}
+
+		.slot-3 .work-card {
+			grid-template-columns: 1fr 0.85fr;
+		}
 	}
 
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
+	:root.theme-dark .hero-tagline,
+	:root.theme-dark .think-head p,
+	:root.theme-dark .grow-copy p,
+	:root.theme-dark .work-head p,
+	:root.theme-dark .beyond p {
+		color: #d6ddfb;
+	}
+	:root.theme-dark .grow-art {
+		background: linear-gradient(135deg, #7e22ce, #6a4cff);
+	}
+	:root.theme-dark .think {
+		background: #111633;
+	}
+
+	:root.theme-dark .think-card,
+	:root.theme-dark .grow-tags span,
+	:root.theme-dark .beyond-list div {
+		background: #161c3b;
+		border-color: rgba(121, 136, 208, 0.3);
+		color: #eef3ff;
+	}
+
+	:root.theme-dark .think-card p {
+		color: #d2dbfa;
+	}
+
+	:root.theme-dark .selected-work {
+		background: #090c20;
+	}
+
+	:root.theme-dark .work-card {
+		background: #171c3f;
+		border-color: rgba(129, 146, 217, 0.35);
+	}
+
+	:root.theme-dark .work-card h3 {
+		color: #f0f4ff;
+	}
+
+	:root.theme-dark .work-card p {
+		color: #d0d9f7;
+	}
+
+	:root.theme-dark .work-card .tags span {
+		background: rgba(169, 199, 255, 0.22);
+		color: #e0ebff;
+	}
+
+	:root.theme-dark .slot-1 .work-card,
+	:root.theme-dark .slot-2 .work-card,
+	:root.theme-dark .slot-3 .work-card {
+		background: #171c3f;
+	}
+
+	:root.theme-dark .home-cta {
+		background: #0f1c4d; /* Much darker blue for dark mode */
 	}
 </style>
 
 <script>
-// Simple language update functionality
-const translations = {
-	en: {
-		greeting: 'Hello, my name is',
-		description: 'I am a Creative Developer who is currently based in Medellin, Colombia.',
-		developer: 'Developer',
-		writer: 'Writer',
-		selectedWork: 'Selected Work',
-		workDescription: 'Take a look below at some of my featured work for clients from the past few years.',
-		viewAll: 'View All',
-		// Skills section
-		webDeveloper: 'Web Developer',
-		webDeveloperDesc: 'I create clean, dynamic websites and stay updated with the latest frameworks to ensure modern, efficient designs.',
-		devOps: 'DevOps',
-		devOpsDesc: 'I excel at implementing efficient solutions, managing deployments, and ensuring security to maximize project value.',
-		community: 'Community',
-		communityDesc: 'I appreciate tech communities\' support and actively promote local events. I also serve as an organizer for two developer communities in my city, helping to coordinate meetups, workshops and networking opportunities.',
-		// Contact CTA
-		contactTitle: 'Interested in working together?',
-		contactCta: 'Send Me a Message',
-	},
-	es: {
-		greeting: 'Hola, mi nombre es',
-		description: 'Soy una Desarrolladora Creativa que actualmente vive en Medellín, Colombia.',
-		developer: 'Desarrolladora',
-		writer: 'Escritora', 
-		selectedWork: 'Trabajo Seleccionado',
-		workDescription: 'Echa un vistazo a algunos de mis trabajos destacados para clientes de los últimos años.',
-		viewAll: 'Ver Todo',
-		// Skills section
-		webDeveloper: 'Desarrolladora Web',
-		webDeveloperDesc: 'Creo sitios web limpios y dinámicos, manteniéndome actualizada con los últimos frameworks para asegurar diseños modernos y eficientes.',
-		devOps: 'DevOps',
-		devOpsDesc: 'Sobresalgo implementando soluciones eficientes, gestionando despliegues y asegurando la seguridad para maximizar el valor del proyecto.',
-		community: 'Comunidad',
-		communityDesc: 'Aprecio el apoyo de las comunidades tecnológicas y promuevo activamente eventos locales. También soy organizadora de dos comunidades de desarrolladores en mi ciudad, ayudando a coordinar meetups, talleres y oportunidades de networking.',
-		// Contact CTA
-		contactTitle: '¿Interesada en trabajar juntas?',
-		contactCta: 'Envíame un Mensaje',
-	}
-};
-
-// @ts-ignore - Parameter type inferred from usage
-function updatePageLanguage(language) {
-	// Use direct object access to avoid TypeScript indexing issues
-	let t;
-	if (language === 'es') {
-		t = translations.es;
-	} else {
-		t = translations.en;
-	}
-	
-	// Update hero content
-	const heroTitle = document.querySelector('h1');
-	if (heroTitle) {
-		heroTitle.textContent = `${t.greeting} Ana Monsalve.`;
-	}
-	
-	const heroTagline = document.querySelector('.tagline');
-	if (heroTagline) {
-		heroTagline.textContent = t.description;
-	}
-	
-	// Update specific elements by data-translate attribute
-	const elements = {
-		developer: t.developer,
-		writer: t.writer,
-		selectedWork: t.selectedWork,
-		workDescription: t.workDescription,
-		viewAll: t.viewAll,
-		// Skills section
-		webDeveloper: t.webDeveloper,
-		webDeveloperDesc: t.webDeveloperDesc,
-		devOps: t.devOps,
-		devOpsDesc: t.devOpsDesc,
-		community: t.community,
-		communityDesc: t.communityDesc,
-		// Contact CTA
-		contactTitle: t.contactTitle,
-		contactCta: t.contactCta,
+	const homeTranslations = {
+		en: {
+			heroTitle: "<span class='line-greeting'>¡Hola!</span><span class='line-name'>I'm <em>Ana.</em></span>",
+			heroTagline: "I build technology with <em class='tint'>intention.</em> Combining the logic of code with the soul of a painter.",
+			heroCta: 'View Selected Work',
+			thinkTitle: 'How I think',
+			thinkSubtitle: "My philosophy isn't just about output; it's about the process behind every pixel and line.",
+			thinkCuriosityTitle: 'Curiosity',
+			thinkCuriosityDesc: 'I approach every challenge like a blank canvas, asking the right questions before mixing the colors.',
+			thinkLogicTitle: 'Logic',
+			thinkLogicDesc: 'Structured systems and scalable architecture are the foundations that allow creativity to truly fly.',
+			thinkPurposeTitle: 'Purpose',
+			thinkPurposeDesc: 'I build for humans. Technology should solve real problems and carry intention.',
+			growPill: 'Evolution',
+			growTitle: "What I'm growing into",
+			growDesc: "I'm currently obsessed with the infrastructure that makes great apps possible. Bridging the gap between code and deployment.",
+			workTitle: 'Selected Work',
+			workSubtitle: 'Take a look at some of my featured work for clients from the past few years.',
+			workCtaCard: 'Ready for your next digital painting?',
+			beyondTitle: 'Beyond the Code',
+			beyondSubtitle: 'The fuel for my logical engine.',
+			beyondPainting: 'Painting',
+			beyondCrossfit: 'CrossFit',
+			beyondGaming: 'Gaming',
+			beyondWriting: 'Writing',
+			beyondNature: 'Nature',
+			ctaTitle: "Let's build something together",
+			ctaDesc: "Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.",
+			ctaButton: 'Get in touch',
+		},
+		es: {
+			heroTitle: "<span class='line-greeting'>¡Hola!</span><span class='line-name'>Soy <em>Ana.</em></span>",
+			heroTagline: "Construyo tecnología con <em class='tint'>intención.</em> Combinando la lógica del código con el alma de una pintora.",
+			heroCta: 'Ver Trabajo Destacado',
+			thinkTitle: 'Cómo pienso',
+			thinkSubtitle: 'Mi filosofía no es solo sobre el resultado; es sobre el proceso detrás de cada píxel y línea.',
+			thinkCuriosityTitle: 'Curiosidad',
+			thinkCuriosityDesc: 'Abordo cada reto como un lienzo en blanco, haciendo las preguntas correctas antes de mezclar los colores.',
+			thinkLogicTitle: 'Lógica',
+			thinkLogicDesc: 'Los sistemas estructurados y la arquitectura escalable son la base que permite volar a la creatividad.',
+			thinkPurposeTitle: 'Propósito',
+			thinkPurposeDesc: 'Construyo para personas. La tecnología debe resolver problemas reales con intención.',
+			growPill: 'Evolución',
+			growTitle: 'En qué estoy creciendo',
+			growDesc: 'Actualmente estoy obsesionada con la infraestructura que hace posibles las grandes apps. Cerrando la brecha entre código y despliegue.',
+			workTitle: 'Trabajo Seleccionado',
+			workSubtitle: 'Mira algunos de mis trabajos destacados para clientes de los últimos años.',
+			workCtaCard: '¿Listo para tu próxima pintura digital?',
+			beyondTitle: 'Más Allá del Código',
+			beyondSubtitle: 'El combustible de mi motor lógico.',
+			beyondPainting: 'Pintura',
+			beyondCrossfit: 'CrossFit',
+			beyondGaming: 'Videojuegos',
+			beyondWriting: 'Escritura',
+			beyondNature: 'Naturaleza',
+			ctaTitle: 'Construyamos algo juntas',
+			ctaDesc: 'Ya sea una línea de código o un trazo de color, siempre busco la próxima colaboración significativa.',
+			ctaButton: 'Escríbeme',
+		},
 	};
-	
-	Object.entries(elements).forEach(([key, value]) => {
-		const element = document.querySelector(`[data-translate="${key}"]`);
-		if (element) {
-			element.textContent = value;
-		}
+
+	function updateHomeLanguage(language: string) {
+		const t = language === 'es' ? homeTranslations.es : homeTranslations.en;
+		Object.entries(t).forEach(([key, value]) => {
+			const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+			elements.forEach((el) => {
+				if (key === 'heroTitle' || key === 'heroTagline') {
+					el.innerHTML = value;
+				} else {
+					el.textContent = value;
+				}
+			});
+		});
+
+		const projectItems = document.querySelectorAll('.project-item');
+		projectItems.forEach((item) => {
+			const en = item.querySelector('.project-en') as HTMLElement | null;
+			const es = item.querySelector('.project-es') as HTMLElement | null;
+			if (language === 'es') {
+				if (en) en.style.display = 'none';
+				if (es) es.style.display = 'block';
+			} else {
+				if (en) en.style.display = 'block';
+				if (es) es.style.display = 'none';
+			}
+		});
+	}
+
+	window.addEventListener('languageChange', (e) => {
+		// @ts-ignore
+		updateHomeLanguage(e.detail.language);
 	});
 
-	// Switch project versions in Selected Work section
-	const projectItems = document.querySelectorAll('.project-item');
-	projectItems.forEach((item) => {
-		const enVersion = item.querySelector('.project-en') as HTMLElement;
-		const esVersion = item.querySelector('.project-es') as HTMLElement;
-		
-		if (language === 'es') {
-			if (enVersion) enVersion.style.display = 'none';
-			if (esVersion) esVersion.style.display = 'block';
-		} else {
-			if (enVersion) enVersion.style.display = 'block';
-			if (esVersion) esVersion.style.display = 'none';
-		}
-	});
-}
-
-// Listen for language changes from LanguageToggle component
-window.addEventListener('languageChange', (e) => {
-	// @ts-ignore - Custom event from LanguageToggle component
-	updatePageLanguage(e.detail.language);
-});
-
-// Initialize with saved language or browser preference
-const savedLanguage = localStorage.getItem('language');
-const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
-if (initialLanguage === 'es') {
-	updatePageLanguage('es');
-}
+	const saved = localStorage.getItem('language');
+	const init = saved || (navigator.language.startsWith('es') ? 'es' : 'en');
+	if (init === 'es') updateHomeLanguage('es');
 </script>
-

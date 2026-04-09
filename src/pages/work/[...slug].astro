@@ -30,30 +30,44 @@ const { Content } = await entry.render();
 <BaseLayout title={entry.data.title} description={entry.data.description}>
 	<div class="stack gap-20">
 		<div class="stack gap-15">
-			<header>
-				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/" data-translate="work.backLink"><Icon icon="arrow-left" /> Work</a>
-					<Hero title={entry.data.title} align="start">
-						<div class="details">
-							<div class="tags">
-								{/* @ts-ignore */}
-								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
-							</div>
-							<p class="description">{entry.data.description}</p>
+			<header class="project-header wrapper">
+				<a class="back-link" href="/work/" aria-label="Back to Work">
+					<Icon icon="arrow-left" />
+					<span data-translate="work.backLink">Work</span>
+				</a>
+
+				<div class="hero-shell">
+					<div class="hero-main stack gap-4">
+						<Hero title={entry.data.title} align="start" />
+						<p class="description">{entry.data.description}</p>
+						<div class="tags">
+							{/* @ts-ignore */}
+							{entry.data.tags.map((t) => {
+								let cat = 'dev';
+								if (t.toLowerCase().includes('design') || t.toLowerCase().includes('ui') || t.toLowerCase().includes('ux')) cat = 'design';
+								else if (t.toLowerCase().includes('angular') || t.toLowerCase().includes('react') || t.toLowerCase().includes('astro') || t.toLowerCase().includes('express') || t.toLowerCase().includes('js')) cat = 'stack';
+								
+								return <Pill category={cat as any}>{t}</Pill>;
+							})}
 						</div>
-					</Hero>
+					</div>
+					{entry.data.img && (
+						<div class="hero-media">
+							<img src={entry.data.img} alt={entry.data.img_alt || ''} loading="eager" decoding="async" />
+						</div>
+					)}
 				</div>
 			</header>
-			<main class="wrapper">
-				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
-					<div class="content">
-						<Content />
-					</div>
-				</div>
+
+			<main class="wrapper project-content">
+				<article class="content prose-card">
+					<Content />
+				</article>
 			</main>
 		</div>
-		<ContactCTA />
+		<div class="wrapper">
+			<ContactCTA />
+		</div>
 	</div>
 
 	<script>
@@ -65,56 +79,77 @@ const { Content } = await entry.render();
 			// @ts-ignore
 			const t = useTranslations(language);
 
-			// Translate back link
-			const backLink = document.querySelector('[data-translate="work.backLink"]');
-			if (backLink) {
-				// Keep the icon and just update the text part
-				const iconElement = backLink.querySelector('svg');
-				if (iconElement) {
-					backLink.innerHTML = '';
-					backLink.appendChild(iconElement);
-					backLink.appendChild(document.createTextNode(' ' + t.work.backLink));
-				} else {
-					backLink.textContent = t.work.backLink;
-				}
-			}
+			document.querySelectorAll('[data-translate="work.backLink"]').forEach((el) => {
+				el.textContent = t.work.backLink;
+			});
 		}
 
 		// Initial translation
 		translateProjectPage();
 
 		// Listen for language change events
-		document.addEventListener('languageChanged', translateProjectPage);
+		window.addEventListener('languageChange', translateProjectPage);
 	</script>
 </BaseLayout>
 
 <style>
-	header {
+	.project-header {
+		padding-top: 2.5rem;
 		padding-bottom: 2.5rem;
-		border-bottom: 1px solid var(--gray-800);
 	}
 
 	.back-link {
-		display: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-bottom: 1.25rem;
+		font-weight: 700;
+		color: var(--primary);
 	}
 
-	.details {
+	.hero-shell {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+		padding: 1.2rem;
+		border-radius: var(--radius-xl);
+		background: var(--surface-container-low);
+		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.hero-main {
 		display: flex;
 		flex-direction: column;
-		padding: 0.5rem;
-		gap: 1.5rem;
-		justify-content: space-between;
-		align-items: center;
+		justify-content: center;
 	}
 
 	.tags {
 		display: flex;
 		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.hero-media {
+		border-radius: calc(var(--radius-xl) - 0.3rem);
+		overflow: hidden;
+		min-height: 16rem;
+	}
+
+	.hero-media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.description {
 		font-size: var(--text-lg);
-		max-width: 54ch;
+		max-width: 52ch;
+		color: var(--on-surface-variant);
+	}
+
+	.project-content {
+		padding-top: 0.25rem;
 	}
 
 	.content {
@@ -122,8 +157,16 @@ const { Content } = await entry.render();
 		margin-inline: auto;
 	}
 
+	.prose-card {
+		padding: 1.4rem;
+		border-radius: var(--radius-xl);
+		background: var(--surface-container-lowest);
+		border: 1px solid color-mix(in srgb, var(--outline-variant) 28%, transparent);
+		box-shadow: var(--shadow-sm);
+	}
+
 	.content > :global(* + *) {
-		margin-top: 1rem;
+		margin-top: 1.15rem;
 	}
 
 	.content :global(h1),
@@ -136,18 +179,19 @@ const { Content } = await entry.render();
 
 	.content :global(img) {
 		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
+		box-shadow: var(--shadow-md);
 		background: var(--gradient-subtle);
-		border: 1px solid var(--gray-800);
+		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
 	}
 
 	.content :global(blockquote) {
 		font-size: var(--text-lg);
-		font-family: var(--font-brand);
-		font-weight: 600;
-		line-height: 1.1;
+		font-family: 'Newsreader', Georgia, serif;
+		font-weight: 500;
+		line-height: 1.25;
+		font-style: italic;
 		padding-inline-start: 1.5rem;
-		border-inline-start: 0.25rem solid var(--accent-dark);
+		border-inline-start: 0.25rem solid var(--primary);
 		color: var(--gray-0);
 	}
 
@@ -166,14 +210,18 @@ const { Content } = await entry.render();
 	}
 
 	@media (min-width: 50em) {
-		.back-link {
-			display: block;
-			align-self: flex-start;
+		.project-header {
+			padding-top: 3rem;
 		}
 
-		.details {
-			flex-direction: row;
-			gap: 2.5rem;
+		.hero-shell {
+			grid-template-columns: 1.1fr 1fr;
+			gap: 1.8rem;
+			padding: 1.4rem;
+		}
+
+		.prose-card {
+			padding: 2rem;
 		}
 
 		.content :global(blockquote) {
