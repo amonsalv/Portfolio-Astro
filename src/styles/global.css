@@ -5,7 +5,12 @@
    ============================================================ */
 
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap');
+
+/* Script/handwriting font for accent words */
+:root {
+  --font-script: 'Caveat', cursive;
+}
 
 /* ============================================================
    LIGHT MODE (DEFAULT)
@@ -279,7 +284,7 @@ h4,
 h5 {
 	line-height: 1.1;
 	font-family: var(--font-brand);
-	font-weight: 800;
+	font-weight: 700;
 	color: var(--on-surface);
 	letter-spacing: -0.03em;
 }

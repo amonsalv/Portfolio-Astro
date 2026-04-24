@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allProjects = await getCollection('work');
 const uniqueProjects = allProjects
-	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
+	.filter((project: CollectionEntry<'work'>) => !project.id.includes('-es'))
 	.sort((a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 const featuredProjects = uniqueProjects.slice(0, 3);
@@ -24,13 +24,15 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 			<section class="work-grid" aria-label="Featured projects">
 				{
 					featuredProjects.map((project) => {
-						const spanishSlug = `${project.slug}-es`;
+						const spanishSlug = project.id.replace(/\.md$/, '-es.md').replace(/.mdx?$/, '');
+						// En Astro > 2 si el ID incluye extensión:
+						const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
 						// @ts-ignore
-						const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
+						const spanishProject = allProjects.find((p) => p.id === spanishId || p.slug === `${project.slug}-es`);
 						return (
-							<li class="project-item" data-en-slug={project.slug} data-es-slug={spanishSlug}>
+							<li class="project-item" data-en-slug={project.id} data-es-slug={spanishId}>
 								<div class="project-en" style="display: block;">
-									<a class="project-card" href={`/work/${project.slug}`}>
+									<a class="project-card" href={`/work/${project.id}`}>
 										<div class="meta">
 											<div class="pills">
 												{project.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
@@ -45,7 +47,7 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 								</div>
 								{spanishProject && (
 									<div class="project-es" style="display: none;">
-										<a class="project-card" href={`/work/${spanishProject.slug}`}>
+										<a class="project-card" href={`/work/${spanishProject.id}`}>
 											<div class="meta">
 												<div class="pills">
 													{spanishProject.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
@@ -189,6 +191,14 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 		box-shadow: var(--shadow-md);
 	}
 
+	.project-item:nth-child(1) .img-container {
+		height: 24rem;
+	}
+
+	.project-item:nth-child(2) .img-container {
+		height: 24rem;
+	}
+
 	.img-container {
 		width: 100%;
 		height: 14rem;
@@ -231,13 +241,41 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 		flex-wrap: wrap;
 	}
 
+	.project-item:nth-child(1) .pills span {
+		background: #1754f4;
+		color: white;
+	}
+
+	.project-item:nth-child(2) .pills span {
+		background: #9d6423;
+		color: white;
+	}
+
+	.project-item:nth-child(2) .pills span:nth-child(2) {
+		background: #fcd5a3;
+		color: #5d3b14;
+	}
+
+	.project-item:nth-child(3) .pills span {
+		background: #a93c3c;
+		color: white;
+	}
+
+	.project-item:nth-child(3) .pills span:nth-child(2) {
+		background: #ffb0b0;
+		color: #6a1a1a;
+	}
+
+	.project-item:nth-child(1) .pills span:nth-child(2) {
+		background: #a4c2ff;
+		color: #1754f4;
+	}
+
 	.pills span {
 		padding: 0.2rem 0.6rem;
 		border-radius: var(--radius-full);
 		font-size: var(--text-sm);
 		font-weight: 700;
-		background: color-mix(in srgb, var(--chroma-ocean) 18%, transparent);
-		color: var(--chroma-ocean-strong);
 	}
 
 	.project-cta-card {
@@ -274,7 +312,7 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 		border-radius: var(--radius-full);
 		font-weight: 700;
 		color: white;
-		background: var(--chroma-ocean);
+		background: #005cf9;
 	}
 
 	.project-item,

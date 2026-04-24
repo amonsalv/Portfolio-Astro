@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
@@ -18,13 +18,12 @@ export async function getStaticPaths() {
 	const work = await getCollection('work');
 	// @ts-ignore
 	return work.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { entry } = Astro.props;const { Content } = await render(entry);
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -69,27 +68,6 @@ const { Content } = await entry.render();
 			<ContactCTA />
 		</div>
 	</div>
-
-	<script>
-		// @ts-ignore
-		import { useTranslations } from '../../utils/i18n';
-
-		function translateProjectPage() {
-			const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
-			// @ts-ignore
-			const t = useTranslations(language);
-
-			document.querySelectorAll('[data-translate="work.backLink"]').forEach((el) => {
-				el.textContent = t.work.backLink;
-			});
-		}
-
-		// Initial translation
-		translateProjectPage();
-
-		// Listen for language change events
-		window.addEventListener('languageChange', translateProjectPage);
-	</script>
 </BaseLayout>
 
 <style>
@@ -229,3 +207,7 @@ const { Content } = await entry.render();
 		}
 	}
 </style>
+
+
+
+

@@ -5,10 +5,10 @@ interface Props {
 	project: CollectionEntry<'work'>;
 }
 
-const { data, slug } = Astro.props.project;
+const { data, id } = Astro.props.project;
 ---
 
-<a class="card" href={`/work/${slug}`}>
+<a class="card" href={`/work/${id}`}>
 	<div class="meta">
 		<div class="tags">
 			{data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}

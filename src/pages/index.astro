@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 
 const allProjects = await getCollection('work');
 const projects = allProjects
-	.filter((project: CollectionEntry<'work'>) => !project.slug.endsWith('-es'))
+	.filter((project: CollectionEntry<'work'>) => !project.id.includes('-es'))
 	.sort(
 		(a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) =>
 			b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
@@ -89,14 +89,14 @@ const projects = allProjects
 				<ul class="work-bento">
 					{
 						projects.map((project, idx) => {
-							const spanishSlug = `${project.slug}-es`;
+							const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
 							// @ts-ignore
-							const spanishProject = allProjects.find((p) => p.slug === spanishSlug);
+							const spanishProject = allProjects.find((p) => p.id === spanishId || p.slug === `${project.slug}-es`);
 							const slot = `slot-${idx + 1}`;
 							return (
-								<li class:list={['project-item', slot]} data-en-slug={project.slug} data-es-slug={spanishSlug}>
+								<li class:list={['project-item', slot]} data-en-slug={project.id} data-es-slug={spanishId}>
 									<div class="project-en" style="display: block;">
-										<a class="work-card" href={`/work/${project.slug}`}>
+										<a class="work-card" href={`/work/${project.id}`}>
 											<div class="meta">
 												<div class="tags">
 													{project.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
@@ -112,7 +112,7 @@ const projects = allProjects
 									</div>
 									{spanishProject && (
 										<div class="project-es" style="display: none;">
-											<a class="work-card" href={`/work/${spanishProject.slug}`}>
+											<a class="work-card" href={`/work/${spanishProject.id}`}>
 												<div class="meta">
 													<div class="tags">
 														{spanishProject.data.tags.slice(0, 2).map((tag: string) => <span>{tag}</span>)}
@@ -1105,3 +1105,4 @@ const projects = allProjects
 	const init = saved || (navigator.language.startsWith('es') ? 'es' : 'en');
 	if (init === 'es') updateHomeLanguage('es');
 </script>
+
