@@ -19,7 +19,7 @@ Follow these steps to set up the project locally:
     ```
 3. Install the dependencies:
     ```sh
-    npm install
+    pnpm install
     ```
 
 ## 🧞 Commands
@@ -28,10 +28,10 @@ Run the following commands from the project root to manage development and deplo
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Install dependencies                             |
-| `npm run dev`             | Start the development server                     |
-| `npm run build`           | Build the production site                        |
-| `npm run preview`         | Preview your build locally before deploying      |
+| `pnpm install`            | Install dependencies                             |
+| `pnpm run dev`            | Start the development server                     |
+| `pnpm run build`          | Build the production site                        |
+| `pnpm run preview`        | Preview your build locally before deploying      |
 
 ## 📁 Project Structure
 
