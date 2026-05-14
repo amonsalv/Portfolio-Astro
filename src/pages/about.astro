@@ -40,7 +40,7 @@ import Icon from '../components/Icon.astro';
 							<h3>Frontend</h3>
 						</div>
 						<div class="chips">
-							<span>React</span><span>Tailwind CSS</span><span>Next.js</span><span>TypeScript</span><span>Framer Motion</span><span>Astro</span>
+							<span>React</span><span>Next.js</span><span>Angular</span><span>Astro</span><span>TypeScript</span><span>Framer Motion</span>
 						</div>
 					</article>
 					<article class="tool-card backend">
@@ -49,7 +49,7 @@ import Icon from '../components/Icon.astro';
 							<h3>Backend</h3>
 						</div>
 						<div class="chips">
-							<span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>GraphQL</span><span>Firebase</span><span>Python</span>
+							<span>Node.js</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>MongoDB</span><span>Firebase</span>
 						</div>
 					</article>
 					<article class="tool-card tools">
@@ -58,7 +58,7 @@ import Icon from '../components/Icon.astro';
 							<h3>Tools & DevOps</h3>
 						</div>
 						<div class="chips">
-							<span>Git</span><span>Docker</span><span>Figma</span><span>Postman</span><span>CI/CD</span><span>Jira</span>
+							<span>Git</span><span>Docker</span><span>GitHub Actions</span><span>Azure</span><span>Jira</span><span>Linux</span>
 						</div>
 					</article>
 				</div>
@@ -68,10 +68,10 @@ import Icon from '../components/Icon.astro';
 				<h2 data-translate="journeyTitle">The Journey</h2>
 				<div class="timeline">
 					<article class="timeline-item left accent-primary">
-						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Jan 2026</p>
-						<h3 data-translate="journeyJobOne">Software Dev & DevOps Consultant</h3>
+						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Present</p>
+						<h3 data-translate="journeyJobOne">Freelance Software Dev & DevOps Consultant</h3>
 						<p class="company" data-translate="journeyCompOne">Luppiter &mdash; Medellín, Colombia</p>
-						<p class="desc" data-translate="journeyDescOne">Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.</p>
+						<p class="desc" data-translate="journeyDescOne">Freelance consultant. Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.</p>
 					</article>
 					<article class="timeline-item right accent-secondary">
 						<p class="period" data-translate="journeyDateTwo">Jul 2023 &mdash; May 2024</p>
@@ -85,6 +85,51 @@ import Icon from '../components/Icon.astro';
 						<p class="company" data-translate="journeyCompThree">Grupo Uribe (GCO) &mdash; Medellín, Colombia</p>
 						<p class="desc" data-translate="journeyDescThree">Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.</p>
 					</article>
+				</div>
+			</section>
+
+			<section class="academic stack gap-4">
+				<h2 data-translate="academicTitle">Academic Foundation &amp; Certifications</h2>
+				<div class="academic-grid">
+					<div class="academic-col">
+						<div class="academic-col-header">
+							<Icon icon="trophy" size="1.3em" />
+							<h3 data-translate="academicStudiesTitle">Academic Studies</h3>
+						</div>
+						<ul class="academic-list">
+							<li class="academic-item accent-primary">
+								<span class="academic-date" data-translate="eduDateOne">Aug 2024 &mdash; Oct 2026 (est.)</span>
+								<strong data-translate="eduDegOne">Technologist in Software Analysis &amp; Development</strong>
+								<span class="academic-institution" data-translate="eduInstOne">SENA &mdash; Centro de Diseño y Metrología</span>
+							</li>
+							<li class="academic-item accent-secondary">
+								<span class="academic-date" data-translate="eduDateTwo">Sep 2023</span>
+								<strong data-translate="eduDegTwo">Technical Degree in Software Development Assistance</strong>
+								<span class="academic-institution" data-translate="eduInstTwo">Cesde Institución Educativa &mdash; Medellín</span>
+							</li>
+
+						</ul>
+					</div>
+					<div class="academic-col">
+						<div class="academic-col-header">
+							<Icon icon="rocket-launch" size="1.3em" />
+							<h3 data-translate="certTitle">Certifications</h3>
+						</div>
+						<ul class="academic-list cert-list">
+							<li class="academic-item cert-item">
+								<span class="cert-badge">☁️</span>
+								<span class="academic-date" data-translate="certDateOne">Aug 2025</span>
+								<strong data-translate="certNameOne">Advanced Cloud Architecture Bootcamp</strong>
+								<span class="academic-institution" data-translate="certInstOne">IU Training (MinTIC) &middot; 159 hours</span>
+							</li>
+							<li class="academic-item cert-item">
+								<span class="cert-badge">🛡️</span>
+								<span class="academic-date" data-translate="certDateTwo">July 2025</span>
+								<strong data-translate="certNameTwo">DevSecOps Certified Associate</strong>
+								<span class="academic-institution" data-translate="certInstTwo">Case Study Certification</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</section>
 
@@ -477,6 +522,114 @@ import Icon from '../components/Icon.astro';
 		background: #0f1c42;
 	}
 
+	/* Academic section */
+	.academic {
+		padding-top: 0.5rem;
+	}
+
+	.academic h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		margin-bottom: 1rem;
+	}
+
+	.academic-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.academic-col {
+		background: var(--surface-container-low);
+		border-radius: 1.4rem;
+		padding: 2rem;
+	}
+
+	.academic-col-header {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		margin-bottom: 1.5rem;
+		color: var(--primary);
+	}
+
+	.academic-col-header h3 {
+		font-size: 1.15rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--on-surface);
+	}
+
+	.academic-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.4rem;
+	}
+
+	.academic-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		padding-left: 1rem;
+		border-left: 3px solid transparent;
+	}
+
+	.academic-item.accent-primary { border-left-color: #0d4aed; }
+	.academic-item.accent-secondary { border-left-color: #b26019; }
+	.academic-item.accent-tertiary { border-left-color: #d92138; }
+
+	.academic-date {
+		font-size: 0.78rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--on-surface-variant);
+	}
+
+	.academic-item strong {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--on-surface);
+		line-height: 1.3;
+	}
+
+	.academic-institution {
+		font-size: 0.88rem;
+		color: var(--on-surface-variant);
+	}
+
+	.cert-item {
+		border-left: none;
+		padding-left: 0;
+		background: var(--surface-container-lowest);
+		border-radius: 0.8rem;
+		padding: 1rem 1.2rem;
+		gap: 0.15rem;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+	}
+
+	.cert-badge {
+		font-size: 1.5rem;
+		margin-bottom: 0.4rem;
+	}
+
+	:root.theme-dark .academic-col {
+		background: var(--surface-container-lowest);
+	}
+
+	:root.theme-dark .cert-item {
+		background: var(--surface-container);
+	}
+
+	@media (min-width: 50em) {
+		.academic-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
 	:root.theme-dark .panel-painting {
 		background: linear-gradient(135deg, #a6462c, #bc7141);
 		color: #f7f9ff;
@@ -577,10 +730,28 @@ import Icon from '../components/Icon.astro';
 			missionQuote: '"I believe technology should be as human as the hands that build it. My mission is to bridge the gap between technical efficiency and emotional resonance, crafting tools that empower people to create more than they consume."',
 			toolboxTitle: 'Technical Toolbox',
 			journeyTitle: 'The Journey',
+			academicTitle: 'Academic Foundation & Certifications',
+			academicStudiesTitle: 'Academic Studies',
+			certTitle: 'Certifications',
+			eduDateOne: 'Aug 2024 &mdash; Oct 2026 (est.)',
+			eduDegOne: 'Technologist in Software Analysis & Development',
+			eduInstOne: 'SENA &mdash; Centro de Diseño y Metrología',
+			eduDateTwo: 'Sep 2023',
+			eduDegTwo: 'Technical Degree in Software Development Assistance',
+			eduInstTwo: 'Cesde Institución Educativa &mdash; Medellín',
+			eduDateThree: 'Nov 2013',
+			eduDegThree: 'Academic Baccalaureate',
+			eduInstThree: 'I.E. Tomas Cadavid &mdash; Medellín',
+			certDateOne: 'Aug 2025',
+			certNameOne: 'Advanced Cloud Architecture Bootcamp',
+			certInstOne: 'IU Training (MinTIC) · 159 hours',
+			certDateTwo: 'July 2025',
+			certNameTwo: 'DevSecOps Certified Associate',
+			certInstTwo: 'Case Study Certification',
 			journeyDateOne: 'May 2024 &mdash; Present',
-			journeyJobOne: 'Software Dev & DevOps Consultant',
+			journeyJobOne: 'Freelance Software Dev & DevOps Consultant',
 			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
-			journeyDescOne: 'Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.',
+			journeyDescOne: 'Freelance consultant. Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.',
 			journeyDateTwo: 'July 2023 &mdash; May 2024',
 			journeyJobTwo: 'Software Developer',
 			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
@@ -607,10 +778,28 @@ import Icon from '../components/Icon.astro';
 			missionQuote: '"Creo que la tecnología debe ser tan humana como las manos que la construyen. Mi misión es unir la eficiencia técnica con la resonancia emocional."',
 			toolboxTitle: 'Caja de Herramientas',
 			journeyTitle: 'El Camino',
-			journeyDateOne: 'Mayo 2024 &mdash; Enero 2026',
-			journeyJobOne: 'Consultora Dev & DevOps',
+			academicTitle: 'Formación Académica y Certificaciones',
+			academicStudiesTitle: 'Estudios',
+			certTitle: 'Certificaciones',
+			eduDateOne: 'Ago 2024 &mdash; Oct 2026 (est.)',
+			eduDegOne: 'Tecnóloga en Análisis y Desarrollo de Software',
+			eduInstOne: 'SENA &mdash; Centro de Diseño y Metrología',
+			eduDateTwo: 'Sep 2023',
+			eduDegTwo: 'Técnica en Asistencia en Desarrollo de Software',
+			eduInstTwo: 'Cesde Institución Educativa &mdash; Medellín',
+			eduDateThree: 'Nov 2013',
+			eduDegThree: 'Bachiller Académico',
+			eduInstThree: 'I.E. Tomas Cadavid &mdash; Medellín',
+			certDateOne: 'Ago 2025',
+			certNameOne: 'Bootcamp Arquitectura en la Nube - Nivel Avanzado',
+			certInstOne: 'IU Training (MinTIC) · 159 horas',
+			certDateTwo: 'Julio 2025',
+			certNameTwo: 'DevSecOps Certified Associate',
+			certInstTwo: 'Certificación Case Study',
+			journeyDateOne: 'Mayo 2024 &mdash; Presente',
+			journeyJobOne: 'Consultora Dev & DevOps Freelance',
 			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
-			journeyDescOne: 'Levantamiento de requerimientos, automatización con Python y Selenium, prácticas DevOps y desarrollo en plataformas low-code (AppSheet, Codenull) en entornos Linux y Windows Server.',
+			journeyDescOne: 'Consultora freelance. Levantamiento de requerimientos, automatización con Python y Selenium, prácticas DevOps y desarrollo en plataformas low-code (AppSheet, Codenull) en entornos Linux y Windows Server.',
 			journeyDateTwo: 'Julio 2023 &mdash; Mayo 2024',
 			journeyJobTwo: 'Desarrolladora de Software',
 			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
