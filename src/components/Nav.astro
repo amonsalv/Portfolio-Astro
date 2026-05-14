@@ -134,17 +134,17 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 				menu.hidden = !open;
 			};
 
-			btn.addEventListener('click', () => setExpanded(menu.hidden));
+		btn.addEventListener('click', () => setExpanded(!menu.hidden));
 
-			const mq = window.matchMedia('(min-width: 50em)');
-			const onMQ = (e: MediaQueryList | MediaQueryListEvent) => {
-				setExpanded(e.matches);
-				btn.hidden = e.matches;
-			};
-			onMQ(mq);
-			mq.addEventListener('change', onMQ);
-		}
+		const mq = window.matchMedia('(min-width: 50em)');
+		const onMQ = (e: MediaQueryList | MediaQueryListEvent) => {
+			setExpanded(e.matches);
+			btn.hidden = e.matches;
+		};
+		onMQ(mq);
+		mq.addEventListener('change', onMQ);
 	}
+}
 	customElements.define('menu-button', MenuButton);
 
 	const navT = {
