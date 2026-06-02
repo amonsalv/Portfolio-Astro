@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude context and design documentation
+CLAUDE_DESIGN_PROMPT.md
+CREATIVE_DIRECTION.md
+.agents/skills/claude/

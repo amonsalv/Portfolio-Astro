@@ -20,11 +20,11 @@ const projects = allProjects
 			<div class="blur blur-b" aria-hidden="true"></div>
 			<div class="hero-content">
 				<h1 class="hero-title" data-translate="heroTitle">
-					<span class="line-greeting">¡Hola!</span>
-					<span class="line-name">I'm <em>Ana.</em></span>
+					<span class="line-code">I write code</span>
+					<span class="line-paint">like I paint.</span>
 				</h1>
 				<p class="hero-tagline" data-translate="heroTagline">
-					I build technology with <em class="tint">intention.</em> Combining the logic of code with the soul of a painter.
+					Building technology with intention. Combining the logic of code with the soul of a painter.
 				</p>
 				<a class="hero-cta" href="/work/" data-translate="heroCta">View Selected Work</a>
 			</div>
@@ -202,23 +202,26 @@ const projects = allProjects
 
 	.hero-title {
 		font-size: clamp(3rem, 10vw, 7.2rem);
-		line-height: 0.86;
+		line-height: 0.9;
 		letter-spacing: -0.05em;
 		margin-bottom: 1.3rem;
 	}
 
-	:global(.hero-title .line-greeting) {
+	:global(.hero-title .line-code) {
 		display: block;
+		font-family: var(--font-brand);
+		font-weight: 800;
+		font-style: normal;
 		color: var(--on-surface);
 	}
 
-	:global(.hero-title .line-name) {
+	:global(.hero-title .line-paint) {
 		display: block;
-		color: var(--primary); /* All of "I'm Ana" is blue to match reference image exactly */
-	}
-
-	:global(.hero-title .line-name em) {
-		font-style: normal;
+		font-family: var(--font-display);
+		font-weight: 300;
+		font-style: italic;
+		color: var(--chroma-ocean);
+		letter-spacing: -0.03em;
 	}
 
 	.hero-tagline {
@@ -258,19 +261,21 @@ const projects = allProjects
 	}
 
 	.blur-a {
-		width: 40rem;
-		height: 40rem;
+		width: 45rem;
+		height: 45rem;
 		right: -8rem;
 		top: -8rem;
-		background: color-mix(in srgb, #5b9eff 70%, transparent); /* More saturated blue */
+		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-ocean) 65%, transparent), transparent 70%);
+		filter: blur(90px);
 	}
 
 	.blur-b {
-		width: 15%;
-		height: 35rem;
-		left: -12rem;
-		bottom: 0rem;
-		background: color-mix(in srgb, #d4a574 65%, transparent); /* More saturated warm peach */
+		width: 32rem;
+		height: 32rem;
+		left: -10rem;
+		bottom: -4rem;
+		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-purple) 55%, transparent), transparent 70%);
+		filter: blur(90px);
 	}
 
 	.think {
@@ -1010,8 +1015,8 @@ const projects = allProjects
 <script>
 	const homeTranslations = {
 		en: {
-			heroTitle: "<span class='line-greeting'>¡Hola!</span><span class='line-name'>I'm <em>Ana.</em></span>",
-			heroTagline: "I build technology with <em class='tint'>intention.</em> Combining the logic of code with the soul of a painter.",
+			heroTitle: "<span class='line-code'>I write code</span><span class='line-paint'>like I paint.</span>",
+			heroTagline: "Building technology with intention. Combining the logic of code with the soul of a painter.",
 			heroCta: 'View Selected Work',
 			thinkTitle: 'How I think',
 			thinkSubtitle: "My philosophy isn't just about output; it's about the process behind every pixel and line.",
@@ -1039,8 +1044,8 @@ const projects = allProjects
 			ctaButton: 'Get in touch',
 		},
 		es: {
-			heroTitle: "<span class='line-greeting'>¡Hola!</span><span class='line-name'>Soy <em>Ana.</em></span>",
-			heroTagline: "Construyo tecnología con <em class='tint'>intención.</em> Combinando la lógica del código con el alma de una pintora.",
+			heroTitle: "<span class='line-code'>Escribo código</span><span class='line-paint'>como si pintara.</span>",
+			heroTagline: "Construyo tecnología con intención. Combinando la lógica del código con el alma de una pintora.",
 			heroCta: 'Ver Trabajo Destacado',
 			thinkTitle: 'Cómo pienso',
 			thinkSubtitle: 'Mi filosofía no es solo sobre el resultado; es sobre el proceso detrás de cada píxel y línea.',

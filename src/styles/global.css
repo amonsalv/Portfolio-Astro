@@ -5,38 +5,43 @@
    ============================================================ */
 
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap');
 
 /* Script/handwriting font for accent words */
 :root {
-  --font-script: 'Caveat', cursive;
+  --font-script:   'Caveat', cursive;
+  --font-display:  'Fraunces', Georgia, serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
 }
 
 /* ============================================================
    LIGHT MODE (DEFAULT)
    ============================================================ */
 :root {
-	/* --- Surfaces --- */
-	--surface:                  #faf9f7;
-	--surface-dim:              #dadad8;
-	--surface-bright:           #faf9f7;
+	/* --- Surfaces — purple-tinted to let gradients breathe --- */
+	--surface:                  #F3F1FC;
+	--surface-dim:              #dcd8f0;
+	--surface-bright:           #F3F1FC;
 	--surface-container-lowest: #ffffff;
-	--surface-container-low:    #f4f3f1;
-	--surface-container:        #efeeec;
-	--surface-container-high:   #e9e8e6;
-	--surface-container-highest:#e3e2e0;
+	--surface-container-low:    #eceaf8;
+	--surface-container:        #E3DCFA;
+	--surface-container-high:   #d8d0f5;
+	--surface-container-highest:#cec4f0;
 
 	/* --- On-Surface (text) --- */
 	--on-surface:               #1a1c1b;
 	--on-surface-variant:       #464554;
 
-	/* --- Studio Chroma brand accents (Warm & Alive) --- */
-	--chroma-ocean:             #1558d6;
-	--chroma-ocean-strong:      #0f46b3;
-	--chroma-sunny:             #f4be4f;
-	--chroma-sunny-soft:        #f7dca1;
-	--chroma-nature:            #2f8a57;
-	--chroma-nature-soft:       #9fd4b4;
+	/* --- Brand palette (Ana Monsalve) --- */
+	--chroma-ocean:             #1565C0;
+	--chroma-ocean-strong:      #0D47A1;
+	--chroma-sunny:             #FFD600;
+	--chroma-sunny-soft:        #FFF59D;
+	--chroma-nature:            #00897B;
+	--chroma-nature-soft:       #80CBC4;
+	--chroma-purple:            #7B1FA2;
+	--chroma-purple-soft:       #CE93D8;
+	--chroma-red:               #C62828;
 
 	/* --- Primary (Ocean Blue) --- */
 	--primary:                  var(--chroma-ocean);
