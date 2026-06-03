@@ -1,0 +1,64 @@
+/* ============================================================
+   ANIMATIONS — Keyframes, scroll reveal, hero entrance, motion
+   ============================================================ */
+
+/* ── Hero entrance: elementos entran al cargar la página ── */
+.hero [data-enter] {
+	opacity: 0;
+	transform: translateY(20px);
+}
+.loaded .hero [data-enter] {
+	animation: enterUp 0.7s var(--ease-expressive) forwards;
+	animation-delay: var(--delay, 0ms);
+}
+@keyframes enterUp {
+	to { opacity: 1; transform: none; }
+}
+
+/* ── Scroll reveal: fade+slide al entrar al viewport ── */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition:
+		opacity 0.7s var(--ease-expressive),
+		transform 0.7s var(--ease-expressive);
+	transition-delay: var(--d, 0ms);
+}
+.reveal.in {
+	opacity: 1;
+	transform: none;
+}
+
+/* ── Stagger: hijos de un contenedor entran escalonados ── */
+[data-stagger] > * {
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.55s var(--ease-expressive),
+		transform 0.55s var(--ease-expressive);
+	transition-delay: var(--d, 0ms);
+}
+[data-stagger].in > * {
+	opacity: 1;
+	transform: none;
+}
+
+/* ── Nav scrolled state ── */
+.site-header.scrolled {
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Accesibilidad: respetar prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.reveal,
+	[data-stagger] > * {
+		transition: none;
+		opacity: 1;
+		transform: none;
+	}
+	.hero [data-enter] {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
+}

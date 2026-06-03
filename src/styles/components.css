@@ -1,0 +1,59 @@
+/* ============================================================
+   COMPONENTS — Primitivos reutilizables: botones, cards, tags
+   ============================================================ */
+
+/* ── Botón primario ── */
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--radius-full);
+	background: linear-gradient(135deg, var(--primary), var(--primary-container));
+	color: var(--on-primary);
+	font-family: var(--font-body);
+	font-size: var(--text-sm);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+	transition:
+		transform 0.15s var(--ease-expressive),
+		box-shadow 0.15s var(--ease-expressive);
+}
+
+.btn-primary:hover {
+	transform: scale(1.02);
+	box-shadow: var(--shadow-md);
+	color: var(--on-primary);
+}
+
+/* ── Card base ── */
+.card {
+	background: var(--surface-container-lowest);
+	border-radius: var(--radius-lg);
+	padding: 1.5rem;
+	box-shadow: 0 20px 40px rgba(26, 28, 27, 0.06);
+	transition: box-shadow 0.2s var(--ease-expressive);
+}
+
+.card:hover {
+	box-shadow: var(--shadow-md);
+}
+
+/* ── Tag / Pill ── */
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem 0.75rem;
+	border-radius: var(--radius-full);
+	background: var(--surface-container-high);
+	color: var(--on-surface-variant);
+	font-size: var(--text-sm);
+	font-weight: 600;
+	font-family: var(--font-body);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}

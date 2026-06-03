@@ -1,0 +1,239 @@
+/* ============================================================
+   DESIGN TOKENS — Ana Monsalve Portfolio
+   CSS custom properties: brand palette, surfaces, typography,
+   spacing, shadows, transitions.
+   ============================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap');
+
+/* ── Font families ── */
+:root {
+  --font-script:   'Caveat', cursive;
+  --font-display:  'Fraunces', Georgia, serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================================
+   LIGHT MODE (default)
+   ============================================================ */
+:root {
+	/* Surfaces — purple-tinted */
+	--surface:                  #F3F1FC;
+	--surface-dim:              #dcd8f0;
+	--surface-bright:           #F3F1FC;
+	--surface-container-lowest: #ffffff;
+	--surface-container-low:    #eceaf8;
+	--surface-container:        #E3DCFA;
+	--surface-container-high:   #d8d0f5;
+	--surface-container-highest:#cec4f0;
+
+	/* On-Surface (text) */
+	--on-surface:               #1a1c1b;
+	--on-surface-variant:       #464554;
+
+	/* Brand palette */
+	--chroma-ocean:             #1565C0;
+	--chroma-ocean-strong:      #0D47A1;
+	--chroma-sunny:             #FFD600;
+	--chroma-sunny-soft:        #FFF59D;
+	--chroma-nature:            #00897B;
+	--chroma-nature-soft:       #80CBC4;
+	--chroma-purple:            #7B1FA2;
+	--chroma-purple-soft:       #CE93D8;
+	--chroma-red:               #C62828;
+
+	/* Primary (Ocean Blue) */
+	--primary:                  var(--chroma-ocean);
+	--primary-container:        var(--chroma-ocean-strong);
+	--on-primary:               #ffffff;
+	--on-primary-container:     #e8f1ff;
+	--primary-fixed:            #dbe9ff;
+	--primary-fixed-dim:        #aac7ff;
+	--inverse-primary:          var(--chroma-ocean-strong);
+
+	/* Secondary (Sunny Yellow) */
+	--secondary:                #8c6108;
+	--secondary-container:      var(--chroma-sunny-soft);
+	--on-secondary:             #ffffff;
+	--on-secondary-container:   #604200;
+	--secondary-fixed:          #ffe9bc;
+	--secondary-fixed-dim:      var(--chroma-sunny);
+
+	/* Tertiary (Nature Green) */
+	--tertiary:                 var(--chroma-nature);
+	--tertiary-container:       var(--chroma-nature-soft);
+	--on-tertiary:              #ffffff;
+	--on-tertiary-container:    #0e4125;
+
+	/* Outline */
+	--outline:                  #777585;
+	--outline-variant:          #c7c4d6;
+
+	/* Error */
+	--error:                    #ba1a1a;
+	--error-container:          #ffdad6;
+	--on-error:                 #ffffff;
+
+	/* Semantic aliases (backwards compat) */
+	--gray-0:    var(--on-surface);
+	--gray-50:   #2d2f2e;
+	--gray-100:  #464554;
+	--gray-200:  var(--on-surface-variant);
+	--gray-300:  var(--outline);
+	--gray-400:  #9391a0;
+	--gray-500:  #b0aebf;
+	--gray-600:  var(--outline-variant);
+	--gray-700:  var(--surface-container-high);
+	--gray-800:  var(--surface-container);
+	--gray-900:  var(--surface-container-low);
+	--gray-999:  var(--surface);
+	--gray-999-basis: 45, 38%, 97%;
+	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
+
+	--accent-light:          var(--primary-fixed-dim);
+	--accent-regular:        var(--primary);
+	--accent-dark:           #0f46b3;
+	--accent-overlay:        hsla(217, 79%, 46%, 0.18);
+	--accent-subtle-overlay: hsla(217, 79%, 46%, 0.10);
+	--accent-text-over:      var(--on-primary);
+	--link-color:            var(--primary);
+
+	/* Gradients */
+	--gradient-stop-1:        var(--primary);
+	--gradient-stop-2:        var(--primary-container);
+	--gradient-stop-3:        var(--chroma-ocean-strong);
+	--gradient-subtle:        linear-gradient(150deg, var(--surface-container-low) 19%, var(--surface) 150%);
+	--gradient-accent:        linear-gradient(135deg, var(--primary), var(--primary-container));
+	--gradient-accent-orange: linear-gradient(135deg, var(--secondary), var(--primary));
+	--gradient-stroke:        linear-gradient(180deg, var(--outline-variant), var(--surface-container));
+
+	/* Shadows */
+	--shadow-sm: 0px 4px 12px rgba(26, 28, 27, 0.04), 0px 1px 3px rgba(26, 28, 27, 0.06);
+	--shadow-md: 0px 20px 40px rgba(26, 28, 27, 0.06), 0px 8px 16px rgba(26, 28, 27, 0.04);
+	--shadow-lg: 0px 40px 80px rgba(26, 28, 27, 0.08), 0px 16px 32px rgba(26, 28, 27, 0.06);
+
+	/* Typography */
+	--font-system:   system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-body:     'Plus Jakarta Sans', var(--font-system);
+	--font-brand:    'Plus Jakarta Sans', var(--font-system);
+	--font-headline: var(--font-brand);
+
+	/* Text scale */
+	--text-sm:   0.875rem;
+	--text-base: 1rem;
+	--text-md:   1.125rem;
+	--text-lg:   1.25rem;
+	--text-xl:   1.625rem;
+	--text-2xl:  2.125rem;
+	--text-3xl:  2.625rem;
+	--text-4xl:  3.5rem;
+	--text-5xl:  4.5rem;
+
+	/* Roundness */
+	--radius-sm:   0.375rem;
+	--radius-md:   0.75rem;
+	--radius-lg:   1.5rem;
+	--radius-xl:   2rem;
+	--radius-full: 9999px;
+
+	/* Transitions */
+	--theme-transition: 0.2s ease-in-out;
+	--ease-expressive:  cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Background image vars */
+	--bg-image-main: none;
+	--bg-image-subtle-1: none;
+	--bg-image-subtle-2: none;
+	--bg-image-footer: none;
+	--bg-scale: 1;
+	--bg-gradient-size: 100%;
+	--bg-blend-mode: normal;
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+:root.theme-dark {
+	/* Surfaces — deep violet-tinged dark */
+	--surface:                  #100f1c;
+	--surface-dim:              #0c0b18;
+	--surface-bright:           #1e1c30;
+	--surface-container-lowest: #0a0917;
+	--surface-container-low:    #161424;
+	--surface-container:        #1c1a2c;
+	--surface-container-high:   #222035;
+	--surface-container-highest:#28263e;
+
+	/* On-Surface (text) */
+	--on-surface:               #e5e3f5;
+	--on-surface-variant:       #c8c5db;
+
+	/* Primary */
+	--primary:                  #a9c7ff;
+	--primary-container:        #1558d6;
+	--on-primary:               #032a73;
+	--on-primary-container:     #dbe9ff;
+	--primary-fixed:            #dbe9ff;
+	--primary-fixed-dim:        #a9c7ff;
+	--inverse-primary:          #1558d6;
+
+	/* Secondary */
+	--secondary:                #ffd27a;
+	--secondary-container:      #614300;
+	--on-secondary:             #3b2800;
+	--on-secondary-container:   #ffe9bc;
+	--secondary-fixed:          #ffe9bc;
+	--secondary-fixed-dim:      #ffd27a;
+
+	/* Tertiary */
+	--tertiary:                 #9fd4b4;
+	--tertiary-container:       #1f5f39;
+	--on-tertiary:              #143224;
+	--on-tertiary-container:    #d4f2de;
+
+	/* Outline */
+	--outline:                  #918fa1;
+	--outline-variant:          #464554;
+
+	/* Error */
+	--error:                    #ffb4ab;
+	--error-container:          #93000a;
+	--on-error:                 #690005;
+
+	/* Semantic aliases */
+	--gray-0:    var(--on-surface);
+	--gray-50:   #d0cee0;
+	--gray-100:  var(--on-surface-variant);
+	--gray-200:  #a8a6bc;
+	--gray-300:  #8b8a9e;
+	--gray-400:  var(--outline);
+	--gray-500:  #6e6c80;
+	--gray-600:  var(--outline-variant);
+	--gray-700:  var(--surface-container-high);
+	--gray-800:  var(--surface-container);
+	--gray-900:  var(--surface-container-low);
+	--gray-999:  var(--surface);
+	--gray-999-basis: 246, 31%, 8%;
+	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
+
+	--accent-light:           var(--primary-container);
+	--accent-regular:         var(--primary);
+	--accent-dark:            #e2dfff;
+	--accent-overlay:         hsla(217, 79%, 80%, 0.16);
+	--accent-subtle-overlay:  hsla(217, 79%, 80%, 0.11);
+	--accent-text-over:       var(--on-primary);
+	--link-color:             var(--primary);
+
+	--gradient-stop-1:        var(--primary);
+	--gradient-stop-2:        #4f8cff;
+	--gradient-stop-3:        #a9c7ff;
+	--gradient-subtle:        linear-gradient(150deg, var(--surface-container-low) 19%, var(--surface) 81%);
+	--gradient-accent:        linear-gradient(135deg, var(--primary-container), var(--primary));
+	--gradient-accent-orange: linear-gradient(135deg, var(--secondary-container), var(--primary-container));
+	--gradient-stroke:        linear-gradient(180deg, var(--outline-variant), var(--surface-container));
+
+	--shadow-sm: 0px 4px 12px rgba(0, 0, 0, 0.20), 0px 1px 3px rgba(0, 0, 0, 0.25);
+	--shadow-md: 0px 20px 40px rgba(0, 0, 0, 0.30), 0px 8px 16px rgba(0, 0, 0, 0.20);
+	--shadow-lg: 0px 40px 80px rgba(0, 0, 0, 0.40), 0px 16px 32px rgba(0, 0, 0, 0.25);
+}

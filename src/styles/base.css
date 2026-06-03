@@ -1,0 +1,91 @@
+/* ============================================================
+   BASE — Resets, body, tipografía global, links, scrollbar
+   ============================================================ */
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html,
+body {
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: var(--surface);
+	color: var(--on-surface);
+	font-family: var(--font-body);
+	font-size: var(--text-base);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: background-color var(--theme-transition), color var(--theme-transition);
+}
+
+/* Paper grain texture overlay */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.03;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	mix-blend-mode: multiply;
+}
+:root.theme-dark body::before {
+	mix-blend-mode: screen;
+	opacity: 0.05;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--link-color);
+	text-decoration: none;
+	transition: color var(--theme-transition);
+}
+
+a:hover {
+	color: var(--primary-container);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+	line-height: 1.1;
+	font-family: var(--font-brand);
+	font-weight: 700;
+	color: var(--on-surface);
+	letter-spacing: -0.03em;
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+
+/* Text selection */
+::selection {
+	background: var(--chroma-ocean);
+	color: #fff;
+}
+
+/* Custom scrollbar */
+@media (pointer: fine) {
+	::-webkit-scrollbar { width: 10px; }
+	::-webkit-scrollbar-track { background: transparent; }
+	::-webkit-scrollbar-thumb {
+		background: color-mix(in srgb, var(--chroma-ocean) 55%, transparent);
+		border-radius: 999px;
+		border: 3px solid var(--surface);
+	}
+	::-webkit-scrollbar-thumb:hover { background: var(--chroma-ocean); }
+}
