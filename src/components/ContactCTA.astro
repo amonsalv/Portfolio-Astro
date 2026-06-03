@@ -1,21 +1,20 @@
 ---
-// ContactCTA — "Let's build something together"
-// Based on Stitch redesign: warm editorial minimalism
+// ContactCTA — used at the bottom of individual project pages
 ---
 
 <section class="contact-cta">
 	<div class="cta-inner">
 		<div class="cta-text">
-			<p class="cta-label" data-translate="ctaLabel">LET'S CONNECT</p>
-			<h2 class="cta-title" data-translate="ctaTitle">Let's build something together</h2>
+			<span class="cta-label" data-translate="ctaLabel">Let's connect</span>
+			<h2 class="cta-title" data-translate="ctaTitle">Ready for your next collaboration?</h2>
 			<p class="cta-subtitle" data-translate="ctaSubtitle">
-				Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.
+				Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful project.
 			</p>
 		</div>
 		<div class="cta-action">
-			<a href="mailto:hola@anamonsalve.com" class="cta-button">
-				<span data-translate="ctaButton">Get in touch</span>
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<a href="/about/#contact" class="cta-button">
+				<span data-translate="ctaButton">Say hello</span>
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16">
 					<line x1="5" y1="12" x2="19" y2="12" />
 					<polyline points="12 5 19 12 12 19" />
 				</svg>
@@ -26,149 +25,145 @@
 
 <style>
 	.contact-cta {
-		padding: 5rem 0 7rem;
+		padding: 4rem 0 6rem;
 	}
 
 	.cta-inner {
 		display: flex;
 		flex-direction: column;
-		gap: 2.5rem;
-		background: var(--accent-regular);
-		border-radius: 1.5rem;
+		gap: 2rem;
+		background: #0F0E1A;
+		border-radius: 2rem;
 		padding: 2.5rem 2rem;
 		position: relative;
 		overflow: hidden;
 	}
 
-	/* Subtle violet glow in the corner */
+	/* Glow decoration */
 	.cta-inner::before {
 		content: '';
 		position: absolute;
-		top: -40%;
-		right: -10%;
-		width: 400px;
-		height: 400px;
-		background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+		top: -30%;
+		right: -5%;
+		width: 350px;
+		height: 350px;
+		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-ocean) 25%, transparent), transparent 70%);
 		pointer-events: none;
 	}
 
-	:root.theme-dark .cta-inner::before {
-		background: radial-gradient(circle, rgba(194, 193, 255, 0.08) 0%, transparent 70%);
+	.cta-inner::after {
+		content: '';
+		position: absolute;
+		bottom: -30%;
+		left: -5%;
+		width: 250px;
+		height: 250px;
+		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-purple) 18%, transparent), transparent 70%);
+		pointer-events: none;
 	}
 
 	.cta-label {
-		font-family: var(--font-body);
-		font-size: var(--text-sm);
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		color: #ffffff;
+		display: block;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		color: var(--chroma-sunny);
 		text-transform: uppercase;
 		margin-bottom: 0.75rem;
 	}
 
 	.cta-title {
-		font-family: var(--font-brand);
-		font-size: clamp(2rem, 4vw, var(--text-4xl));
-		font-weight: 600;
+		font-family: var(--font-display);
+		font-size: clamp(1.8rem, 4vw, 2.8rem);
+		font-weight: 700;
 		letter-spacing: -0.03em;
 		line-height: 1.05;
 		color: #ffffff;
-		max-width: 20ch;
+		max-width: 18ch;
+		position: relative;
+		z-index: 1;
 	}
 
 	.cta-subtitle {
-		font-family: var(--font-body);
-		font-size: var(--text-base);
+		font-size: 0.95rem;
 		line-height: 1.65;
-		color: #ffffff;
-		max-width: 48ch;
-		margin-top: 1rem;
-		opacity: 0.9;
+		color: rgba(255,255,255,0.62);
+		max-width: 44ch;
+		margin-top: 0.75rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.cta-action {
 		display: flex;
-		align-items: flex-start;
+		position: relative;
+		z-index: 1;
 	}
 
 	.cta-button {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.625rem;
-		padding: 0.875rem 2rem;
-		border-radius: var(--radius-full);
-		background: linear-gradient(135deg, var(--primary), var(--primary-container));
-		color: var(--on-primary);
-		font-family: var(--font-body);
-		font-size: var(--text-base);
+		gap: 0.5rem;
+		padding: 0.7rem 1.5rem;
+		border-radius: 999px;
+		background: var(--chroma-ocean);
+		color: #fff;
 		font-weight: 700;
+		font-size: 0.9rem;
 		text-decoration: none;
-		transition: transform 0.2s var(--ease-expressive), box-shadow 0.2s var(--ease-expressive);
+		transition: background 0.2s, transform 0.2s;
 	}
 
 	.cta-button:hover {
-		transform: scale(1.02);
-		box-shadow: var(--shadow-md);
-		color: var(--on-primary);
+		background: var(--chroma-ocean-strong);
+		transform: translateY(-2px);
+		color: #fff;
 	}
 
 	@media (min-width: 50em) {
-		.contact-cta {
-			padding: 6rem 0 8rem;
-		}
-
 		.cta-inner {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
-			padding: 4rem 4rem;
+			padding: 3.5rem 4rem;
 			gap: 3rem;
 		}
 
-		.cta-text {
-			flex: 1;
-		}
-
-		.cta-action {
-			flex-shrink: 0;
-		}
+		.cta-text { flex: 1; }
+		.cta-action { flex-shrink: 0; }
 	}
 </style>
 
 <script>
-	const ctaTranslations = {
+	const ctaT = {
 		en: {
-			ctaLabel: "LET'S CONNECT",
-			ctaTitle: "Let's build something together",
-			ctaSubtitle: "Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.",
-			ctaButton: 'Get in touch',
+			ctaLabel: "Let's connect",
+			ctaTitle: 'Ready for your next collaboration?',
+			ctaSubtitle: "Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful project.",
+			ctaButton: 'Say hello',
 		},
 		es: {
-			ctaLabel: 'CONECTEMOS',
-			ctaTitle: 'Construyamos algo juntas',
-			ctaSubtitle: 'Ya sea una línea de código o un trazo de color, siempre estoy buscando la próxima colaboración significativa.',
-			ctaButton: 'Escríbeme',
+			ctaLabel: 'Conectemos',
+			ctaTitle: '¿Lista para tu próxima colaboración?',
+			ctaSubtitle: 'Ya sea una línea de código o un trazo de color, siempre busco el próximo proyecto significativo.',
+			ctaButton: 'Hablemos',
 		},
 	};
 
-	// @ts-ignore
-	function updateCTALanguage(language) {
-		// @ts-ignore
-		const t = language === 'es' ? ctaTranslations.es : ctaTranslations.en;
-		const keys = Object.keys(t) as Array<keyof typeof t>;
-		keys.forEach((key) => {
-			const el = document.querySelector(`[data-translate="${key}"]`);
-			// @ts-ignore
-			if (el) el.textContent = t[key];
+	function updateCTA(lang: string) {
+		const t = lang === 'es' ? ctaT.es : ctaT.en;
+		Object.entries(t).forEach(([key, value]) => {
+			document.querySelectorAll(`[data-translate="${key}"]`).forEach(el => {
+				el.textContent = value;
+			});
 		});
 	}
 
 	window.addEventListener('languageChange', (e) => {
 		// @ts-ignore
-		updateCTALanguage(e.detail.language);
+		updateCTA(e.detail.language);
 	});
 
-	const saved = localStorage.getItem('language');
-	const init = saved || (navigator.language.startsWith('es') ? 'es' : 'en');
-	if (init === 'es') updateCTALanguage('es');
+	const saved = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+	if (saved === 'es') updateCTA('es');
 </script>
