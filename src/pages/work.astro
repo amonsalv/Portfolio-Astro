@@ -14,18 +14,20 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 <BaseLayout title="My Work | Ana Monsalve" description="Learn about Ana Monsalve's most recent projects">
 	<div class="stack gap-20">
 		<main class="work-page wrapper">
-			<header class="work-hero stack gap-3">
-				<h1><span data-translate="workTitlePrefix">Selected</span> <span class="accent" data-translate="workTitleAccent">Works.</span></h1>
+			<header class="work-hero">
+				<span class="sec-label" data-translate="workLabel">Work</span>
+				<h1 class="work-title">
+					<span data-translate="workTitlePrefix">Selected</span>
+					<em class="work-title-accent" data-translate="workTitleAccent">Works.</em>
+				</h1>
 				<p class="work-subtitle" data-translate="workSubtitle">
 					A collection of digital experiences crafted with a developer's logic and a painter's eye.
 				</p>
 			</header>
 
-			<section class="work-grid" aria-label="Featured projects">
+			<section class="work-grid reveal" data-stagger aria-label="Featured projects">
 				{
 					featuredProjects.map((project) => {
-						const spanishSlug = project.id.replace(/\.md$/, '-es.md').replace(/.mdx?$/, '');
-						// En Astro > 2 si el ID incluye extensión:
 						const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
 						// @ts-ignore
 						const spanishProject = allProjects.find((p) => p.id === spanishId || p.slug === `${project.slug}-es`);
@@ -39,6 +41,9 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 											</div>
 											<h2>{project.data.title}</h2>
 											<p>{project.data.description}</p>
+											<div class="proj-stack">
+												{project.data.tags.slice(0, 4).map((tag: string) => <span class="dot">{tag}</span>)}
+											</div>
 										</div>
 										<div class="img-container">
 											<img src={project.data.img} alt={project.data.img_alt || ''} loading="lazy" decoding="async" />
@@ -54,6 +59,9 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 												</div>
 												<h2>{spanishProject.data.title}</h2>
 												<p>{spanishProject.data.description}</p>
+												<div class="proj-stack">
+													{spanishProject.data.tags.slice(0, 4).map((tag: string) => <span class="dot">{tag}</span>)}
+												</div>
 											</div>
 											<div class="img-container">
 												<img src={spanishProject.data.img} alt={spanishProject.data.img_alt || ''} loading="lazy" decoding="async" />
@@ -68,9 +76,9 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 
 				<li class="cta-slot">
 					<article class="project-cta-card">
-						<p class="spark">✦ ✦</p>
-						<h2 data-translate="workCtaTitle">Ready for your next digital painting?</h2>
-						<a href="mailto:hola@anamonsalve.com" data-translate="workCtaButton">Contact Ana</a>
+						<p class="spark">✦ ✦ ✦</p>
+						<h2 data-translate="workCtaTitle">Ready for your next collaboration?</h2>
+						<a href="/about/#contact" data-translate="workCtaButton">Contact Ana</a>
 					</article>
 				</li>
 			</section>
@@ -81,17 +89,19 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 	<script>
 		const workPageTranslations = {
 			en: {
+				workLabel: 'Work',
 				workTitlePrefix: 'Selected',
 				workTitleAccent: 'Works.',
 				workSubtitle: "A collection of digital experiences crafted with a developer's logic and a painter's eye.",
-				workCtaTitle: 'Ready for your next digital painting?',
+				workCtaTitle: 'Ready for your next collaboration?',
 				workCtaButton: 'Contact Ana',
 			},
 			es: {
+				workLabel: 'Proyectos',
 				workTitlePrefix: 'Trabajos',
 				workTitleAccent: 'Seleccionados.',
 				workSubtitle: 'Una colección de experiencias digitales creadas con la lógica de una desarrolladora y el ojo de una pintora.',
-				workCtaTitle: '¿Lista para tu próxima pintura digital?',
+				workCtaTitle: '¿Lista para tu próxima colaboración?',
 				workCtaButton: 'Contactar a Ana',
 			},
 		};
@@ -130,246 +140,274 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 
 <style>
 	.work-page {
-		padding-top: 3rem;
-		padding-bottom: 2rem;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.work-hero h1 {
-		font-size: clamp(2.5rem, 8vw, 5rem);
-		line-height: 0.95;
-		font-weight: 700;
-		letter-spacing: -0.02em;
+	/* ── Hero ── */
+	.work-hero {
+		margin-bottom: 3.5rem;
 	}
 
-	.work-hero .accent {
-		color: var(--primary);
+	.work-title {
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 8vw, 6rem);
+		font-weight: 800;
+		line-height: 0.92;
+		letter-spacing: -0.04em;
+		margin: 0.75rem 0 1rem;
+		color: var(--on-surface);
+	}
+
+	.work-title-accent {
+		display: block;
+		font-weight: 300;
+		font-style: italic;
+		color: var(--chroma-ocean);
 	}
 
 	.work-subtitle {
-		font-size: var(--text-xl);
-		max-width: 34ch;
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		max-width: 44ch;
 		color: var(--on-surface-variant);
+		line-height: 1.65;
 	}
 
+	/* ── Grid ── */
 	.work-grid {
-		margin-top: 3rem;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 1.25rem;
 		list-style: none;
 		padding: 0;
 	}
 
-	.project-item:nth-child(1) .project-card {
-		background: #ebf2ff;
-	}
+	.project-item, .cta-slot { min-width: 0; }
 
-	.project-item:nth-child(2) .project-card {
-		background: #f6efe4;
-	}
-
-	.project-item:nth-child(3) .project-card {
-		background: #f8e9e7;
-	}
-
+	/* ── Project card ── */
 	.project-card {
-		display: grid;
-		gap: 1rem;
-		grid-template-rows: auto auto;
-		background: var(--surface-container-low);
-		border-radius: var(--radius-lg);
-		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		background: var(--surface-container-lowest);
+		border-radius: 2rem;
+		overflow: hidden;
 		text-decoration: none;
 		color: inherit;
-		box-shadow: var(--shadow-sm);
-		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
-		transition: transform 0.25s var(--ease-expressive), box-shadow 0.25s var(--ease-expressive);
+		border: 1px solid transparent;
+		transition: transform 0.3s var(--ease-expressive),
+		            box-shadow 0.3s var(--ease-expressive),
+		            border-color 0.3s var(--ease-expressive);
 	}
 
 	.project-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-md);
+		transform: translateY(-6px);
+		box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+		border-color: color-mix(in srgb, var(--chroma-ocean) 28%, transparent);
 	}
 
-	.project-item:nth-child(1) .img-container {
-		height: 24rem;
-	}
-
-	.project-item:nth-child(2) .img-container {
-		height: 24rem;
-	}
-
-	.img-container {
-		width: 100%;
-		height: 14rem;
-		overflow: hidden;
-		border-radius: calc(var(--radius-lg) - 0.4rem);
-	}
-
-	.img-container img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform 0.4s var(--theme-transition);
-	}
-
-	.project-card:focus-within img,
-	.project-card:hover img {
-		transform: scale(1.03);
+	.meta {
+		padding: 1.75rem 1.75rem 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
 	}
 
 	.project-card h2 {
-		font-size: clamp(1.8rem, 3vw, 2.8rem);
-		line-height: 1.1;
-		font-weight: 600;
-		color: #17192a;
-		letter-spacing: -0.01em;
+		font-family: var(--font-display);
+		font-size: clamp(1.6rem, 3vw, 2.4rem);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.03em;
+		color: var(--on-surface);
 	}
 
 	.project-card p {
-		margin-top: 0.5rem;
-		color: #2f3550;
+		font-size: 0.95rem;
+		color: var(--on-surface-variant);
+		line-height: 1.6;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
 
+	/* ── Pills / tags ── */
 	.pills {
 		display: flex;
 		gap: 0.4rem;
 		flex-wrap: wrap;
 	}
 
-	.project-item:nth-child(1) .pills span {
-		background: #1754f4;
-		color: white;
-	}
-
-	.project-item:nth-child(2) .pills span {
-		background: #9d6423;
-		color: white;
-	}
-
-	.project-item:nth-child(2) .pills span:nth-child(2) {
-		background: #fcd5a3;
-		color: #5d3b14;
-	}
-
-	.project-item:nth-child(3) .pills span {
-		background: #a93c3c;
-		color: white;
-	}
-
-	.project-item:nth-child(3) .pills span:nth-child(2) {
-		background: #ffb0b0;
-		color: #6a1a1a;
-	}
-
-	.project-item:nth-child(1) .pills span:nth-child(2) {
-		background: #a4c2ff;
-		color: #1754f4;
-	}
-
 	.pills span {
-		padding: 0.2rem 0.6rem;
-		border-radius: var(--radius-full);
-		font-size: var(--text-sm);
-		font-weight: 700;
+		padding: 0.25rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.68rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
 	}
 
+	.project-item:nth-child(1) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-ocean) 12%, transparent);  color: var(--chroma-ocean-strong); }
+	.project-item:nth-child(1) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-purple) 10%, transparent); color: var(--chroma-purple); }
+	.project-item:nth-child(2) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-purple) 12%, transparent); color: var(--chroma-purple); }
+	.project-item:nth-child(2) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-ocean) 10%, transparent);  color: var(--chroma-ocean-strong); }
+	.project-item:nth-child(3) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-nature) 12%, transparent); color: var(--chroma-nature); }
+	.project-item:nth-child(3) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-sunny) 20%, transparent);  color: #5a3e00; }
+
+	/* ── Tech stack dots ── */
+	.proj-stack {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+		margin-top: 0.25rem;
+	}
+
+	.proj-stack .dot {
+		font-family: var(--font-mono, monospace);
+		font-size: 0.68rem;
+		color: var(--on-surface-variant);
+		border: 1px solid var(--outline-variant);
+		border-radius: 6px;
+		padding: 2px 8px;
+	}
+
+	/* ── Image container ── */
+	.img-container {
+		width: 100%;
+		height: 16rem;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.img-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s var(--ease-expressive);
+		display: block;
+	}
+
+	.project-card:hover img { transform: scale(1.04); }
+
+	/* ── CTA card ── */
 	.project-cta-card {
-		background: #070a0e;
-		color: #d4d6da;
-		border-radius: var(--radius-lg);
-		padding: 1.5rem;
-		min-height: 100%;
+		background: #0F121D;
+		border-radius: 2rem;
+		padding: 2.5rem 2rem;
+		min-height: 18rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		gap: 1rem;
+		gap: 1.25rem;
 	}
 
 	.project-cta-card .spark {
-		color: var(--primary);
 		font-size: 1.2rem;
-		letter-spacing: 0.2rem;
+		letter-spacing: 6px;
+		color: var(--chroma-sunny);
 	}
 
 	.project-cta-card h2 {
-		font-size: clamp(1.8rem, 3vw, 3rem);
-		line-height: 1.1;
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 2.5vw, 2rem);
 		font-weight: 600;
-		color: #ffffff;
-		max-width: 14ch;
+		line-height: 1.15;
+		color: #fff;
+		max-width: 16ch;
 	}
 
 	.project-cta-card a {
 		display: inline-flex;
-		padding: 0.6rem 1.2rem;
-		border-radius: var(--radius-full);
+		padding: 0.65rem 1.4rem;
+		border-radius: 999px;
 		font-weight: 700;
-		color: white;
-		background: #005cf9;
+		font-size: 0.875rem;
+		color: #fff;
+		background: var(--chroma-ocean);
+		text-decoration: none;
+		transition: background 0.2s;
 	}
 
-	.project-item,
-	.cta-slot {
-		min-width: 0;
+	.project-cta-card a:hover {
+		background: var(--chroma-ocean-strong);
+		color: #fff;
 	}
 
-	:root.theme-dark .work-page {
-		padding-top: 2.5rem;
+	/* ── Dark mode ── */
+	:root.theme-dark .project-card {
+		background: var(--surface-container);
+		border-color: var(--surface-container-high);
 	}
 
-	:root.theme-dark .work-subtitle {
-		color: #d5ddf9;
-	}
+	:root.theme-dark .project-card h2 { color: var(--on-surface); }
+	:root.theme-dark .project-card p  { color: var(--on-surface-variant); }
 
-	:root.theme-dark .project-item:nth-child(1) .project-card,
-	:root.theme-dark .project-item:nth-child(2) .project-card,
-	:root.theme-dark .project-item:nth-child(3) .project-card {
-		background: #171c3f;
-		border-color: rgba(129, 146, 217, 0.35);
-	}
+	:root.theme-dark .project-item:nth-child(1) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-ocean) 22%, transparent);  color: #90bfff; }
+	:root.theme-dark .project-item:nth-child(1) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-purple) 22%, transparent); color: #e0a8f5; }
+	:root.theme-dark .project-item:nth-child(2) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-purple) 22%, transparent); color: #e0a8f5; }
+	:root.theme-dark .project-item:nth-child(2) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-ocean) 22%, transparent);  color: #90bfff; }
+	:root.theme-dark .project-item:nth-child(3) .pills span:nth-child(odd)  { background: color-mix(in srgb, var(--chroma-nature) 22%, transparent); color: #80cbc4; }
+	:root.theme-dark .project-item:nth-child(3) .pills span:nth-child(even) { background: color-mix(in srgb, var(--chroma-sunny) 18%, transparent);  color: #ffd740; }
 
-	:root.theme-dark .project-card h2 {
-		color: #f0f4ff;
-	}
-
-	:root.theme-dark .project-card p {
-		color: #d0d9f7;
-	}
-
-	:root.theme-dark .pills span {
-		background: rgba(169, 199, 255, 0.22);
-		color: #e0ebff;
-	}
-
-	@media (min-width: 64em) {
+	/* ── Desktop layout ── */
+	@media (min-width: 50em) {
 		.work-grid {
-			grid-template-columns: 2fr 1fr;
-			gap: 1.2rem;
+			grid-template-columns: 1.5fr 1fr;
+			gap: 1.25rem;
 		}
 
+		/* Project 1: col 1 row 1, horizontal */
+		.project-item:nth-child(1) {
+			grid-column: 1;
+			grid-row: 1;
+		}
+		.project-item:nth-child(1) .project-card {
+			flex-direction: row;
+			min-height: 22rem;
+		}
+		.project-item:nth-child(1) .meta {
+			flex: 0 0 50%;
+			justify-content: center;
+			padding: 2.2rem;
+		}
+		.project-item:nth-child(1) .img-container {
+			flex: 1;
+			height: auto;
+		}
+
+		/* Project 2: col 2 row 1, vertical */
+		.project-item:nth-child(2) {
+			grid-column: 2;
+			grid-row: 1;
+		}
+
+		/* Project 3: full-width landscape */
+		.project-item:nth-child(3) {
+			grid-column: 1 / -1;
+			grid-row: 2;
+		}
 		.project-item:nth-child(3) .project-card {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			align-items: center;
-			gap: 2rem;
+			flex-direction: row;
+			min-height: 18rem;
 		}
-
 		.project-item:nth-child(3) .img-container {
-			height: 100%;
-			min-height: 16rem;
+			flex: 1.1;
+			height: auto;
+		}
+		.project-item:nth-child(3) .meta {
+			flex: 1;
+			justify-content: center;
+			padding: 2.2rem;
 		}
 
-		/* Para que la CTA card esté a la derecha */
+		/* CTA: full-width */
 		.cta-slot {
-			/* grid automágicamente la pondrá en fila 2, col 2 porque Buen Corazón está en col 1 */
-			display: flex; /* fill up height */
+			grid-column: 1 / -1;
+			grid-row: 3;
 		}
 	}
 </style>

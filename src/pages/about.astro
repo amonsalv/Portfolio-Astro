@@ -8,32 +8,42 @@ import Icon from '../components/Icon.astro';
 		<main class="about-page wrapper">
 			<section class="about-hero">
 				<div class="hero-copy stack gap-3">
-					<p class="eyebrow" data-translate="aboutEyebrow">FULL-STACK DEVELOPER & ARTIST</p>
-					<h1 data-translate="aboutTitle">
-						The logic of code.<br>
-						The soul of paint.
+					<p class="eyebrow" data-translate="aboutEyebrow">Full-stack Developer &amp; Artist</p>
+					<h1>
+						<span class="about-l1" data-translate="aboutTitleL1">The logic of code.</span>
+						<span class="about-l2" data-translate="aboutTitleL2">The soul of paint.</span>
 					</h1>
 					<p class="hero-desc" data-translate="aboutDescription">
-						Building digital interfaces with the same intentionality I bring to a blank canvas. Based in Colombia, creating globally.
+						I'm Ana — a developer and automation engineer who treats every system like a composition. I care as much about how something feels as whether it ships.
 					</p>
 				</div>
 				<div class="hero-art" aria-hidden="true">
 					<div class="art-frame">
-						<Icon icon="pencil-line" size="8rem" />
+						<div class="art-frame-inner">
+							<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.4" width="80" height="80" aria-hidden="true">
+								<path d="M12 19l7-7 3 3-7 7-3-3z"/>
+								<path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+								<path d="M2 2l7.586 7.586"/>
+								<circle cx="11" cy="11" r="2"/>
+							</svg>
+						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="mission-card stack gap-3">
+			<section class="mission-card reveal">
+				<span class="qmark" aria-hidden="true">"</span>
 				<h2 data-translate="missionTitle">Why I do what I do</h2>
-				<p data-translate="missionQuote">
-					"I believe technology should be as human as the hands that build it. My mission is to bridge the gap between technical efficiency and emotional resonance, crafting tools that empower people to create more than they consume."
-				</p>
+				<blockquote data-translate="missionQuote">I build technology with intention — bridging the precision of engineering and the warmth of craft, so the things I make actually mean something to the people who use them.</blockquote>
 			</section>
 
-			<section class="toolbox stack gap-4">
-				<h2 data-translate="toolboxTitle">Technical Toolbox</h2>
-				<div class="toolbox-grid">
+			<section class="toolbox stack gap-4" style="position:relative; overflow:hidden;">
+				<span class="sec-numeral sec-numeral-right" aria-hidden="true">01</span>
+				<div class="sec-head reveal">
+					<span class="sec-label">01 — Toolbox</span>
+					<h2 class="section-title" data-translate="toolboxTitle">Technical Toolbox</h2>
+				</div>
+				<div class="toolbox-grid reveal" data-stagger>
 					<article class="tool-card frontend">
 						<div class="tool-card-header">
 							<Icon icon="pencil-line" size="1.4em" />
@@ -64,9 +74,13 @@ import Icon from '../components/Icon.astro';
 				</div>
 			</section>
 
-			<section class="journey stack gap-4">
-				<h2 data-translate="journeyTitle">The Journey</h2>
-				<div class="timeline">
+			<section class="journey stack gap-4" style="position:relative; overflow:hidden;">
+				<span class="sec-numeral sec-numeral-left" aria-hidden="true">02</span>
+				<div class="sec-head reveal">
+					<span class="sec-label">02 — Journey</span>
+					<h2 class="section-title" data-translate="journeyTitle">The Journey</h2>
+				</div>
+				<div class="timeline reveal" data-stagger>
 					<article class="timeline-item left accent-primary">
 						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Present</p>
 						<h3 data-translate="journeyJobOne">Freelance Software Dev & DevOps Consultant</h3>
@@ -88,8 +102,12 @@ import Icon from '../components/Icon.astro';
 				</div>
 			</section>
 
-			<section class="academic stack gap-4">
-				<h2 data-translate="academicTitle">Academic Foundation &amp; Certifications</h2>
+			<section class="academic stack gap-4 bg-mist" style="position:relative; overflow:hidden; padding: 3rem 2rem; border-radius: 1.5rem; margin-inline: -1rem;">
+				<span class="sec-numeral sec-numeral-right" aria-hidden="true">03</span>
+				<div class="sec-head reveal">
+					<span class="sec-label">03 — Formation</span>
+					<h2 class="section-title" data-translate="academicTitle">Academic Foundation &amp; Certifications</h2>
+				</div>
 				<div class="academic-grid">
 					<div class="academic-col">
 						<div class="academic-col-header">
@@ -133,40 +151,32 @@ import Icon from '../components/Icon.astro';
 				</div>
 			</section>
 
-			<section class="beyond stack gap-4">
-				<h2 data-translate="beyondTitle">Beyond the Code</h2>
-				<div class="beyond-grid">
-					<article class="panel panel-painting">
-						<Icon icon="pencil-line" size="1.8em" class="panel-icon" />
-						<div class="panel-content">
-							<h3 data-translate="beyondArtTitle">Writing, Painting & Letters</h3>
-							<p data-translate="beyondArtDesc">When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and meaningful letters that connect emotion with intention.</p>
-						</div>
-					</article>
-					<article class="panel panel-crossfit">
-						<div class="icon-circle">
-							<Icon icon="dumbbell" size="1.8em" />
-						</div>
-						<h3 data-translate="beyondActiveTitle">Active Lifestyle</h3>
-						<p data-translate="beyondActiveDesc">Building discipline through movement. CrossFit, swimming, and staying active help me stay focused, resilient, and mentally strong.</p>
-					</article>
-					<article class="panel panel-community">
-						<h3 data-translate="beyondCommTitle">Community & Tech</h3>
-						<p data-translate="beyondCommDesc">Organizer at GitTogether Medellín. I enjoy creating spaces where people connect with technology and feel inspired to start their journey.</p>
-						<div class="circles-dec" aria-hidden="true">
-							<span style="background: var(--primary)"></span>
-							<span style="background: #a46100"></span>
-							<span style="background: #c71b30"></span>
-						</div>
-					</article>
-					<article class="panel panel-colombia">
-						<div class="colombia-content">
-							<h3 data-translate="beyondColTitle">Based in Colombia</h3>
-							<p data-translate="beyondColDesc">Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.</p>
-						</div>
-					</article>
+			<!-- ── Contact ── -->
+			<section class="contact-section reveal" id="contact">
+				<div class="sec-head">
+					<span class="sec-label" data-translate="contactLabel">Contact</span>
+					<h2 class="section-title contact-title" data-translate="contactTitle">Let's build something with intention</h2>
+					<p class="sec-lede" data-translate="contactDesc">Open to collaborations, roles, and good conversations about code, craft, and community.</p>
+				</div>
+
+				<div class="contact-strip">
+					<div class="email-copy">
+						<span class="email-text">hola@anamonsalve.com</span>
+						<button class="copy-btn" aria-label="Copy email" data-email="hola@anamonsalve.com">
+							<svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+							</svg>
+							<svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+								<polyline points="20 6 9 17 4 12"></polyline>
+							</svg>
+						</button>
+					</div>
+					<a href="mailto:hola@anamonsalve.com" class="btn-say-hello" data-translate="contactCta">Say hello</a>
+					<a href="https://github.com/amonsalv" target="_blank" rel="noopener noreferrer" class="btn-github">GitHub</a>
 				</div>
 			</section>
+
 		</main>
 	</div>
 </BaseLayout>
@@ -180,17 +190,23 @@ import Icon from '../components/Icon.astro';
 		gap: 3rem;
 	}
 
+	/* Ochre/yellow tinted pill — like Claude Design */
 	.eyebrow {
-		display: inline-flex;
+		display: inline-block;
 		width: fit-content;
-		padding: 0.5rem 1rem;
+		padding: 7px 14px;
 		border-radius: var(--radius-full);
-		font-size: 0.8rem;
-		font-weight: 800;
-		letter-spacing: 0.06em;
-		background: #fae1c9;
-		color: #b26019;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		background: color-mix(in srgb, var(--chroma-sunny) 22%, var(--surface));
+		color: color-mix(in srgb, var(--chroma-sunny) 65%, var(--on-surface));
 		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+	:root.theme-dark .eyebrow {
+		background: color-mix(in srgb, var(--chroma-sunny) 18%, transparent);
+		color: var(--chroma-sunny);
 	}
 
 	.about-hero {
@@ -201,12 +217,27 @@ import Icon from '../components/Icon.astro';
 	}
 
 	.about-hero h1 {
-		font-size: clamp(3rem, 8vw, 6.5rem);
-		line-height: 0.95;
+		font-family: var(--font-display);
+		font-size: clamp(2.75rem, 7vw, 4.5rem);
+		line-height: 0.92;
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
+		letter-spacing: -0.05em;
+	}
+
+	.about-l1 {
+		display: block;
 		font-weight: 800;
-		letter-spacing: -0.04em;
+		color: var(--on-surface);
+		line-height: 0.92;
+	}
+
+	/* "The soul of paint." — italic blue like hero index */
+	.about-l2 {
+		display: block;
+		font-weight: 300;
+		font-style: italic;
+		color: var(--chroma-ocean);
 	}
 
 	.hero-desc {
@@ -217,42 +248,73 @@ import Icon from '../components/Icon.astro';
 	}
 
 	.hero-art {
-		background: linear-gradient(150deg, #0d4aed 40%, #712433 100%);
+		background: linear-gradient(135deg, var(--chroma-ocean) 0%, var(--chroma-purple) 100%);
 		border-radius: 2rem;
-		padding: 2.5rem;
-		box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-		min-height: 38rem;
+		padding: 1.5rem;
+		box-shadow: 0 20px 40px rgba(21, 101, 192, 0.18);
+		min-height: 280px;
 		display: flex;
 		align-items: stretch;
 	}
 
 	.art-frame {
 		flex: 1;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		border-radius: 1rem;
+		border-radius: 1.5rem;
 		display: grid;
 		place-items: center;
-		color: rgba(255, 255, 255, 0.5);
+		padding: 1.5rem;
+	}
+
+	/* Inner bordered frame — igual al Claude Design */
+	.art-frame-inner {
+		width: 100%;
+		height: 100%;
+		min-height: 20rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 1.5rem;
+		display: grid;
+		place-items: center;
 	}
 
 	.mission-card {
 		background: var(--surface-container-low);
 		border-radius: 2rem;
-		padding: 4.5rem 2rem;
+		padding: 3.5rem 2.5rem;
 		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Decorative big quotation mark */
+	.qmark {
+		position: absolute;
+		font-family: var(--font-display);
+		font-size: 8rem;
+		color: color-mix(in srgb, var(--chroma-purple) 20%, transparent);
+		line-height: 1;
+		top: 0.5rem;
+		left: 1.5rem;
+		pointer-events: none;
+		user-select: none;
 	}
 
 	.mission-card h2 {
-		font-size: clamp(2rem, 5vw, 3rem);
-		margin-bottom: 2rem;
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		margin-bottom: 1.5rem;
+		position: relative;
+		z-index: 1;
 	}
 
-	.mission-card p {
-		font-size: clamp(1.2rem, 3vw, 1.55rem);
-		font-family: var(--font-body);
-		color: var(--primary);
+	.mission-card blockquote {
+		font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+		font-style: italic;
+		font-weight: 500;
+		color: var(--chroma-ocean);
 		max-width: 48ch;
 		margin: 0 auto;
+		line-height: 1.6;
+		position: relative;
+		z-index: 1;
 		line-height: 1.5;
 		font-weight: 500;
 	}
@@ -282,9 +344,9 @@ import Icon from '../components/Icon.astro';
 		color: var(--on-surface);
 	}
 
-	.frontend .tool-card-header { color: #0d4aed; }
-	.backend .tool-card-header { color: #b26019; }
-	.tools .tool-card-header { color: #d92138; }
+	.frontend .tool-card-header { color: var(--chroma-ocean); }
+	.backend .tool-card-header { color: var(--chroma-nature); }
+	.tools .tool-card-header { color: var(--chroma-purple); }
 
 	.chips {
 		display: flex;
@@ -300,18 +362,18 @@ import Icon from '../components/Icon.astro';
 	}
 
 	.frontend .chips span {
-		background: #c3d5ff;
-		color: #0d4aed;
+		background: color-mix(in srgb, var(--chroma-ocean) 12%, transparent);
+		color: var(--chroma-ocean-strong);
 	}
 
 	.backend .chips span {
-		background: #ffe3c4;
-		color: #a46100;
+		background: color-mix(in srgb, var(--chroma-nature) 12%, transparent);
+		color: var(--chroma-nature);
 	}
 
 	.tools .chips span {
-		background: #ffc4cf;
-		color: #c71b30;
+		background: color-mix(in srgb, var(--chroma-purple) 12%, transparent);
+		color: var(--chroma-purple);
 	}
 
 	.timeline {
@@ -348,13 +410,13 @@ import Icon from '../components/Icon.astro';
 		border-radius: 50%;
 	}
 
-	.accent-primary p.period { color: #0d4aed; }
-	.accent-secondary p.period { color: #8d5b0f; }
-	.accent-tertiary p.period { color: #d92138; }
+	.accent-primary p.period { color: var(--chroma-ocean); }
+	.accent-secondary p.period { color: var(--chroma-nature); }
+	.accent-tertiary p.period { color: var(--chroma-purple); }
 
-	.accent-primary::before { background: #0d4aed; }
-	.accent-secondary::before { background: #8d5b0f; }
-	.accent-tertiary::before { background: #d92138; }
+	.accent-primary::before { background: var(--chroma-ocean); }
+	.accent-secondary::before { background: var(--chroma-nature); }
+	.accent-tertiary::before { background: var(--chroma-purple); }
 
 	.timeline-item h3 {
 		font-size: var(--text-2xl);
@@ -381,146 +443,40 @@ import Icon from '../components/Icon.astro';
 		margin-bottom: 0.4rem;
 	}
 
-	.beyond-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
-	}
-
-	.panel {
-		padding: 2.2rem;
-		border-radius: 1.8rem;
-		position: relative;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.panel h3 {
-		font-size: var(--text-2xl);
-		font-weight: 800;
-		margin-bottom: 0.5rem;
-	}
-
-	.panel p {
-		font-size: 1.05rem;
-		line-height: 1.5;
-	}
-
-	.panel-painting {
-		background: linear-gradient(135deg, #de6f4f, #f39f66);
-		color: #5a1d0b;
-		justify-content: space-between;
-	}
-	.panel-painting .panel-icon {
-		margin-bottom: auto;
-	}
-	.panel-painting h3 { color: #361106; }
-
-	.panel-crossfit {
-		background: #ffeac6;
-		color: #a46100;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-	}
-	.panel-crossfit p { color: #b57a2c; }
-	.icon-circle {
-		width: 4rem; height: 4rem;
-		border-radius: 50%;
-		background: #ebd2ad;
-		display: grid; place-items: center;
-		margin-bottom: 0.5rem;
-		color: #8c5300;
-	}
-
-	.panel-community {
-		background: var(--surface-container-low);
-		color: var(--on-surface-variant);
-	}
-	.panel-community h3 { color: var(--on-surface); }
-	.circles-dec {
-		display: flex; gap: -0.5rem; margin-top: auto; padding-top: 1.5rem;
-	}
-	.circles-dec span {
-		width: 2.2rem; height: 2.2rem; border-radius: 50%;
-		border: 3px solid var(--surface-container-low);
-		margin-left: -0.6rem;
-		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-	}
-	.circles-dec span:first-child { margin-left: 0; }
-
-	.panel-colombia {
-		background: var(--primary);
-		color: rgba(255, 255, 255, 0.9);
-		justify-content: center;
-	}
-	.panel-colombia h3 { color: #fff; }
-	.colombia-content {
-		position: relative; z-index: 2;
-	}
-	.panel-colombia::after {
-		content: '';
-		position: absolute;
-		right: 0; top: 0; bottom: 0; width: 50%;
-		background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
-		background-size: 20px 20px;
-		background-position: right center;
-		z-index: 1;
-	}
-
 	:root.theme-dark .mission-card,
 	:root.theme-dark .tool-card {
 		background: var(--surface-container-lowest);
 	}
 
 	:root.theme-dark .frontend .chips span {
-		background: rgba(13, 74, 237, 0.2);
-		color: #92b1ff;
+		background: color-mix(in srgb, var(--chroma-ocean) 22%, transparent);
+		color: #90bfff;
 	}
-	
+
 	:root.theme-dark .backend .chips span {
-		background: rgba(255, 145, 0, 0.15);
-		color: #ffc070;
+		background: color-mix(in srgb, var(--chroma-nature) 22%, transparent);
+		color: #80cbc4;
 	}
-	
+
 	:root.theme-dark .tools .chips span {
-		background: rgba(217, 33, 56, 0.15);
-		color: #ffa8b4;
+		background: color-mix(in srgb, var(--chroma-purple) 22%, transparent);
+		color: #e0a8f5;
 	}
 
 	:root.theme-dark .about-hero h1,
 	:root.theme-dark .hero-desc {
-		color: #e5e5e0;
+		color: #e5e5f5;
 	}
 
 	:root.theme-dark .eyebrow {
-		background: #472c1c;
-		color: #eebb9a;
+		background: color-mix(in srgb, var(--chroma-ocean) 18%, transparent);
+		color: #90bfff;
 	}
 
 	:root.theme-dark .hero-art {
-		background: linear-gradient(135deg, #2a3c73, #57203b);
+		background: linear-gradient(150deg, #0d47a1 0%, #4a148c 100%);
 	}
 
-	:root.theme-dark .panel-community {
-		background: var(--surface-container-low);
-	}
-	:root.theme-dark .circles-dec span {
-		border-color: var(--surface-container-low);
-	}
-
-	:root.theme-dark .panel-crossfit {
-		background: rgba(255, 145, 0, 0.15);
-		color: #ffc070;
-	}
-	:root.theme-dark .icon-circle { background: rgba(255, 145, 0, 0.2); color: #ffc070; }
-	:root.theme-dark .panel-crossfit p { color: #d79848; }
-
-	:root.theme-dark .panel-colombia {
-		background: #0f1c42;
-	}
 
 	/* Academic section */
 	.academic {
@@ -539,9 +495,7 @@ import Icon from '../components/Icon.astro';
 	}
 
 	.academic-col {
-		background: var(--surface-container-low);
-		border-radius: 1.4rem;
-		padding: 2rem;
+		padding: 0;
 	}
 
 	.academic-col-header {
@@ -549,14 +503,14 @@ import Icon from '../components/Icon.astro';
 		align-items: center;
 		gap: 0.7rem;
 		margin-bottom: 1.5rem;
-		color: var(--primary);
+		color: var(--on-surface);
 	}
 
 	.academic-col-header h3 {
-		font-size: 1.15rem;
+		font-size: 1rem;
 		font-weight: 800;
 		text-transform: uppercase;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.08em;
 		color: var(--on-surface);
 	}
 
@@ -577,9 +531,9 @@ import Icon from '../components/Icon.astro';
 		border-left: 3px solid transparent;
 	}
 
-	.academic-item.accent-primary { border-left-color: #0d4aed; }
-	.academic-item.accent-secondary { border-left-color: #b26019; }
-	.academic-item.accent-tertiary { border-left-color: #d92138; }
+	.academic-item.accent-primary { border-left-color: var(--chroma-ocean); }
+	.academic-item.accent-secondary { border-left-color: var(--chroma-nature); }
+	.academic-item.accent-tertiary { border-left-color: var(--chroma-purple); }
 
 	.academic-date {
 		font-size: 0.78rem;
@@ -605,7 +559,7 @@ import Icon from '../components/Icon.astro';
 		border-left: none;
 		padding-left: 0;
 		background: var(--surface-container-lowest);
-		border-radius: 0.8rem;
+		border-radius: 1rem;
 		padding: 1rem 1.2rem;
 		gap: 0.15rem;
 		box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -616,9 +570,6 @@ import Icon from '../components/Icon.astro';
 		margin-bottom: 0.4rem;
 	}
 
-	:root.theme-dark .academic-col {
-		background: var(--surface-container-lowest);
-	}
 
 	:root.theme-dark .cert-item {
 		background: var(--surface-container);
@@ -631,8 +582,8 @@ import Icon from '../components/Icon.astro';
 	}
 
 	:root.theme-dark .panel-painting {
-		background: linear-gradient(135deg, #a6462c, #bc7141);
-		color: #f7f9ff;
+		background: linear-gradient(135deg, #4a148c, #1a0033);
+		color: rgba(255,255,255,0.9);
 	}
 	:root.theme-dark .panel-painting h3 { color: #fff; }
 
@@ -642,8 +593,17 @@ import Icon from '../components/Icon.astro';
 		}
 
 		.about-hero {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 1.1fr 0.9fr;
 			gap: 4rem;
+			align-items: center;
+		}
+
+		.hero-art {
+			min-height: 500px;
+		}
+
+		.art-frame-inner {
+			min-height: 380px;
 		}
 
 		.mission-card {
@@ -718,16 +678,122 @@ import Icon from '../components/Icon.astro';
 			grid-row: 2;
 		}
 	}
+
+	/* ── Contact section ── */
+	.contact-section {
+		padding-top: 2rem;
+		padding-bottom: 3rem;
+	}
+
+	.contact-title {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		max-width: 14ch;
+	}
+
+	.contact-strip {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		margin-top: 2rem;
+	}
+
+	/* Email pill */
+	.email-copy {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.55rem 0.9rem;
+		border-radius: 999px;
+		background: var(--surface-container-low);
+		border: 1px solid var(--outline-variant);
+	}
+
+	.email-text {
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		color: var(--on-surface);
+	}
+
+	.copy-btn {
+		display: grid;
+		place-items: center;
+		width: 24px;
+		height: 24px;
+		border: none;
+		background: none;
+		border-radius: 6px;
+		cursor: pointer;
+		color: var(--on-surface-variant);
+		transition: background 0.15s, color 0.15s;
+		padding: 0;
+	}
+
+	.copy-btn:hover {
+		background: var(--surface-container-high);
+		color: var(--on-surface);
+	}
+
+	.copy-btn svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.copy-btn.copied .icon-copy  { display: none; }
+	.copy-btn.copied .icon-check { display: block !important; }
+	.copy-btn.copied { color: var(--chroma-nature); }
+
+	/* Say hello button */
+	.btn-say-hello {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.6rem 1.4rem;
+		border-radius: 999px;
+		background: var(--chroma-ocean);
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.9rem;
+		text-decoration: none;
+		transition: background 0.2s, transform 0.2s;
+	}
+
+	.btn-say-hello:hover {
+		background: var(--chroma-ocean-strong);
+		color: #fff;
+		transform: translateY(-1px);
+	}
+
+	/* GitHub outline button */
+	.btn-github {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.6rem 1.4rem;
+		border-radius: 999px;
+		background: transparent;
+		color: var(--chroma-red);
+		border: 1.5px solid var(--chroma-red);
+		font-weight: 700;
+		font-size: 0.9rem;
+		text-decoration: none;
+		transition: background 0.2s, transform 0.2s;
+	}
+
+	.btn-github:hover {
+		background: color-mix(in srgb, var(--chroma-red) 8%, transparent);
+		color: var(--chroma-red);
+		transform: translateY(-1px);
+	}
 </style>
 
 <script>
 	const aboutPageTranslations = {
 		en: {
-			aboutEyebrow: 'FULL-STACK DEVELOPER & ARTIST',
-			aboutTitle: 'The logic of code.<br> The soul of paint.',
-			aboutDescription: 'Building digital interfaces with the same intentionality I bring to a blank canvas. Based in Colombia, creating globally.',
+			aboutEyebrow: 'Full-stack Developer & Artist',
+			aboutTitleL1: 'The logic of code.',
+			aboutTitleL2: 'The soul of paint.',
+			aboutDescription: "I'm Ana — a developer and automation engineer who treats every system like a composition. I care as much about how something feels as whether it ships.",
 			missionTitle: 'Why I do what I do',
-			missionQuote: '"I believe technology should be as human as the hands that build it. My mission is to bridge the gap between technical efficiency and emotional resonance, crafting tools that empower people to create more than they consume."',
+			missionQuote: 'I build technology with intention — bridging the precision of engineering and the warmth of craft, so the things I make actually mean something to the people who use them.',
 			toolboxTitle: 'Technical Toolbox',
 			journeyTitle: 'The Journey',
 			academicTitle: 'Academic Foundation & Certifications',
@@ -760,22 +826,18 @@ import Icon from '../components/Icon.astro';
 			journeyJobThree: 'Software Development Intern',
 			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
 			journeyDescThree: 'Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.',
-			beyondTitle: 'Beyond the Code',
-			beyondArtTitle: 'Writing, Painting & Letters',
-			beyondArtDesc: 'When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and meaningful letters that connect emotion with intention.',
-			beyondActiveTitle: 'Active Lifestyle',
-			beyondActiveDesc: 'Building discipline through movement. CrossFit, swimming, and staying active help me stay focused, resilient, and mentally strong.',
-			beyondCommTitle: 'Community & Tech',
-			beyondCommDesc: 'Organizer at GitTogether Medellín. I enjoy creating spaces where people connect with technology and feel inspired to start their journey.',
-			beyondColTitle: 'Based in Colombia',
-			beyondColDesc: 'Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.',
+			contactLabel: 'Contact',
+			contactTitle: "Let's build something with intention",
+			contactDesc: 'Open to collaborations, roles, and good conversations about code, craft, and community.',
+			contactCta: 'Say hello',
 		},
 		es: {
-			aboutEyebrow: 'DESARROLLADORA FULL-STACK & ARTISTA',
-			aboutTitle: 'La lógica del código.<br> El alma de la pintura.',
-			aboutDescription: 'Construyo interfaces digitales con la misma intención con la que empiezo un lienzo. Desde Colombia, creando para el mundo.',
+			aboutEyebrow: 'Desarrolladora Full-stack & Artista',
+			aboutTitleL1: 'La lógica del código.',
+			aboutTitleL2: 'El alma de la pintura.',
+			aboutDescription: 'Soy Ana — desarrolladora e ingeniería de automatización que trata cada sistema como una composición. Me importa tanto cómo se siente algo como si funciona.',
 			missionTitle: 'Por qué hago lo que hago',
-			missionQuote: '"Creo que la tecnología debe ser tan humana como las manos que la construyen. Mi misión es unir la eficiencia técnica con la resonancia emocional."',
+			missionQuote: 'Construyo tecnología con intención — uniendo la precisión de la ingeniería con la calidez del craft, para que lo que creo signifique algo para quienes lo usan.',
 			toolboxTitle: 'Caja de Herramientas',
 			journeyTitle: 'El Camino',
 			academicTitle: 'Formación Académica y Certificaciones',
@@ -808,15 +870,10 @@ import Icon from '../components/Icon.astro';
 			journeyJobThree: 'Practicante en Desarrollo',
 			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
 			journeyDescThree: 'Soporte de plataforma interna de gestión de horarios. Automatización de reportes en Excel (optimización del 15% en control de tiempos) y mejora del 20% en usabilidad web con HTML y JS.',
-			beyondTitle: 'Más Allá del Código',
-			beyondArtTitle: 'Arte & Escritura',
-			beyondArtDesc: 'Cuando la pantalla se apaga, la creatividad toma el control. Expreso ideas a través de escritura, pintura y letras con sentido que conectan la emoción con la intención.',
-			beyondActiveTitle: 'Estilo de Vida Activo',
-			beyondActiveDesc: 'Construyendo disciplina a través del movimiento. Hacer CrossFit, nadar y mantenerme activa me ayuda a estar enfocada, resiliente y mentalmente fuerte.',
-			beyondCommTitle: 'Comunidad & Tecnología',
-			beyondCommDesc: 'Organizadora en GitTogether Medellín. Disfruto creando espacios donde la gente se conecte con la tecnología y se sienta inspirada.',
-			beyondColTitle: 'Mi base es Colombia',
-			beyondColDesc: 'Café, cultura y código con propósito. Orgullosa de mis raíces e inspirada por la energía, resiliencia y creatividad de mi país.',
+			contactLabel: 'Contacto',
+			contactTitle: 'Construyamos algo con intención',
+			contactDesc: 'Abierta a colaboraciones, roles y buenas conversaciones sobre código, craft y comunidad.',
+			contactCta: 'Escríbeme',
 		},
 	};
 
@@ -837,4 +894,19 @@ import Icon from '../components/Icon.astro';
 	const savedLanguage = localStorage.getItem('language');
 	const initialLanguage = savedLanguage || (navigator.language.startsWith('es') ? 'es' : 'en');
 	if (initialLanguage === 'es') updateAboutLanguage('es');
+
+	// ── Copy email button ──
+	const copyBtn = document.querySelector('.copy-btn') as HTMLButtonElement | null;
+	if (copyBtn) {
+		copyBtn.addEventListener('click', async () => {
+			const email = copyBtn.dataset.email || 'hola@anamonsalve.com';
+			try {
+				await navigator.clipboard.writeText(email);
+				copyBtn.classList.add('copied');
+				setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+			} catch {
+				// Silently fail — clipboard not available
+			}
+		});
+	}
 </script>

@@ -16,27 +16,60 @@ const projects = allProjects
 <BaseLayout title="Ana Monsalve | Developer & Painter">
 	<main class="home-page">
 		<section class="hero">
-			<div class="blur blur-a" aria-hidden="true"></div>
-			<div class="blur blur-b" aria-hidden="true"></div>
-			<div class="hero-content">
-				<h1 class="hero-title" data-translate="heroTitle">
-					<span class="line-code">I write code</span>
-					<span class="line-paint">like I paint.</span>
-				</h1>
-				<p class="hero-tagline" data-translate="heroTagline">
-					Building technology with intention. Combining the logic of code with the soul of a painter.
-				</p>
-				<a class="hero-cta" href="/work/" data-translate="heroCta">View Selected Work</a>
+			<div class="orb orb-1" aria-hidden="true"></div>
+			<div class="orb orb-2" aria-hidden="true"></div>
+			<div class="wrapper hero-wrapper">
+				<div class="hero-grid">
+
+					<!-- Left: text -->
+					<div class="hero-left">
+						<span class="hero-location" data-enter style="--delay:150ms">Software Developer · Medellín, Colombia</span>
+						<h1 class="hero-title" data-enter style="--delay:300ms" data-translate="heroTitle">
+							<span class="line-code">I write code</span>
+							<span class="line-paint">like I paint.</span>
+						</h1>
+						<p class="hero-tagline" data-enter style="--delay:480ms" data-translate="heroTagline">
+							Building technology with intention. Combining the logic of code with the soul of a painter.
+						</p>
+						<div class="hero-ctas" data-enter style="--delay:620ms">
+							<a class="hero-btn-primary" href="/work/" data-translate="heroCta">View my work</a>
+							<a class="hero-btn-ghost" href="/about/" data-translate="heroAbout">About me</a>
+						</div>
+					</div>
+
+					<!-- Right: code card art -->
+					<div class="hero-art" aria-hidden="true" data-enter style="--delay:500ms">
+						<span class="float-shape fs1"></span>
+						<span class="float-shape fs2"></span>
+						<span class="float-shape fs3"></span>
+						<div class="code-card">
+<pre><span class="cc">// automation/sync.py</span>
+<span class="ck">async def</span> <span class="cv">sync_orders</span>(client):
+    orders = <span class="ck">await</span> client\
+        .<span class="cv">fetch</span>(<span class="cs">"/api/orders"</span>)
+
+    <span class="ck">return</span> [
+        <span class="cv">to_invoice</span>(o)
+        <span class="ck">for</span> o <span class="ck">in</span> orders
+        <span class="ck">if</span> o.<span class="cv">pending</span>
+    ]</pre>
+							<div class="brushstroke"></div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</section>
 
-		<section class="think">
+		<section class="think bg-mist">
 			<div class="wrapper think-inner">
-				<div class="think-head">
-					<h2 data-translate="thinkTitle">How I think</h2>
-					<p data-translate="thinkSubtitle">My philosophy isn't just about output; it's about the process behind every pixel and line.</p>
+				<span class="sec-numeral sec-numeral-right" aria-hidden="true">01</span>
+				<div class="sec-head think-head reveal">
+					<span class="sec-label">01 — Philosophy</span>
+					<h2 class="section-title" data-translate="thinkTitle">How I think</h2>
+					<p class="sec-lede" data-translate="thinkSubtitle">Before the work, the way of working. Three principles that hold every project together.</p>
 				</div>
-				<div class="think-grid">
+				<div class="think-grid reveal" data-stagger>
 					<article class="think-card curiosity">
 						<div class="icon">✦</div>
 						<h3 data-translate="thinkCuriosityTitle">Curiosity</h3>
@@ -56,37 +89,18 @@ const projects = allProjects
 			</div>
 		</section>
 
-		<section class="growing wrapper">
-			<div class="grow-copy">
-				<p class="grow-pill" data-translate="growPill">Evolution</p>
-				<h2 data-translate="growTitle">What I'm growing into</h2>
-				<p data-translate="growDesc">I'm currently obsessed with the infrastructure that makes great apps possible. Bridging the gap between code and deployment.</p>
-				<div class="grow-tags">
-					<span class="tag-cloud"><Icon icon="cloud" size="1.2em" /> Cloud Computing</span>
-					<span class="tag-devops"><Icon icon="gear" size="1.2em" /> DevOps</span>
-					<span class="tag-auto"><Icon icon="lightning" size="1.2em" /> Automation</span>
-				</div>
-			</div>
-			<div class="grow-art" aria-hidden="true">
-				<svg class="star-icon star-1" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-				</svg>
-				<svg class="star-icon star-2" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-				</svg>
-				<svg class="star-icon star-3" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-				</svg>
-			</div>
-		</section>
-
 		<section class="selected-work">
 			<div class="wrapper">
-				<header class="work-head">
-					<h2 data-translate="workTitle">Selected Work</h2>
-					<p data-translate="workSubtitle">Take a look at some of my featured work for clients from the past few years.</p>
+				<span class="sec-numeral sec-numeral-left" aria-hidden="true">02</span>
+				<header class="sec-head work-head reveal">
+					<span class="sec-label">02 — Work</span>
+					<div class="sec-head-row">
+						<h2 class="section-title" data-translate="workTitle">Selected Work</h2>
+						<a class="see-all-link" href="/work/" data-translate="workSeeAll">See all work →</a>
+					</div>
+					<p class="sec-lede" data-translate="workSubtitle">Three projects, shown with the thinking behind them — not just the screenshots.</p>
 				</header>
-				<ul class="work-bento">
+				<ul class="work-bento reveal" data-stagger>
 					{
 						projects.map((project, idx) => {
 							const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
@@ -103,6 +117,9 @@ const projects = allProjects
 												</div>
 												<h3>{project.data.title}</h3>
 												<p>{project.data.description}</p>
+												<div class="proj-stack">
+													{project.data.tags.slice(0, 4).map((tag: string) => <span class="dot">{tag}</span>)}
+												</div>
 												<span class="read-more" aria-hidden="true">View Case Study <Icon icon="arrow-right" size="1.2em" /></span>
 											</div>
 											<div class="img-container">
@@ -119,6 +136,9 @@ const projects = allProjects
 													</div>
 													<h3>{spanishProject.data.title}</h3>
 													<p>{spanishProject.data.description}</p>
+													<div class="proj-stack">
+														{spanishProject.data.tags.slice(0, 4).map((tag: string) => <span class="dot">{tag}</span>)}
+													</div>
 													<span class="read-more" aria-hidden="true">Ver Caso de Estudio <Icon icon="arrow-right" size="1.2em" /></span>
 												</div>
 												<div class="img-container">
@@ -134,9 +154,9 @@ const projects = allProjects
 					<li class="project-item slot-4">
 						<div class="work-card cta-dark-card">
 							<div class="cta-dark-content">
-								<span class="stars-icon">✨</span>
-								<h3 data-translate="workCtaCard">Ready for your next digital painting?</h3>
-								<a href="mailto:hola@anamonsalve.com" class="button-contact" data-translate="ctaButton">Contact Ana</a>
+								<span class="stars-icon">✦ ✦ ✦</span>
+								<h3 data-translate="workCtaCard">Ready for your next collaboration?</h3>
+								<a href="/about/#contact" class="button-contact" data-translate="ctaButton">Contact Ana</a>
 							</div>
 						</div>
 					</li>
@@ -144,30 +164,119 @@ const projects = allProjects
 			</div>
 		</section>
 
-		<section class="beyond wrapper">
-			<h2 data-translate="beyondTitle">Beyond the Code</h2>
-			<p data-translate="beyondSubtitle">The fuel for my logical engine.</p>
-			<div class="beyond-list">
-				<div><span>🎨</span><span data-translate="beyondPainting">Painting</span></div>
-				<div><span>🏋️</span><span data-translate="beyondCrossfit">CrossFit</span></div>
-				<div><span>🎮</span><span data-translate="beyondGaming">Gaming</span></div>
-				<div><span>✍️</span><span data-translate="beyondWriting">Writing</span></div>
-				<div><span>🌊</span><span data-translate="beyondNature">Nature</span></div>
-			</div>
-		</section>
-
-		<section class="home-cta-wrapper wrapper">
-			<div class="home-cta">
-				<div class="home-cta-inner">
-					<h2 data-translate="ctaTitle">Let's build something together</h2>
-					<p data-translate="ctaDesc">Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.</p>
-					<a href="mailto:hola@anamonsalve.com" class="btn-cta">
-						<span data-translate="ctaButton">Get in touch</span>
-						<Icon icon="paper-plane-tilt" size="1.2em" />
-					</a>
+		<section class="growing">
+			<div class="wrapper grow-grid">
+				<div class="grow-copy reveal">
+					<p class="grow-pill" data-translate="growPill">Evolution</p>
+					<h2 data-translate="growTitle">What I'm growing into</h2>
+					<p class="grow-desc" data-translate="growDesc">Currently obsessed with the infrastructure that makes great apps possible — bridging the gap between code and deployment.</p>
+					<div class="grow-tags">
+						<span class="tag-cloud"><Icon icon="cloud" size="1.2em" /> Cloud Computing</span>
+						<span class="tag-devops"><Icon icon="gear" size="1.2em" /> DevOps</span>
+						<span class="tag-auto"><Icon icon="lightning" size="1.2em" /> Automation</span>
+					</div>
+				</div>
+				<div class="grow-visual reveal" aria-hidden="true">
+					<svg class="star-icon star-1" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+					</svg>
+					<svg class="star-icon star-2" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+					</svg>
+					<svg class="star-icon star-3" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+					</svg>
 				</div>
 			</div>
 		</section>
+
+		<section class="beyond bg-mist">
+			<div class="wrapper">
+				<span class="sec-numeral sec-numeral-right" aria-hidden="true">03</span>
+				<div class="sec-head beyond-head reveal">
+					<span class="sec-label">03 — Life</span>
+					<h2 class="section-title" data-translate="beyondTitle">Beyond the Code</h2>
+					<p class="sec-lede" data-translate="beyondSubtitle">A developer is a whole person. Here's what fills the hours the screen doesn't.</p>
+				</div>
+				<div class="beyond-bento reveal" data-stagger>
+
+					<article class="panel panel-art" data-tilt>
+						<div class="panel-icon">✎</div>
+						<h3 data-translate="beyondPaintTitle">Writing, Painting &amp; Letters</h3>
+						<p data-translate="beyondPaintDesc">When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and letters that connect emotion with intention.</p>
+						<div class="brush2" aria-hidden="true"></div>
+					</article>
+
+					<article class="panel panel-fit" data-tilt>
+						<div class="fit-circle">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8v8M18 8v8M4 10v4M20 10v4M7 12h10"/></svg>
+						</div>
+						<h3 data-translate="beyondFitTitle">Active Lifestyle</h3>
+						<p data-translate="beyondFitDesc">Building discipline through movement. CrossFit helps me stay focused, resilient, and mentally strong.</p>
+					</article>
+
+					<article class="panel panel-roots" data-tilt>
+						<div class="dots" aria-hidden="true"></div>
+						<div class="panel-icon">❖</div>
+						<h3 data-translate="beyondRootsTitle">My roots are Colombia</h3>
+						<p data-translate="beyondRootsDesc">Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.</p>
+					</article>
+
+					<article class="panel panel-comm" data-tilt>
+						<div class="panel-icon">◈</div>
+						<h3 data-translate="beyondCommTitle">Community &amp; Tech</h3>
+						<p data-translate="beyondCommDesc">Organizer at GitTogether Medellín and Devs to Eternal. Creating spaces where people connect with technology and feel inspired.</p>
+						<div class="circles" aria-hidden="true">
+							<span style="background:var(--chroma-nature)"></span>
+							<span style="background:color-mix(in srgb, var(--chroma-nature) 60%, #fff)"></span>
+							<span style="background:color-mix(in srgb, var(--chroma-nature) 35%, #fff)"></span>
+						</div>
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		<section class="community wrapper" id="community">
+			<span class="sec-numeral sec-numeral-left" aria-hidden="true">04</span>
+			<div class="sec-head comm-head reveal">
+				<span class="sec-label">04 — Community</span>
+				<h2 class="section-title" data-translate="commTitle">Building together</h2>
+				<p class="sec-lede" data-translate="commSubtitle">The best code happens when people connect. I create and participate in spaces where that spark exists.</p>
+			</div>
+			<div class="comm-grid reveal" data-stagger>
+
+				<article class="comm-card comm-primary">
+					<div class="comm-card-top">
+						<span class="comm-role">Organizer</span>
+						<h3>GitTogether Medellín</h3>
+						<p data-translate="commGitDesc">A meetup for developers in Medellín — real talks, networking, and honest conversations about building software. I help create the space so others feel welcome to start.</p>
+					</div>
+					<div class="comm-card-footer">
+						<a href="https://www.meetup.com/gittogether-medellin/" target="_blank" rel="noopener noreferrer" class="comm-btn-light">
+							<span data-translate="commGitCta">Join on Meetup</span>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+						</a>
+					</div>
+				</article>
+
+				<article class="comm-card comm-secondary">
+					<div class="comm-card-top">
+						<span class="comm-role comm-role-blue">Organizer</span>
+						<h3>Devs to Eternal</h3>
+						<p data-translate="commDevsDesc">Community focused on sharing tech events and building meaningful connections in the developer ecosystem. Where learning and belonging go together.</p>
+					</div>
+					<div class="comm-card-footer">
+						<a href="https://linktr.ee/devstoeternal" target="_blank" rel="noopener noreferrer" class="comm-btn-outline">
+							<span data-translate="commDevsCta">Visit community</span>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+						</a>
+					</div>
+				</article>
+
+			</div>
+		</section>
+
 	</main>
 </BaseLayout>
 
@@ -185,34 +294,68 @@ const projects = allProjects
 		margin-inline: auto;
 	}
 
+	/* ── Hero ── */
 	.hero {
 		position: relative;
-		padding-top: 5.2rem;
-		padding-bottom: 7.5rem;
+		min-height: min(100svh, 900px);
+		display: flex;
+		align-items: center;
 		overflow: hidden;
-		max-width: 100%;
-		padding-inline: clamp(1.2rem, 3vw, 3rem);
-		background: linear-gradient(180deg, color-mix(in srgb, var(--surface-container-low) 60%, transparent) 0%, transparent 100%);
 	}
 
-	.hero-content {
-		max-width: var(--home-max);
-		margin-inline: auto;
+	.hero-wrapper {
+		width: 100%;
+		padding-block: 5rem;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		align-items: center;
+		gap: 4rem;
+	}
+
+	.hero-left {
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-location {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--chroma-purple);
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-location::before {
+		content: '';
+		display: block;
+		width: 32px;
+		height: 2px;
+		background: var(--chroma-purple);
+		border-radius: 1px;
+		flex-shrink: 0;
 	}
 
 	.hero-title {
-		font-size: clamp(3rem, 10vw, 7.2rem);
-		line-height: 0.9;
-		letter-spacing: -0.05em;
-		margin-bottom: 1.3rem;
+		font-size: clamp(3rem, 8vw, 5.25rem);
+		line-height: 0.92;
+		letter-spacing: -0.04em;
+		margin-bottom: 1.5rem;
 	}
 
 	:global(.hero-title .line-code) {
 		display: block;
-		font-family: var(--font-brand);
+		font-family: var(--font-display);
 		font-weight: 800;
 		font-style: normal;
 		color: var(--on-surface);
+		letter-spacing: -0.04em;
 	}
 
 	:global(.hero-title .line-paint) {
@@ -221,83 +364,177 @@ const projects = allProjects
 		font-weight: 300;
 		font-style: italic;
 		color: var(--chroma-ocean);
-		letter-spacing: -0.03em;
+		letter-spacing: -0.04em;
 	}
 
 	.hero-tagline {
-		max-width: 34ch;
-		font-size: clamp(1.15rem, 2.3vw, 1.9rem);
-		line-height: 1.45;
+		max-width: 42ch;
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
+		line-height: 1.65;
 		color: var(--on-surface-variant);
-	}
-	
-	.hero-tagline em.tint {
-		font-style: italic;
-		color: var(--tertiary);
+		margin-bottom: 2rem;
 	}
 
-	.hero-cta {
+	.hero-ctas {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.hero-btn-primary {
 		display: inline-flex;
-		margin-top: 2rem;
-		padding: 0.85rem 1.5rem;
-		border-radius: var(--radius-full);
-		font-weight: 800;
-		background: var(--primary);
-		color: var(--on-primary);
-		box-shadow: 0 14px 30px rgba(21, 88, 214, 0.24);
-	}
-
-	.hero-cta:hover {
-		color: var(--on-primary);
-		background: var(--chroma-ocean-strong);
-	}
-
-	.blur {
-		position: absolute;
+		align-items: center;
+		height: 48px;
+		padding-inline: 1.5rem;
 		border-radius: 999px;
-		filter: blur(80px);
-		pointer-events: none;
-		opacity: 0.8;
+		font-weight: 700;
+		font-size: 1rem;
+		background: var(--chroma-ocean);
+		color: #fff;
+		box-shadow: 0 6px 18px color-mix(in srgb, var(--chroma-ocean) 35%, transparent);
+		transition: transform 0.2s var(--ease-expressive), box-shadow 0.2s var(--ease-expressive);
+		text-decoration: none;
+	}
+	.hero-btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 26px color-mix(in srgb, var(--chroma-ocean) 42%, transparent);
+		color: #fff;
 	}
 
-	.blur-a {
-		width: 45rem;
-		height: 45rem;
-		right: -8rem;
-		top: -8rem;
+	.hero-btn-ghost {
+		display: inline-flex;
+		align-items: center;
+		height: 48px;
+		padding-inline: 1.5rem;
+		border-radius: 999px;
+		font-weight: 700;
+		font-size: 1rem;
+		background: transparent;
+		color: var(--chroma-red);
+		border: 1.5px solid var(--chroma-red);
+		transition: transform 0.2s var(--ease-expressive), background 0.2s var(--ease-expressive);
+		text-decoration: none;
+	}
+	.hero-btn-ghost:hover {
+		transform: translateY(-2px);
+		background: color-mix(in srgb, var(--chroma-red) 8%, transparent);
+		color: var(--chroma-red);
+	}
+
+	/* ── Hero art ── */
+	.hero-art {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		place-items: center;
+	}
+
+	.code-card {
+		position: relative;
+		width: min(360px, 100%);
+		aspect-ratio: 360 / 460;
+		border-radius: 2rem;
+		background: linear-gradient(135deg, var(--chroma-ocean), var(--chroma-purple));
+		transform: rotate(3deg);
+		box-shadow: 0 30px 60px rgba(28, 24, 20, 0.18);
+		padding: 1.75rem;
+		overflow: hidden;
+	}
+
+	.code-card pre {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		line-height: 1.7;
+		color: rgba(255,255,255,0.62);
+		white-space: pre;
+	}
+
+	.code-card .ck { color: #fff; font-weight: 600; }
+	.code-card .cs { color: #FCE3B8; }
+	.code-card .cv { color: #CE93D8; }
+	.code-card .cc { color: rgba(255,255,255,0.38); font-style: italic; }
+
+	.brushstroke {
+		position: absolute;
+		bottom: -30px; right: -20px;
+		width: 200px; height: 120px;
+		background: radial-gradient(ellipse at center, var(--chroma-purple), transparent 70%);
+		opacity: 0.5;
+		filter: blur(6px);
+		transform: rotate(-12deg);
+	}
+
+	/* Floating shapes */
+	.float-shape {
+		position: absolute;
+		z-index: 2;
+		border-radius: 3px;
+	}
+	.fs1 {
+		width: 26px; height: 26px;
+		background: var(--chroma-sunny);
+		top: 6%; left: -6%;
+		transform: rotate(20deg);
+		animation: floaty 3.5s ease-in-out infinite;
+	}
+	.fs2 {
+		width: 18px; height: 18px;
+		background: var(--chroma-ocean);
+		bottom: 14%; left: -10%;
+		border-radius: 50%;
+		animation: floaty 4.2s ease-in-out infinite 0.4s;
+	}
+	.fs3 {
+		width: 22px; height: 22px;
+		background: var(--chroma-purple);
+		top: 18%; right: -8%;
+		transform: rotate(45deg);
+		animation: floaty 3.8s ease-in-out infinite 0.8s;
+	}
+	@keyframes floaty {
+		0%, 100% { transform: translateY(-8px) rotate(var(--fr, 0deg)); }
+		50%       { transform: translateY( 8px) rotate(var(--fr, 0deg)); }
+	}
+
+	@keyframes floaty2 {
+		0%, 100% { transform: translateY(-6px) rotate(var(--sr, 0deg)); }
+		50%       { transform: translateY( 6px) rotate(var(--sr, 0deg)); }
+	}
+	.fs1 { --fr: 20deg; }
+	.fs3 { --fr: 45deg; }
+
+	/* Orbs */
+	.orb {
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 0;
+	}
+	.orb-1 {
+		width: 45rem; height: 45rem;
+		right: -8rem; top: -8rem;
 		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-ocean) 65%, transparent), transparent 70%);
 		filter: blur(90px);
+		animation: drift1 11s ease-in-out infinite;
 	}
-
-	.blur-b {
-		width: 32rem;
-		height: 32rem;
-		left: -10rem;
-		bottom: -4rem;
+	.orb-2 {
+		width: 32rem; height: 32rem;
+		left: -10rem; bottom: -4rem;
 		background: radial-gradient(circle, color-mix(in srgb, var(--chroma-purple) 55%, transparent), transparent 70%);
 		filter: blur(90px);
+		animation: drift2 9s ease-in-out infinite;
 	}
+	@keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-28px, 24px); } }
+	@keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(26px, -22px); } }
 
 	.think {
-		background: var(--surface-container-low);
 		padding: 5.5rem 0;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.think-head {
-		display: flex;
-		flex-direction: column;
-		gap: 0.8rem;
 		margin-bottom: 2.2rem;
-	}
-
-	.think-head h2 {
-		font-size: clamp(2.3rem, 5vw, 3.9rem);
-	}
-
-	.think-head p {
-		max-width: 40ch;
-		font-size: var(--text-lg);
-		color: var(--on-surface-variant);
 	}
 
 	.think-grid {
@@ -325,7 +562,9 @@ const projects = allProjects
 	}
 
 	.think-card h3 {
-		font-size: 1.8rem;
+		font-family: var(--font-body);
+		font-size: 1.35rem;
+		font-weight: 700;
 		margin-bottom: 0.45rem;
 	}
 
@@ -335,151 +574,183 @@ const projects = allProjects
 	}
 
 	.think-card.curiosity {
-		border-top: 3px solid #2563eb;
+		border-top: 3px solid var(--chroma-ocean);
 	}
 
 	.think-card.curiosity .icon {
-		background: color-mix(in srgb, var(--primary) 22%, transparent);
-		color: var(--chroma-ocean-strong);
+		background: color-mix(in srgb, var(--chroma-ocean) 14%, transparent);
+		color: var(--chroma-ocean);
 	}
 
 	.think-card.logic {
-		border-top: 3px solid #f59e0b;
+		border-top: 3px solid var(--chroma-purple);
 	}
 
 	.think-card.logic .icon {
-		background: color-mix(in srgb, var(--chroma-sunny) 28%, transparent);
-		color: #7a5200;
+		background: color-mix(in srgb, var(--chroma-purple) 14%, transparent);
+		color: var(--chroma-purple);
 	}
 
 	.think-card.purpose {
-		border-top: 3px solid #10b981;
+		border-top: 3px solid var(--chroma-nature);
 	}
 
 	.think-card.purpose .icon {
-		background: color-mix(in srgb, var(--tertiary) 18%, transparent);
-		color: #8b2027;
+		background: color-mix(in srgb, var(--chroma-nature) 14%, transparent);
+		color: var(--chroma-nature);
 	}
 
+	/* ── Growing section ── */
 	.growing {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 2rem;
 		padding-top: 5.5rem;
 		padding-bottom: 5.5rem;
 	}
 
-	.grow-pill {
-		display: inline-flex;
-		padding: 0.35rem 0.9rem;
-		border-radius: var(--radius-full);
-		font-size: 0.74rem;
-		font-weight: 800;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: #ffffff !important;
-		background: #a93c41;
-		margin-bottom: 0.9rem;
+	.grow-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
 	}
 
-	:root.theme-dark .grow-pill {
-		color: #ffffff !important;
-		background: #8b3036;
+	.grow-pill {
+		display: inline-block;
+		align-self: flex-start;
+		background: #C62828 !important;
+		color: #fff !important;
+		font-size: 0.72rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		padding: 6px 14px;
+		border-radius: 999px;
+		margin-bottom: 1.2rem;
+	}
+
+	.grow-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 	.grow-copy h2 {
-		font-size: clamp(2.2rem, 6vw, 4.3rem);
-		line-height: 0.95;
-		margin-bottom: 0.9rem;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(2.2rem, 5vw, 3.4rem);
+		line-height: 0.98;
+		letter-spacing: -0.03em;
+		margin-bottom: 1.1rem;
 	}
 
-	.grow-copy p {
+	.grow-desc {
 		max-width: 40ch;
-		font-size: var(--text-lg);
-		color: var(--on-surface-variant);
+		font-size: 1.05rem;
+		color: #464554 !important;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+	:root.theme-dark .grow-desc {
+		color: #c8c5db !important;
 	}
 
 	.grow-tags {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.6rem;
-		margin-top: 1.5rem;
 	}
 
 	.grow-tags span {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		padding: 0.55rem 0.9rem;
-		border-radius: 0.4rem;
+		padding: 0.5rem 0.9rem;
+		border-radius: 0.5rem;
 		background: var(--surface-container);
 		font-weight: 600;
-		font-size: var(--text-sm);
+		font-size: 0.875rem;
 	}
-	
-	.tag-cloud :global(svg) { color: #2563eb; }
-	.tag-devops :global(svg) { color: #a93c41; }
-	.tag-auto :global(svg) { color: #d97706; }
 
-	.grow-art {
+	.tag-cloud :global(svg) { color: var(--chroma-ocean); }
+	.tag-devops :global(svg) { color: var(--chroma-purple); }
+	.tag-auto :global(svg) { color: var(--chroma-nature); }
+
+	.grow-visual {
 		position: relative;
-		min-height: 18rem;
-		border-radius: 1.2rem;
-		background: linear-gradient(135deg, #9caaf2 0%, #ebd7d0 100%);
+		min-height: 22rem;
+		border-radius: 1.5rem;
+		background: linear-gradient(135deg, #90CAF9 0%, #CE93D8 100%);
 		overflow: hidden;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 	}
 
-	:global([data-theme="dark"]) .grow-art {
-		background: linear-gradient(135deg, #1e2540 0%, #3d2f2d 100%);
+	:root.theme-dark .grow-visual {
+		background: linear-gradient(135deg, #0D47A1 0%, #4A148C 100%);
 	}
 
 	.star-icon {
 		position: absolute;
-		color: color-mix(in srgb, #ffffff 90%, transparent);
+		fill: rgba(255,255,255,0.85);
 	}
 
 	.star-1 {
-		width: 7rem;
-		height: 7rem;
-		right: 30%;
-		top: 50%;
-		transform: translateY(-50%) rotate(15deg);
+		width: 6rem; height: 6rem;
+		top: 38%; right: 22%;
+		transform: rotate(15deg);
+		animation: floaty2 4s ease-in-out infinite;
+		--sr: 15deg;
 	}
 
 	.star-2 {
-		width: 3.5rem;
-		height: 3.5rem;
-		right: 15%;
-		top: 32%;
+		width: 3.5rem; height: 3.5rem;
+		top: 14%; right: 16%;
 		transform: rotate(-10deg);
+		animation: floaty2 3.4s ease-in-out infinite 0.5s;
+		--sr: -10deg;
 	}
 
 	.star-3 {
-		width: 3rem;
-		height: 3rem;
-		right: 22%;
-		bottom: 25%;
+		width: 3rem; height: 3rem;
+		bottom: 16%; right: 30%;
 		transform: rotate(5deg);
+		animation: floaty2 3.8s ease-in-out infinite 1s;
+		--sr: 5deg;
 	}
 
 	.selected-work {
-		background: var(--surface-container);
 		padding: 5.2rem 0;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.work-head {
 		margin-bottom: 3rem;
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
+
+	/* "Selected Work" title row with "See all →" link */
+	.sec-head-row {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		margin-bottom: 0.75rem;
+	}
+
+	.see-all-link {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--chroma-ocean);
+		text-decoration: none;
+		white-space: nowrap;
+		padding-bottom: 0.2rem;
+		border-bottom: 1.5px solid var(--chroma-ocean);
+		transition: opacity 0.2s;
+		flex-shrink: 0;
+	}
+	.see-all-link:hover { opacity: 0.7; color: var(--chroma-ocean); }
 
 	.work-head h2 {
 		font-size: clamp(2.5rem, 6vw, 5rem);
 		line-height: 0.9;
-		margin-bottom: 0.8rem;
+		margin-bottom: 0;
 	}
 
 	.work-head p {
@@ -488,10 +759,11 @@ const projects = allProjects
 		color: var(--on-surface-variant);
 	}
 
+	/* ── Work bento ── */
 	.work-bento {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1.5rem;
+		gap: 1.25rem;
 		padding: 0;
 		margin: 0;
 		list-style: none;
@@ -502,276 +774,298 @@ const projects = allProjects
 		flex-direction: column;
 		position: relative;
 		overflow: hidden;
-		padding: 2.2rem;
-		border-radius: 1.5rem;
+		border-radius: 2rem;
 		background: var(--surface-container-lowest);
-		box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+		box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 		text-decoration: none;
 		color: inherit;
-		border: none;
-		transition: transform 0.3s var(--ease-expressive), box-shadow 0.3s var(--ease-expressive);
+		transition: transform 0.3s var(--ease-expressive), box-shadow 0.3s var(--ease-expressive),
+		            border-color 0.3s var(--ease-expressive);
+		border: 1px solid transparent;
 	}
 
 	.work-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+		transform: translateY(-6px);
+		box-shadow: 0 20px 40px rgba(0,0,0,0.09);
+		border-color: color-mix(in srgb, var(--chroma-ocean) 30%, transparent);
 	}
 
-	:global([data-theme="dark"]) .work-card {
+	:root.theme-dark .work-card {
 		background: var(--surface-container);
-		box-shadow: none;
-		border: 1px solid var(--surface-container-high);
+		border-color: var(--surface-container-high);
 	}
 
-	.slot-1 .work-card {
-		background: #ffffff;
-		min-height: 22rem;
-	}
-	:global([data-theme="dark"]) .slot-1 .work-card { background: var(--surface-container); }
-
-	.slot-2 .work-card {
-		background: #ffffff;
-		min-height: 20rem;
-		flex-direction: column-reverse; /* Mobiles: pic on top */
-	}
-	:global([data-theme="dark"]) .slot-2 .work-card { background: var(--surface-container); }
-
-	.slot-3 .work-card {
-		background: #ffffff;
-		min-height: 20rem;
-	}
-	:global([data-theme="dark"]) .slot-3 .work-card { background: var(--surface-container); }
-
+	/* Shared card parts */
 	.work-card .meta {
 		display: flex;
 		flex-direction: column;
-		gap: 0.8rem;
+		gap: 0.75rem;
+		padding: 2rem;
 		z-index: 2;
 	}
 
 	.work-card .tags {
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.4rem;
 		flex-wrap: wrap;
-		margin-bottom: 0.3rem;
 	}
 
 	.work-card .tags span {
-		padding: 0.3rem 0.8rem;
-		border-radius: var(--radius-full);
-		font-size: 0.72rem;
+		padding: 0.25rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.68rem;
 		font-weight: 800;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.06em;
 	}
 
-	.slot-1 .tags span { background: #dce7ff; color: #1e3a8a; }
-	.slot-2 .tags span { background: #ffc0b3; color: #9f1239; }
-	.slot-3 .tags span { background: #ffe4c4; color: #92400e; }
+	/* Tags — paleta de Ana */
+	.slot-1 .tags span { background: color-mix(in srgb, var(--chroma-ocean) 12%, transparent); color: var(--chroma-ocean-strong); }
+	.slot-2 .tags span { background: color-mix(in srgb, var(--chroma-purple) 12%, transparent); color: var(--chroma-purple); }
+	.slot-3 .tags span { background: color-mix(in srgb, var(--chroma-nature) 12%, transparent); color: var(--chroma-nature); }
+	:root.theme-dark .slot-1 .tags span { background: color-mix(in srgb, var(--chroma-ocean) 22%, transparent); color: #90bfff; }
+	:root.theme-dark .slot-2 .tags span { background: color-mix(in srgb, var(--chroma-purple) 22%, transparent); color: #e0a8f5; }
+	:root.theme-dark .slot-3 .tags span { background: color-mix(in srgb, var(--chroma-nature) 22%, transparent); color: #80cbc4; }
 
-	:global([data-theme="dark"]) .slot-1 .tags span { background: #1e3a8a; color: #dce7ff; }
-	:global([data-theme="dark"]) .slot-2 .tags span { background: #9f1239; color: #ffc0b3; }
-	:global([data-theme="dark"]) .slot-3 .tags span { background: #92400e; color: #ffe4c4; }
-
-	.slot-1 .meta { max-width: 65%; }
-	.slot-1 .img-container {
-		position: absolute;
-		right: -3rem;
-		bottom: -3rem;
-		width: 20rem;
-		height: 20rem;
-		border-radius: 50%;
-		background: #ebf2fa;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.work-card h3 {
+		font-family: var(--font-display);
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.03em;
+		color: var(--on-surface);
 	}
-	:global([data-theme="dark"]) .slot-1 .img-container { background: #1a2332; }
 
-	.slot-1 .img-container img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 50%;
-		opacity: 0.95;
-		mix-blend-mode: multiply;
+	.work-card p {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: var(--on-surface-variant);
+		max-width: 42ch;
 	}
-	:global([data-theme="dark"]) .slot-1 .img-container img { mix-blend-mode: normal; } 
 
-	.slot-2 .img-container {
-		width: 14rem;
-		height: 14rem;
-		border-radius: 50%;
-		border: 12px solid #ffffff;
-		box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+	.work-card .img-container {
 		overflow: hidden;
 		flex-shrink: 0;
-		margin-bottom: 1.5rem;
-		margin-inline: auto;
-	}
-	:global([data-theme="dark"]) .slot-2 .img-container { border-color: var(--surface); }
-
-	.slot-3 .meta { margin-bottom: 1.5rem; }
-	.slot-3 .img-container {
-		width: 100%;
-		flex-grow: 1;
-		border-radius: 1rem;
-		overflow: hidden;
-		min-height: 15rem;
 	}
 
 	.work-card img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.4s var(--theme-transition);
+		transition: transform 0.4s var(--ease-expressive);
+		display: block;
 	}
 
-	.work-card:focus-within img,
-	.work-card:hover img {
-		transform: scale(1.05);
-	}
+	.work-card:hover img { transform: scale(1.04); }
 
-	.work-card h3 {
-		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-		line-height: 1.1;
-		color: var(--on-surface);
-		letter-spacing: -0.03em;
+	/* Stack dot badges */
+	.proj-stack {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+		margin-top: 0.5rem;
 	}
-
-	.work-card p {
-		font-size: var(--text-base);
-		line-height: 1.5;
+	.proj-stack .dot {
+		font-family: var(--font-mono, monospace);
+		font-size: 0.68rem;
 		color: var(--on-surface-variant);
+		border: 1px solid var(--outline-variant);
+		border-radius: 6px;
+		padding: 2px 8px;
 	}
 
 	.read-more {
-		display: none;
+		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		margin-top: 1.5rem;
+		margin-top: 1rem;
 		font-weight: 700;
-		font-size: 0.95rem;
-		color: #2563eb;
+		font-size: 0.875rem;
+		color: var(--chroma-ocean);
 	}
-	:global([data-theme="dark"]) .read-more { color: #60a5fa; }
-	.slot-1 .read-more { display: inline-flex; }
+	:root.theme-dark .read-more { color: #90bfff; }
+
+	/* ── Overlay on hover ── */
+	.img-overlay {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		background: color-mix(in srgb, var(--on-surface) 35%, transparent);
+		opacity: 0;
+		transition: opacity 0.3s var(--ease-expressive);
+	}
+	.work-card:hover .img-overlay { opacity: 1; }
+	.img-overlay span {
+		background: #fff;
+		color: var(--on-surface);
+		padding: 8px 18px;
+		border-radius: 999px;
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+
+	/* ── CTA card ── */
+	.cta-dark-card {
+		background: #0F121D !important;
+		color: #fff;
+		display: grid;
+		place-items: center;
+		padding: 3rem;
+		text-align: center;
+		border-color: transparent !important;
+	}
+	.cta-dark-card:hover { transform: none !important; }
+	.cta-dark-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.2rem;
+	}
+	.cta-dark-content h3 {
+		font-family: var(--font-display) !important;
+		color: #fff !important;
+		font-size: clamp(1.6rem, 3vw, 2rem) !important;
+		max-width: 18ch;
+	}
+	.stars-icon { font-size: 1.5rem; letter-spacing: 6px; }
+	.button-contact {
+		display: inline-flex;
+		padding: 0.65rem 1.4rem;
+		border-radius: 999px;
+		background: var(--chroma-ocean);
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.875rem;
+		text-decoration: none;
+		transition: background 0.2s;
+	}
+	.button-contact:hover { background: var(--chroma-ocean-strong); color: #fff; }
 
 	.beyond {
 		padding-top: 5rem;
 		padding-bottom: 5rem;
-		text-align: center;
-	}
-
-	.beyond h2 {
-		font-size: clamp(2.4rem, 5vw, 4.4rem);
-		margin-bottom: 0.5rem;
-	}
-
-	.beyond p {
-		font-size: var(--text-lg);
-		color: var(--on-surface-variant);
-		margin-bottom: 1.5rem;
-	}
-
-	.beyond-list {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.6rem;
-	}
-
-	.beyond-list div {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.6rem;
-		padding: 0.7rem 1.4rem;
-		border-radius: 0.8rem;
-		background: var(--surface-container-low);
-		font-weight: 700;
-		color: var(--on-surface);
-	}
-
-	.home-cta-wrapper {
-		padding-top: 2rem;
-		padding-bottom: 5rem;
-	}
-
-	.home-cta {
 		position: relative;
 		overflow: hidden;
-		background: var(--primary);
-		color: #ffffff;
-		text-align: center;
-		padding: 4.5rem 1.5rem;
-		border-radius: 2rem;
-		box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 	}
 
-	.home-cta::before,
-	.home-cta::after {
-		content: '';
-		position: absolute;
-		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.08);
-		pointer-events: none;
-	}
-
-	.home-cta::before {
-		width: 18rem;
-		height: 18rem;
-		left: -6rem;
-		top: -6rem;
-	}
-
-	.home-cta::after {
-		width: 25rem;
-		height: 25rem;
-		right: -8rem;
-		bottom: -12rem;
-	}
-
-	.home-cta-inner {
+	/* ── Beyond bento ── */
+	.beyond-bento {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.1rem;
 		position: relative;
-		z-index: 2;
-		max-width: 48rem;
-		margin: 0 auto;
+		z-index: 1;
 	}
 
-	.home-cta-inner h2 {
-		font-size: clamp(2.4rem, 6vw, 4.2rem);
-		line-height: 1.05;
+	.panel {
+		position: relative;
+		border-radius: 1.5rem;
+		padding: 2.2rem;
+		overflow: hidden;
+		min-height: 220px;
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.3s var(--ease-expressive);
+	}
+	.panel:hover { transform: translateY(-4px); }
+
+	.panel .panel-icon {
+		font-size: 2rem;
 		margin-bottom: 1.2rem;
-		color: #ffffff;
-		letter-spacing: -0.03em;
 	}
 
-	.home-cta-inner p {
-		font-size: var(--text-lg);
-		font-weight: 500;
-		opacity: 1;
-		margin-bottom: 2.5rem;
-		color: #ffffff;
-	}
-
-	.btn-cta {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.85rem 2.2rem;
-		border-radius: var(--radius-full);
-		font-size: var(--text-base);
+	.panel h3 {
+		font-family: var(--font-body);
+		font-size: 1.4rem;
 		font-weight: 800;
-		background: #ffffff;
-		color: var(--primary);
-		transition: transform 0.2s var(--ease-squish), box-shadow 0.2s var(--ease-squish);
-		text-decoration: none;
+		margin-bottom: 0.75rem;
+		line-height: 1.15;
 	}
 
-	.btn-cta:hover {
-		transform: scale(1.03) translateY(-2px);
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+	.panel p {
+		font-size: 0.95rem;
+		line-height: 1.6;
 	}
+
+	/* panel-art: purple gradient, span 2 cols */
+	.panel-art {
+		background: linear-gradient(135deg, #6A0DAD, #AB47BC);
+		color: #fff;
+	}
+	.panel-art h3 { color: #fff; }
+	.panel-art p  { color: rgba(255,255,255,0.88); max-width: 44ch; }
+	.brush2 {
+		position: absolute;
+		bottom: -40px; right: -30px;
+		width: 220px; height: 140px;
+		background: radial-gradient(ellipse, rgba(255,255,255,0.35), transparent 70%);
+		transform: rotate(-15deg);
+	}
+
+	/* panel-fit: yellow, centered */
+	.panel-fit {
+		background: #FFFDE7;
+		color: #E65100;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
+	}
+	:root.theme-dark .panel-fit { background: #1A1500; color: #FFF176; }
+	.fit-circle {
+		width: 64px; height: 64px;
+		border-radius: 50%;
+		background: #FFF9C4;
+		display: grid;
+		place-items: center;
+		margin: 0 auto 1.2rem;
+	}
+	:root.theme-dark .fit-circle { background: #2A2100; }
+	.fit-circle svg {
+		width: 30px; height: 30px;
+		stroke: #E65100;
+		stroke-width: 1.8;
+		fill: none;
+	}
+	:root.theme-dark .fit-circle svg { stroke: #FFF176; }
+	.panel-fit p { color: inherit; }
+
+	/* panel-roots: green gradient, span 2 cols */
+	.panel-roots {
+		background: linear-gradient(135deg, #00897B, #004D40);
+		color: #fff;
+	}
+	.panel-roots h3,
+	.panel-roots .panel-icon { color: #fff; }
+	.panel-roots p { color: rgba(255,255,255,0.85); max-width: 42ch; position: relative; z-index: 1; }
+	.dots {
+		position: absolute;
+		top: 0; right: 0;
+		width: 50%; height: 100%;
+		background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+		background-size: 20px 20px;
+	}
+
+	/* panel-comm: surface */
+	.panel-comm {
+		background: var(--surface-container-lowest);
+		color: var(--on-surface);
+	}
+	:root.theme-dark .panel-comm { background: var(--surface-container); }
+	.panel-comm p { color: var(--on-surface-variant); }
+	.circles {
+		display: flex;
+		margin-top: auto;
+		padding-top: 1.5rem;
+	}
+	.circles span {
+		width: 36px; height: 36px;
+		border-radius: 50%;
+		border: 3px solid var(--canvas, #F3F1FC);
+		margin-left: -8px;
+	}
+	.circles span:first-child { margin-left: 0; }
+
 
 	.cta-dark-card {
 		background: #0f121d !important;
@@ -816,12 +1110,19 @@ const projects = allProjects
 		background: var(--chroma-ocean-strong);
 	}
 
-	@media (min-width: 50em) {
-		.hero {
-			padding-top: 6.5rem;
-			padding-bottom: 7.5rem;
+	@media (max-width: 49.99em) {
+		.hero-grid {
+			grid-template-columns: 1fr;
 		}
+		.hero-art {
+			justify-self: start;
+		}
+		.code-card {
+			width: 280px;
+		}
+	}
 
+	@media (min-width: 50em) {
 		.think-head {
 			flex-direction: row;
 			justify-content: space-between;
@@ -832,45 +1133,73 @@ const projects = allProjects
 			grid-template-columns: repeat(3, 1fr);
 		}
 
-		.growing {
-			grid-template-columns: 1.05fr 1fr;
-			align-items: center;
+		.grow-grid {
+			grid-template-columns: 1.2fr 1fr;
 			gap: 3rem;
+			align-items: stretch;
 		}
 
-		.grow-art {
-			min-height: 26rem;
+		.grow-visual {
+			min-height: 24rem;
 		}
+
+		.beyond-bento {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.panel-art   { grid-column: span 2; }
+		.panel-roots { grid-column: span 2; }
 
 		.work-bento {
-			grid-template-columns: 1.4fr 1fr;
-			grid-template-rows: auto auto;
-			gap: 1.5rem;
+			grid-template-columns: 1.5fr 1fr;
+			gap: 1.25rem;
 		}
 
+		/* slot-1: col 1 row 1 — horizontal (meta left, image right) */
 		.slot-1 { grid-column: 1; grid-row: 1; }
-		.slot-2 { grid-column: 1; grid-row: 2; }
-		.slot-3 { grid-column: 2; grid-row: 1 / 3; }
-		.slot-4 { grid-column: 1 / 3; grid-row: 3; }
-
-		.slot-2 .work-card {
+		.slot-1 .work-card {
 			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
+			min-height: 20rem;
 		}
-		.slot-2 .meta { width: 55%; }
+		.slot-1 .meta {
+			flex: 0 0 52%;
+			justify-content: center;
+			padding: 2.2rem;
+		}
+		.slot-1 .img-container {
+			flex: 1;
+			min-height: 100%;
+			position: relative;
+		}
+
+		/* slot-2: col 2 row 1 — vertical */
+		.slot-2 { grid-column: 2; grid-row: 1; }
+		.slot-2 .work-card { flex-direction: column; }
 		.slot-2 .img-container {
-			margin-bottom: 0;
-			margin-left: 1.5rem;
+			height: 12rem;
+			width: 100%;
 		}
 
+		/* slot-3: full-width landscape — image left, meta right */
+		.slot-3 { grid-column: 1 / -1; grid-row: 2; }
 		.slot-3 .work-card {
-			height: 100%;
+			flex-direction: row;
+			min-height: 18rem;
+		}
+		.slot-3 .img-container {
+			flex: 1.1;
+			min-height: 100%;
+			position: relative;
+		}
+		.slot-3 .meta {
+			flex: 1;
+			justify-content: center;
+			padding: 2.2rem;
 		}
 
-		.home-cta {
-			padding: 7.5rem 3.5rem;
-		}
+		/* slot-4: full-width CTA */
+		.slot-4 { grid-column: 1 / -1; grid-row: 3; }
+
 	}
 
 	@media (min-width: 80em) {
@@ -904,7 +1233,7 @@ const projects = allProjects
 			gap: 5rem;
 		}
 
-		.grow-art {
+		.grow-visual {
 			min-height: 29rem;
 		}
 
@@ -925,9 +1254,6 @@ const projects = allProjects
 			height: 19rem;
 		}
 
-		.home-cta {
-			padding-bottom: 6.8rem;
-		}
 	}
 
 	@media (min-width: 100em) {
@@ -955,21 +1281,15 @@ const projects = allProjects
 
 	:root.theme-dark .hero-tagline,
 	:root.theme-dark .think-head p,
-	:root.theme-dark .grow-copy p,
-	:root.theme-dark .work-head p,
-	:root.theme-dark .beyond p {
+	:root.theme-dark .work-head p {
 		color: #d6ddfb;
-	}
-	:root.theme-dark .grow-art {
-		background: linear-gradient(135deg, #7e22ce, #6a4cff);
 	}
 	:root.theme-dark .think {
 		background: #111633;
 	}
 
 	:root.theme-dark .think-card,
-	:root.theme-dark .grow-tags span,
-	:root.theme-dark .beyond-list div {
+	:root.theme-dark .grow-tags span {
 		background: #161c3b;
 		border-color: rgba(121, 136, 208, 0.3);
 		color: #eef3ff;
@@ -1007,8 +1327,152 @@ const projects = allProjects
 		background: #171c3f;
 	}
 
-	:root.theme-dark .home-cta {
-		background: #0f1c4d; /* Much darker blue for dark mode */
+
+	/* ── Community ── */
+	.community {
+		padding-top: 5.5rem;
+		padding-bottom: 5.5rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.comm-head {
+		margin-bottom: 3rem;
+	}
+
+	.comm-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+	}
+
+	.comm-card {
+		border-radius: 1.5rem;
+		padding: 2.2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 2rem;
+		transition: transform 0.3s var(--ease-expressive);
+	}
+
+	.comm-card:hover { transform: translateY(-4px); }
+
+	.comm-card-top {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.comm-card-footer {
+		margin-top: 1.5rem;
+	}
+
+	.comm-role {
+		display: inline-block;
+		font-size: 0.68rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		padding: 0.3rem 0.85rem;
+		border-radius: 999px;
+		align-self: flex-start;
+	}
+
+	.comm-card h3 {
+		font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+		line-height: 1.0;
+		letter-spacing: -0.03em;
+	}
+
+	.comm-card p {
+		font-size: var(--text-base);
+		line-height: 1.65;
+	}
+
+	/* Primary — GitTogether — dark space navy + purple */
+	.comm-primary {
+		background: linear-gradient(135deg, #0D1117 0%, #1B1040 100%);
+		color: #fff;
+		min-height: 280px;
+	}
+
+	.comm-primary .comm-role {
+		background: rgba(139, 92, 246, 0.25);
+		color: #c4b5fd;
+		border: 1px solid rgba(139, 92, 246, 0.35);
+	}
+
+	.comm-primary h3 { color: #fff; }
+	.comm-primary p { color: rgba(255,255,255,0.78); }
+
+	/* Secondary — Devs to Eternal — indigo periwinkle */
+	.comm-secondary {
+		background: linear-gradient(135deg, #6B7BF7 0%, #5B3CF5 100%);
+		color: #fff;
+		min-height: 280px;
+		border: none;
+	}
+
+	.comm-secondary h3 { color: #fff; }
+	.comm-secondary p  { color: rgba(255,255,255,0.80); }
+
+	.comm-role-blue {
+		background: rgba(255,255,255,0.18);
+		color: #fff;
+		border: 1px solid rgba(255,255,255,0.3);
+	}
+
+	/* CTA buttons */
+	.comm-btn-light,
+	.comm-btn-outline {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		padding: 0.65rem 1.25rem;
+		border-radius: 999px;
+		text-decoration: none;
+		align-self: flex-start;
+		transition: transform 0.2s var(--ease-expressive), box-shadow 0.2s var(--ease-expressive);
+	}
+
+	.comm-btn-light svg,
+	.comm-btn-outline svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+	.comm-btn-light {
+		background: rgba(255,255,255,0.1);
+		color: #fff;
+		border: 1.5px solid rgba(255,255,255,0.35);
+		backdrop-filter: blur(8px);
+	}
+
+	.comm-btn-light:hover {
+		transform: translateY(-2px);
+		background: rgba(255,255,255,0.18);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+		color: #fff;
+	}
+
+	.comm-btn-outline {
+		background: rgba(255,255,255,0.12);
+		color: #fff;
+		border: 1.5px solid rgba(255,255,255,0.4);
+		backdrop-filter: blur(8px);
+	}
+
+	.comm-btn-outline:hover {
+		transform: translateY(-2px);
+		background: rgba(255,255,255,0.22);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+		color: #fff;
+	}
+
+	@media (min-width: 50em) {
+		.comm-grid {
+			grid-template-columns: 1.2fr 1fr;
+		}
 	}
 </style>
 
@@ -1017,7 +1481,8 @@ const projects = allProjects
 		en: {
 			heroTitle: "<span class='line-code'>I write code</span><span class='line-paint'>like I paint.</span>",
 			heroTagline: "Building technology with intention. Combining the logic of code with the soul of a painter.",
-			heroCta: 'View Selected Work',
+			heroCta: 'View my work',
+			heroAbout: 'About me',
 			thinkTitle: 'How I think',
 			thinkSubtitle: "My philosophy isn't just about output; it's about the process behind every pixel and line.",
 			thinkCuriosityTitle: 'Curiosity',
@@ -1030,23 +1495,31 @@ const projects = allProjects
 			growTitle: "What I'm growing into",
 			growDesc: "I'm currently obsessed with the infrastructure that makes great apps possible. Bridging the gap between code and deployment.",
 			workTitle: 'Selected Work',
-			workSubtitle: 'Take a look at some of my featured work for clients from the past few years.',
-			workCtaCard: 'Ready for your next digital painting?',
+			workSeeAll: 'See all work →',
+			workSubtitle: 'Three projects, shown with the thinking behind them — not just the screenshots.',
+			workCtaCard: 'Ready for your next collaboration?',
 			beyondTitle: 'Beyond the Code',
-			beyondSubtitle: 'The fuel for my logical engine.',
-			beyondPainting: 'Painting',
-			beyondCrossfit: 'CrossFit',
-			beyondGaming: 'Gaming',
-			beyondWriting: 'Writing',
-			beyondNature: 'Nature',
-			ctaTitle: "Let's build something together",
-			ctaDesc: "Whether it's a line of code or a stroke of color, I'm always looking for the next meaningful collaboration.",
-			ctaButton: 'Get in touch',
+			beyondSubtitle: "A developer is a whole person. Here's what fills the hours the screen doesn't.",
+			beyondPaintTitle: 'Writing, Painting & Letters',
+			beyondPaintDesc: 'When the screen goes quiet, creativity takes over. I express ideas through writing, painting, and letters that connect emotion with intention.',
+			beyondFitTitle: 'Active Lifestyle',
+			beyondFitDesc: 'Building discipline through movement. CrossFit helps me stay focused, resilient, and mentally strong.',
+			beyondRootsTitle: 'My roots are Colombia',
+			beyondRootsDesc: 'Coffee, culture, and purposeful code. Proud of my roots and inspired by the energy, resilience, and creativity of my country.',
+			beyondCommTitle: 'Community & Tech',
+			beyondCommDesc: 'Organizer at GitTogether Medellín and Devs to Eternal. Creating spaces where people connect with technology and feel inspired.',
+			commTitle: 'Building together',
+			commSubtitle: 'The best code happens when people connect. I create and participate in spaces where that spark exists.',
+			commGitDesc: 'A meetup for developers in Medellín — real talks, networking, and honest conversations about building software. I help create the space so others feel welcome to start.',
+			commGitCta: 'Join on Meetup',
+			commDevsDesc: 'Community focused on sharing tech events and building meaningful connections in the developer ecosystem. Where learning and belonging go together.',
+			commDevsCta: 'Visit community',
 		},
 		es: {
 			heroTitle: "<span class='line-code'>Escribo código</span><span class='line-paint'>como si pintara.</span>",
 			heroTagline: "Construyo tecnología con intención. Combinando la lógica del código con el alma de una pintora.",
-			heroCta: 'Ver Trabajo Destacado',
+			heroCta: 'Ver mi trabajo',
+			heroAbout: 'Sobre mí',
 			thinkTitle: 'Cómo pienso',
 			thinkSubtitle: 'Mi filosofía no es solo sobre el resultado; es sobre el proceso detrás de cada píxel y línea.',
 			thinkCuriosityTitle: 'Curiosidad',
@@ -1059,18 +1532,25 @@ const projects = allProjects
 			growTitle: 'En qué estoy creciendo',
 			growDesc: 'Actualmente estoy obsesionada con la infraestructura que hace posibles las grandes apps. Cerrando la brecha entre código y despliegue.',
 			workTitle: 'Trabajo Seleccionado',
-			workSubtitle: 'Mira algunos de mis trabajos destacados para clientes de los últimos años.',
-			workCtaCard: '¿Listo para tu próxima pintura digital?',
+			workSeeAll: 'Ver todos los proyectos →',
+			workSubtitle: 'Tres proyectos, mostrados con el pensamiento detrás — no solo las capturas.',
+			workCtaCard: '¿Lista para tu próxima colaboración?',
 			beyondTitle: 'Más Allá del Código',
-			beyondSubtitle: 'El combustible de mi motor lógico.',
-			beyondPainting: 'Pintura',
-			beyondCrossfit: 'CrossFit',
-			beyondGaming: 'Videojuegos',
-			beyondWriting: 'Escritura',
-			beyondNature: 'Naturaleza',
-			ctaTitle: 'Construyamos algo juntas',
-			ctaDesc: 'Ya sea una línea de código o un trazo de color, siempre busco la próxima colaboración significativa.',
-			ctaButton: 'Escríbeme',
+			beyondSubtitle: 'Un desarrollador es una persona completa. Esto es lo que llena las horas que la pantalla no ocupa.',
+			beyondPaintTitle: 'Escritura, Pintura y Cartas',
+			beyondPaintDesc: 'Cuando la pantalla se silencia, la creatividad toma el control. Expreso ideas a través de la escritura, la pintura y cartas que conectan la emoción con la intención.',
+			beyondFitTitle: 'Estilo de vida activo',
+			beyondFitDesc: 'Construyendo disciplina a través del movimiento. El CrossFit me ayuda a mantenerme enfocada, resiliente y mentalmente fuerte.',
+			beyondRootsTitle: 'Mis raíces son Colombia',
+			beyondRootsDesc: 'Café, cultura y código con propósito. Orgullosa de mis raíces e inspirada por la energía, resiliencia y creatividad de mi país.',
+			beyondCommTitle: 'Comunidad y Tecnología',
+			beyondCommDesc: 'Organizadora en GitTogether Medellín y Devs to Eternal. Creando espacios donde las personas se conectan con la tecnología y se sienten inspiradas.',
+			commTitle: 'Construyamos juntas',
+			commSubtitle: 'El mejor código sucede cuando las personas se conectan. Creo y participo en espacios donde esa chispa existe.',
+			commGitDesc: 'Un meetup para devs en Medellín — charlas reales, networking y conversaciones honestas sobre construir software. Ayudo a crear el espacio para que otros se sientan bienvenidos.',
+			commGitCta: 'Únete en Meetup',
+			commDevsDesc: 'Comunidad enfocada en compartir eventos tech y construir conexiones significativas en el ecosistema dev. Donde aprender y pertenecer van juntos.',
+			commDevsCta: 'Visitar comunidad',
 		},
 	};
 
