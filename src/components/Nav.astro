@@ -135,9 +135,7 @@ const textLinks: { label: string; href: string; key: string }[] = [
 		es: { home: 'Inicio', work: 'Proyectos', about: 'Acerca de', navCta: 'Hablemos' },
 	};
 
-	// @ts-ignore
-	function updateNav(lang) {
-		// @ts-ignore
+	function updateNav(lang: 'en' | 'es') {
 		const t = lang === 'es' ? navT.es : navT.en;
 		(['home', 'work', 'about', 'navCta'] as const).forEach((k) => {
 			document.querySelectorAll(`[data-translate="${k}"], [data-translate="m-${k}"]`).forEach((el) => {
@@ -147,7 +145,6 @@ const textLinks: { label: string; href: string; key: string }[] = [
 	}
 
 	window.addEventListener('languageChange', (e) => {
-		// @ts-ignore
 		updateNav(e.detail.language);
 	});
 
