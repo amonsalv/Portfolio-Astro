@@ -104,8 +104,7 @@ const projects = allProjects
 					{
 						projects.map((project, idx) => {
 							const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
-							// @ts-ignore
-							const spanishProject = allProjects.find((p) => p.id === spanishId || p.slug === `${project.slug}-es`);
+							const spanishProject = allProjects.find((p) => p.id === spanishId);
 							const slot = `slot-${idx + 1}`;
 							return (
 								<li class:list={['project-item', slot]} data-en-slug={project.id} data-es-slug={spanishId}>
@@ -1582,7 +1581,6 @@ const projects = allProjects
 	}
 
 	window.addEventListener('languageChange', (e) => {
-		// @ts-ignore
 		updateHomeLanguage(e.detail.language);
 	});
 

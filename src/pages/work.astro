@@ -29,8 +29,7 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 				{
 					featuredProjects.map((project) => {
 						const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
-						// @ts-ignore
-						const spanishProject = allProjects.find((p) => p.id === spanishId || p.slug === `${project.slug}-es`);
+						const spanishProject = allProjects.find((p) => p.id === spanishId);
 						return (
 							<li class="project-item" data-en-slug={project.id} data-es-slug={spanishId}>
 								<div class="project-en" style="display: block;">
@@ -132,7 +131,6 @@ const featuredProjects = uniqueProjects.slice(0, 3);
 		const language = localStorage.getItem('language') || (navigator.language.startsWith('es') ? 'es' : 'en');
 		translateWorkPage(language);
 		window.addEventListener('languageChange', (e) => {
-			// @ts-ignore
 			translateWorkPage(e.detail.language);
 		});
 	</script>
