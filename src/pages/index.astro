@@ -6,6 +6,9 @@ import Icon from '../components/Icon.astro';
 const allProjects = await getCollection('work');
 const projects = allProjects
 	.filter((project: CollectionEntry<'work'>) => !project.id.includes('-es'))
+	// Telas 3B stays in the full /work/ listing but is swapped out of the home
+	// spotlight in favor of Ordenary, its in-progress successor.
+	.filter((project: CollectionEntry<'work'>) => !project.id.includes('telas3b'))
 	.sort(
 		(a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) =>
 			b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
@@ -13,7 +16,7 @@ const projects = allProjects
 	.slice(0, 3);
 ---
 
-<BaseLayout title="Ana Monsalve | Developer & Painter">
+<BaseLayout title="Ana Monsalve | Developer & Painter" description="Ana Monsalve — Software Development Apprentice at NTT DATA, automation engineer, and artist from Medellín, Colombia.">
 	<main class="home-page">
 		<section class="hero">
 			<div class="orb orb-1" aria-hidden="true"></div>
@@ -23,7 +26,7 @@ const projects = allProjects
 
 					<!-- Left: text -->
 					<div class="hero-left">
-						<span class="hero-location" data-enter style="--delay:150ms">Software Developer · Medellín, Colombia</span>
+						<span class="hero-location" data-enter style="--delay:150ms" data-translate="heroLocation">Software Development Apprentice @ NTT DATA · Medellín, Colombia</span>
 						<h1 class="hero-title" data-enter style="--delay:300ms" data-translate="heroTitle">
 							<span class="line-code">I write code</span>
 							<span class="line-paint">like I paint.</span>
@@ -1478,6 +1481,7 @@ const projects = allProjects
 <script>
 	const homeTranslations = {
 		en: {
+			heroLocation: 'Software Development Apprentice @ NTT DATA · Medellín, Colombia',
 			heroTitle: "<span class='line-code'>I write code</span><span class='line-paint'>like I paint.</span>",
 			heroTagline: "Building technology with intention. Combining the logic of code with the soul of a painter.",
 			heroCta: 'View my work',
@@ -1515,6 +1519,7 @@ const projects = allProjects
 			commDevsCta: 'Visit community',
 		},
 		es: {
+			heroLocation: 'Aprendiz de Desarrollo de Software en NTT DATA · Medellín, Colombia',
 			heroTitle: "<span class='line-code'>Escribo código</span><span class='line-paint'>como si pintara.</span>",
 			heroTagline: "Construyo tecnología con intención. Combinando la lógica del código con el alma de una pintora.",
 			heroCta: 'Ver mi trabajo',
