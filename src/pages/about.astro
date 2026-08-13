@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 ---
 
-<BaseLayout title="About | Ana Monsalve" description="About Ana Monsalve Developer">
+<BaseLayout title="About | Ana Monsalve" description="Ana Monsalve — Software Development Apprentice at NTT DATA, automation engineer, and artist from Medellín.">
 	<div class="stack gap-20">
 		<main class="about-page wrapper">
 			<section class="about-hero">
 				<div class="hero-copy stack gap-3">
-					<p class="eyebrow" data-translate="aboutEyebrow">Full-stack Developer &amp; Artist</p>
+					<p class="eyebrow" data-translate="aboutEyebrow">Software Development Apprentice @ NTT DATA · Artist</p>
 					<h1>
 						<span class="about-l1" data-translate="aboutTitleL1">The logic of code.</span>
 						<span class="about-l2" data-translate="aboutTitleL2">The soul of paint.</span>
@@ -50,7 +50,7 @@ import Icon from '../components/Icon.astro';
 							<h3>Frontend</h3>
 						</div>
 						<div class="chips">
-							<span>React</span><span>Next.js</span><span>Angular</span><span>Astro</span><span>TypeScript</span><span>Framer Motion</span>
+							<span>React</span><span>Angular</span><span>Astro</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>TypeScript</span>
 						</div>
 					</article>
 					<article class="tool-card backend">
@@ -59,16 +59,25 @@ import Icon from '../components/Icon.astro';
 							<h3>Backend</h3>
 						</div>
 						<div class="chips">
-							<span>Node.js</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>MongoDB</span><span>Firebase</span>
+							<span>Node.js</span><span>Python</span><span>REST APIs</span><span>MongoDB</span><span>Firebase</span><span>SQL Server</span>
+						</div>
+					</article>
+					<article class="tool-card automation">
+						<div class="tool-card-header">
+							<Icon icon="gear" size="1.4em" />
+							<h3>Automation & DevOps</h3>
+						</div>
+						<div class="chips">
+							<span>Selenium</span><span>Docker</span><span>GitHub Actions</span><span>CI/CD</span><span>Linux</span><span>Windows Server</span>
 						</div>
 					</article>
 					<article class="tool-card tools">
 						<div class="tool-card-header">
 							<Icon icon="wrench" size="1.4em" />
-							<h3>Tools & DevOps</h3>
+							<h3>Tools & Platforms</h3>
 						</div>
 						<div class="chips">
-							<span>Git</span><span>Docker</span><span>GitHub Actions</span><span>Azure</span><span>Jira</span><span>Linux</span>
+							<span>Git</span><span>Jira</span><span>AppSheet</span><span>Codenull</span>
 						</div>
 					</article>
 				</div>
@@ -82,22 +91,28 @@ import Icon from '../components/Icon.astro';
 				</div>
 				<div class="timeline reveal" data-stagger>
 					<article class="timeline-item left accent-primary">
-						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Present</p>
-						<h3 data-translate="journeyJobOne">Freelance Software Dev & DevOps Consultant</h3>
-						<p class="company" data-translate="journeyCompOne">Luppiter &mdash; Medellín, Colombia</p>
-						<p class="desc" data-translate="journeyDescOne">Freelance consultant. Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.</p>
+						<p class="period" data-translate="journeyDateZero">Aug 2026 &mdash; Present</p>
+						<h3 data-translate="journeyJobZero">Software Development Apprentice</h3>
+						<p class="company" data-translate="journeyCompZero">NTT DATA Colombia &mdash; Medellín, Colombia</p>
+						<p class="desc" data-translate="journeyDescZero">Starting a new chapter as a Software Development Apprentice, contributing to real-world projects while continuing to grow as a technologist.</p>
 					</article>
 					<article class="timeline-item right accent-secondary">
+						<p class="period" data-translate="journeyDateOne">May 2024 &mdash; Jan 2026</p>
+						<h3 data-translate="journeyJobOne">Freelance Software Dev & DevOps Consultant</h3>
+						<p class="company" data-translate="journeyCompOne">Luppiter &mdash; Medellín, Colombia</p>
+						<p class="desc" data-translate="journeyDescOne">Freelance consultant designing automation pipelines and DevOps workflows for small product teams — turning manual processes into reliable, observable systems, with low-code tools (AppSheet, Codenull) across Linux and Windows Server.</p>
+					</article>
+					<article class="timeline-item left accent-tertiary">
 						<p class="period" data-translate="journeyDateTwo">Jul 2023 &mdash; May 2024</p>
 						<h3 data-translate="journeyJobTwo">Software Developer</h3>
 						<p class="company" data-translate="journeyCompTwo">Cesde Institución Educativa &mdash; Medellín, Colombia</p>
-						<p class="desc" data-translate="journeyDescTwo">Web application development with Node.js and Python. Database design (MongoDB, Firebase, SQL Server) and technical process automation. Project management via Jira.</p>
+						<p class="desc" data-translate="journeyDescTwo">Built and maintained internal web tools with Node.js and Python, designing databases across MongoDB, Firebase, and SQL Server, and automating technical processes — project-managed through Jira.</p>
 					</article>
-					<article class="timeline-item left accent-tertiary">
+					<article class="timeline-item right accent-primary">
 						<p class="period" data-translate="journeyDateThree">Jul 2022 &mdash; Dec 2022</p>
 						<h3 data-translate="journeyJobThree">Software Development Intern</h3>
 						<p class="company" data-translate="journeyCompThree">Grupo Uribe (GCO) &mdash; Medellín, Colombia</p>
-						<p class="desc" data-translate="journeyDescThree">Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.</p>
+						<p class="desc" data-translate="journeyDescThree">Support for internal scheduling platforms — automated Excel reporting to cut time-tracking effort by 15%, and improved usability by 20% through targeted HTML/JavaScript work.</p>
 					</article>
 				</div>
 			</section>
@@ -122,8 +137,13 @@ import Icon from '../components/Icon.astro';
 							</li>
 							<li class="academic-item accent-secondary">
 								<span class="academic-date" data-translate="eduDateTwo">Sep 2023</span>
-								<strong data-translate="eduDegTwo">Technical Degree in Software Development Assistance</strong>
+								<strong data-translate="eduDegTwo">Vocational Technician &mdash; Software Development Assistant</strong>
 								<span class="academic-institution" data-translate="eduInstTwo">Cesde Institución Educativa &mdash; Medellín</span>
+							</li>
+							<li class="academic-item accent-tertiary">
+								<span class="academic-date" data-translate="eduDateThree">Nov 2013</span>
+								<strong data-translate="eduDegThree">Academic Baccalaureate</strong>
+								<span class="academic-institution" data-translate="eduInstThree">I.E. Tomas Cadavid &mdash; Medellín</span>
 							</li>
 
 						</ul>
@@ -135,16 +155,16 @@ import Icon from '../components/Icon.astro';
 						</div>
 						<ul class="academic-list cert-list">
 							<li class="academic-item cert-item">
-								<span class="cert-badge">☁️</span>
-								<span class="academic-date" data-translate="certDateOne">Aug 2025</span>
-								<strong data-translate="certNameOne">Advanced Cloud Architecture Bootcamp</strong>
-								<span class="academic-institution" data-translate="certInstOne">IU Training (MinTIC) &middot; 159 hours</span>
+								<span class="cert-badge">🛡️</span>
+								<span class="academic-date" data-translate="certDateOne">July 2025</span>
+								<strong data-translate="certNameOne">DevSecOps Certified Associate</strong>
+								<span class="academic-institution" data-translate="certInstOne">Case Study Certification</span>
 							</li>
 							<li class="academic-item cert-item">
-								<span class="cert-badge">🛡️</span>
-								<span class="academic-date" data-translate="certDateTwo">July 2025</span>
-								<strong data-translate="certNameTwo">DevSecOps Certified Associate</strong>
-								<span class="academic-institution" data-translate="certInstTwo">Case Study Certification</span>
+								<span class="cert-badge">☁️</span>
+								<span class="academic-date" data-translate="certDateTwo">Aug 2025</span>
+								<strong data-translate="certNameTwo">Arquitectura en la nube Innovador - Avanzado</strong>
+								<span class="academic-institution" data-translate="certInstTwo">IU Training (MinTIC) &middot; 159 hours</span>
 							</li>
 						</ul>
 					</div>
@@ -346,6 +366,7 @@ import Icon from '../components/Icon.astro';
 
 	.frontend .tool-card-header { color: var(--chroma-ocean); }
 	.backend .tool-card-header { color: var(--chroma-nature); }
+	.automation .tool-card-header { color: color-mix(in srgb, var(--chroma-sunny) 70%, var(--on-surface)); }
 	.tools .tool-card-header { color: var(--chroma-purple); }
 
 	.chips {
@@ -369,6 +390,11 @@ import Icon from '../components/Icon.astro';
 	.backend .chips span {
 		background: color-mix(in srgb, var(--chroma-nature) 12%, transparent);
 		color: var(--chroma-nature);
+	}
+
+	.automation .chips span {
+		background: color-mix(in srgb, var(--chroma-sunny) 18%, transparent);
+		color: color-mix(in srgb, var(--chroma-sunny) 65%, var(--on-surface));
 	}
 
 	.tools .chips span {
@@ -456,6 +482,11 @@ import Icon from '../components/Icon.astro';
 	:root.theme-dark .backend .chips span {
 		background: color-mix(in srgb, var(--chroma-nature) 22%, transparent);
 		color: #80cbc4;
+	}
+
+	:root.theme-dark .automation .chips span {
+		background: color-mix(in srgb, var(--chroma-sunny) 22%, transparent);
+		color: #ffe082;
 	}
 
 	:root.theme-dark .tools .chips span {
@@ -611,7 +642,7 @@ import Icon from '../components/Icon.astro';
 		}
 
 		.toolbox-grid {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 		}
 
 		.timeline {
@@ -788,7 +819,7 @@ import Icon from '../components/Icon.astro';
 <script>
 	const aboutPageTranslations = {
 		en: {
-			aboutEyebrow: 'Full-stack Developer & Artist',
+			aboutEyebrow: 'Software Development Apprentice @ NTT DATA · Artist',
 			aboutTitleL1: 'The logic of code.',
 			aboutTitleL2: 'The soul of paint.',
 			aboutDescription: "I'm Ana — a developer and automation engineer who treats every system like a composition. I care as much about how something feels as whether it ships.",
@@ -803,36 +834,40 @@ import Icon from '../components/Icon.astro';
 			eduDegOne: 'Technologist in Software Analysis & Development',
 			eduInstOne: 'SENA &mdash; Centro de Diseño y Metrología',
 			eduDateTwo: 'Sep 2023',
-			eduDegTwo: 'Technical Degree in Software Development Assistance',
+			eduDegTwo: 'Vocational Technician &mdash; Software Development Assistant',
 			eduInstTwo: 'Cesde Institución Educativa &mdash; Medellín',
 			eduDateThree: 'Nov 2013',
 			eduDegThree: 'Academic Baccalaureate',
 			eduInstThree: 'I.E. Tomas Cadavid &mdash; Medellín',
-			certDateOne: 'Aug 2025',
-			certNameOne: 'Advanced Cloud Architecture Bootcamp',
-			certInstOne: 'IU Training (MinTIC) · 159 hours',
-			certDateTwo: 'July 2025',
-			certNameTwo: 'DevSecOps Certified Associate',
-			certInstTwo: 'Case Study Certification',
-			journeyDateOne: 'May 2024 &mdash; Present',
+			certDateOne: 'July 2025',
+			certNameOne: 'DevSecOps Certified Associate',
+			certInstOne: 'Case Study Certification',
+			certDateTwo: 'Aug 2025',
+			certNameTwo: 'Arquitectura en la nube Innovador - Avanzado',
+			certInstTwo: 'IU Training (MinTIC) · 159 hours',
+			journeyDateZero: 'Aug 2026 &mdash; Present',
+			journeyJobZero: 'Software Development Apprentice',
+			journeyCompZero: 'NTT DATA Colombia &mdash; Medellín, Colombia',
+			journeyDescZero: 'Starting a new chapter as a Software Development Apprentice, contributing to real-world projects while continuing to grow as a technologist.',
+			journeyDateOne: 'May 2024 &mdash; Jan 2026',
 			journeyJobOne: 'Freelance Software Dev & DevOps Consultant',
 			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
-			journeyDescOne: 'Freelance consultant. Requirements gathering, automated process development (Python/Selenium), DevOps practices, and low-code applications (AppSheet, Codenull) on Linux and Windows Server environments.',
+			journeyDescOne: 'Freelance consultant designing automation pipelines and DevOps workflows for small product teams — turning manual processes into reliable, observable systems, with low-code tools (AppSheet, Codenull) across Linux and Windows Server.',
 			journeyDateTwo: 'July 2023 &mdash; May 2024',
 			journeyJobTwo: 'Software Developer',
 			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
-			journeyDescTwo: 'Web application development with Node.js and Python. Database design (MongoDB, Firebase, SQL Server) and technical process automation. Project management via Jira.',
+			journeyDescTwo: 'Built and maintained internal web tools with Node.js and Python, designing databases across MongoDB, Firebase, and SQL Server, and automating technical processes — project-managed through Jira.',
 			journeyDateThree: 'July 2022 &mdash; Dec 2022',
 			journeyJobThree: 'Software Development Intern',
 			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
-			journeyDescThree: 'Support for internal scheduling platforms. Excel report automation improving time control by 15%, and 20% usability improvements using HTML and JavaScript.',
+			journeyDescThree: 'Support for internal scheduling platforms — automated Excel reporting to cut time-tracking effort by 15%, and improved usability by 20% through targeted HTML/JavaScript work.',
 			contactLabel: 'Contact',
 			contactTitle: "Let's build something with intention",
 			contactDesc: 'Open to collaborations, roles, and good conversations about code, craft, and community.',
 			contactCta: 'Say hello',
 		},
 		es: {
-			aboutEyebrow: 'Desarrolladora Full-stack & Artista',
+			aboutEyebrow: 'Aprendiz de Desarrollo de Software en NTT DATA · Artista',
 			aboutTitleL1: 'La lógica del código.',
 			aboutTitleL2: 'El alma de la pintura.',
 			aboutDescription: 'Soy Ana — desarrolladora e ingeniería de automatización que trata cada sistema como una composición. Me importa tanto cómo se siente algo como si funciona.',
@@ -847,29 +882,33 @@ import Icon from '../components/Icon.astro';
 			eduDegOne: 'Tecnóloga en Análisis y Desarrollo de Software',
 			eduInstOne: 'SENA &mdash; Centro de Diseño y Metrología',
 			eduDateTwo: 'Sep 2023',
-			eduDegTwo: 'Técnica en Asistencia en Desarrollo de Software',
+			eduDegTwo: 'Técnico Laboral como Asistente en Desarrollo de Software',
 			eduInstTwo: 'Cesde Institución Educativa &mdash; Medellín',
 			eduDateThree: 'Nov 2013',
 			eduDegThree: 'Bachiller Académico',
 			eduInstThree: 'I.E. Tomas Cadavid &mdash; Medellín',
-			certDateOne: 'Ago 2025',
-			certNameOne: 'Bootcamp Arquitectura en la Nube - Nivel Avanzado',
-			certInstOne: 'IU Training (MinTIC) · 159 horas',
-			certDateTwo: 'Julio 2025',
-			certNameTwo: 'DevSecOps Certified Associate',
-			certInstTwo: 'Certificación Case Study',
-			journeyDateOne: 'Mayo 2024 &mdash; Presente',
+			certDateOne: 'Julio 2025',
+			certNameOne: 'DevSecOps Certified Associate',
+			certInstOne: 'Certificación Case Study',
+			certDateTwo: 'Ago 2025',
+			certNameTwo: 'Arquitectura en la nube Innovador - Avanzado',
+			certInstTwo: 'IU Training (MinTIC) · 159 horas',
+			journeyDateZero: 'Ago 2026 &mdash; Presente',
+			journeyJobZero: 'Aprendiz de Desarrollo de Software',
+			journeyCompZero: 'NTT DATA Colombia &mdash; Medellín, Colombia',
+			journeyDescZero: 'Comenzando un nuevo capítulo como Aprendiz de Desarrollo de Software, contribuyendo a proyectos reales mientras sigo creciendo como tecnóloga.',
+			journeyDateOne: 'Mayo 2024 &mdash; Enero 2026',
 			journeyJobOne: 'Consultora Dev & DevOps Freelance',
 			journeyCompOne: 'Luppiter &mdash; Medellín, Colombia',
-			journeyDescOne: 'Consultora freelance. Levantamiento de requerimientos, automatización con Python y Selenium, prácticas DevOps y desarrollo en plataformas low-code (AppSheet, Codenull) en entornos Linux y Windows Server.',
+			journeyDescOne: 'Consultora freelance diseñando pipelines de automatización y flujos DevOps para equipos de producto pequeños — convirtiendo procesos manuales en sistemas confiables y observables, con herramientas low-code (AppSheet, Codenull) en entornos Linux y Windows Server.',
 			journeyDateTwo: 'Julio 2023 &mdash; Mayo 2024',
 			journeyJobTwo: 'Desarrolladora de Software',
 			journeyCompTwo: 'Cesde Institución Educativa &mdash; Medellín, Colombia',
-			journeyDescTwo: 'Desarrollo web enfocado en backend (Node.js, Python). Diseño de BBDD (MongoDB, Firebase, SQL Server), automatización de procesos y gestión con Jira.',
+			journeyDescTwo: 'Desarrollo y mantenimiento de herramientas web internas con Node.js y Python, diseño de bases de datos (MongoDB, Firebase, SQL Server) y automatización de procesos técnicos, con gestión de proyectos en Jira.',
 			journeyDateThree: 'Julio 2022 &mdash; Diciembre 2022',
 			journeyJobThree: 'Practicante en Desarrollo',
 			journeyCompThree: 'Grupo Uribe (GCO) &mdash; Medellín, Colombia',
-			journeyDescThree: 'Soporte de plataforma interna de gestión de horarios. Automatización de reportes en Excel (optimización del 15% en control de tiempos) y mejora del 20% en usabilidad web con HTML y JS.',
+			journeyDescThree: 'Soporte a plataformas internas de gestión de horarios — automatización de reportes en Excel que redujo el esfuerzo de control de tiempos en 15%, y mejora del 20% en usabilidad mediante trabajo específico en HTML/JavaScript.',
 			contactLabel: 'Contacto',
 			contactTitle: 'Construyamos algo con intención',
 			contactDesc: 'Abierta a colaboraciones, roles y buenas conversaciones sobre código, craft y comunidad.',
