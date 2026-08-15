@@ -1,211 +1,602 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
-import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
+	nextEntry: CollectionEntry<'work'> | null;
 }
 
 // This is a dynamic route that generates a page for every Markdown file in src/content/
 // Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
+	const isEsId = (id: string) => id.replace(/\.md$/, '').endsWith('-es');
 	const work = await getCollection('work');
-	return work.map((entry) => ({
-		params: { slug: entry.id },
-		props: { entry },
-	}));
+	return work.map((entry) => {
+		const isEs = isEsId(entry.id);
+		const localeEntries = work
+			.filter((e) => isEsId(e.id) === isEs)
+			.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+		const idx = localeEntries.findIndex((e) => e.id === entry.id);
+		const nextEntry = localeEntries.length > 1 ? localeEntries[(idx + 1) % localeEntries.length] : null;
+
+		return {
+			params: { slug: entry.id },
+			props: { entry, nextEntry },
+		};
+	});
 }
 
-const { entry } = Astro.props;const { Content } = await render(entry);
+const { entry, nextEntry } = Astro.props;
+const { data } = entry;
+const isEs = entry.id.replace(/\.md$/, '').endsWith('-es');
+
+const t = isEs
+	? {
+			eyebrow: 'Caso de estudio',
+			back: 'Volver a Work',
+			viewLive: 'Ver en vivo',
+			github: 'GitHub',
+			problem: 'El Problema',
+			solution: 'La Solución',
+			technology: 'Tecnología',
+			architecture: 'Arquitectura',
+			outcome: 'Resultado',
+			nextProject: 'Siguiente proyecto',
+			seeAllWork: 'Ver todo el trabajo',
+		}
+	: {
+			eyebrow: 'Case Study',
+			back: 'Back to Work',
+			viewLive: 'View live',
+			github: 'GitHub',
+			problem: 'The Problem',
+			solution: 'The Solution',
+			technology: 'Technology',
+			architecture: 'Architecture',
+			outcome: 'Outcome',
+			nextProject: 'Next project',
+			seeAllWork: 'See all work',
+		};
+
+const accentColors = ['var(--chroma-ocean)', 'var(--chroma-nature)', 'var(--chroma-sunny)', 'var(--chroma-purple)'];
+
+function tagCategory(tag: string) {
+	const lower = tag.toLowerCase();
+	if (lower.includes('design') || lower.includes('ui') || lower.includes('ux') || lower.includes('diseño')) return 'design';
+	if (lower.includes('angular') || lower.includes('react') || lower.includes('astro') || lower.includes('express') || lower.includes('js')) return 'stack';
+	return 'dev';
+}
+
+function iconForCategory(category: string) {
+	const c = category.toLowerCase();
+	if (c.includes('front')) return 'code';
+	if (c.includes('back') || c.includes('data') || c.includes('base')) return 'database';
+	if (c.includes('test')) return 'wrench';
+	if (c.includes('auth') || c.includes('infra')) return 'cloud';
+	return 'gear';
+}
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
-	<div class="stack gap-20">
-		<div class="stack gap-15">
-			<header class="project-header wrapper">
-				<a class="back-link" href="/work/" aria-label="Back to Work">
-					<Icon icon="arrow-left" />
-					<span data-translate="work.backLink">Work</span>
-				</a>
-
-				<div class="hero-shell">
-					<div class="hero-main stack gap-4">
-						<Hero title={entry.data.title} align="start" />
-						<p class="description">{entry.data.description}</p>
-						<div class="tags">
-							{entry.data.tags.map((t) => {
-								let cat = 'dev';
-								if (t.toLowerCase().includes('design') || t.toLowerCase().includes('ui') || t.toLowerCase().includes('ux')) cat = 'design';
-								else if (t.toLowerCase().includes('angular') || t.toLowerCase().includes('react') || t.toLowerCase().includes('astro') || t.toLowerCase().includes('express') || t.toLowerCase().includes('js')) cat = 'stack';
-								
-								return <Pill category={cat as any}>{t}</Pill>;
-							})}
-						</div>
+<BaseLayout title={data.title} description={data.description}>
+	<main class="pd-page">
+		<!-- ===================== HERO ===================== -->
+		<section class="pd-hero wrapper">
+			<a class="pd-back" href="/work/">
+				<Icon icon="arrow-left" size="1em" />
+				{t.back}
+			</a>
+			<div class="pd-hero-grid">
+				<div>
+					<span class="pd-eyebrow">{t.eyebrow}</span>
+					<h1 class="pd-title">{data.title}</h1>
+					<p class="pd-lede">{data.description}</p>
+					<div class="pd-tags">
+						{data.tags.map((tag) => <Pill category={tagCategory(tag)}>{tag}</Pill>)}
 					</div>
-					{entry.data.img && (
-						<div class="hero-media">
-							<img src={entry.data.img} alt={entry.data.img_alt || ''} loading="eager" decoding="async" />
+					{(data.liveUrl || data.githubUrl) && (
+						<div class="pd-links">
+							{data.liveUrl && (
+								<a class="pd-btn-primary" href={data.liveUrl} target="_blank" rel="noopener noreferrer">
+									{t.viewLive}
+								</a>
+							)}
+							{data.githubUrl && (
+								<a class="pd-btn-ghost" href={data.githubUrl} target="_blank" rel="noopener noreferrer">
+									{t.github}
+								</a>
+							)}
 						</div>
 					)}
 				</div>
-			</header>
+				<div class="pd-hero-visual">
+					<img src={data.img} alt={data.img_alt || ''} loading="eager" decoding="async" />
+				</div>
+			</div>
+		</section>
 
-			<main class="wrapper project-content">
-				<article class="content prose-card">
-					<Content />
-				</article>
-			</main>
-		</div>
+		<!-- ===================== PROBLEM ===================== -->
+		<section class="pd-section bg-mist">
+			<div class="wrapper">
+				<div class="pd-head reveal">
+					<h2 class="section-title">{t.problem}</h2>
+					<p>{data.problem}</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== SOLUTION ===================== -->
+		<section class="pd-section">
+			<div class="wrapper">
+				<div class="pd-head reveal">
+					<h2 class="section-title">{t.solution}</h2>
+					{data.solution.intro && <p>{data.solution.intro}</p>}
+				</div>
+				<div class:list={['pd-cols', 'reveal', { 'pd-cols-single': data.solution.columns.length === 1 }]} data-stagger>
+					{data.solution.columns.map((col, i) => (
+						<article class="pd-col" style={`--pc:${accentColors[i % accentColors.length]}`}>
+							<h3>{col.title}</h3>
+							<ul>
+								{col.items.map((item) => <li>{item}</li>)}
+							</ul>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== TECHNOLOGY ===================== -->
+		<section class="pd-section bg-mist">
+			<div class="wrapper">
+				<div class="pd-head reveal">
+					<h2 class="section-title">{t.technology}</h2>
+				</div>
+				<div class="pd-stack-grid reveal" data-stagger>
+					{data.techStack.map((stack, i) => (
+						<article class="tool-card" style={`--tc:${accentColors[i % accentColors.length]}`}>
+							<div class="tool-card-header">
+								<Icon icon={iconForCategory(stack.category)} size="1.3em" />
+								<h3>{stack.category}</h3>
+							</div>
+							<div class="chips">
+								{stack.items.map((item) => <span>{item}</span>)}
+							</div>
+						</article>
+					))}
+				</div>
+
+				{data.architecture && (
+					<div class="pd-architecture reveal">
+						<p class="pd-architecture-label">{t.architecture}</p>
+						<div class="code-card">
+							<pre>{data.architecture.code}</pre>
+						</div>
+						<p class="pd-architecture-desc">{data.architecture.description}</p>
+					</div>
+				)}
+			</div>
+		</section>
+
+		<!-- ===================== OUTCOME ===================== -->
+		<section class="pd-section">
+			<div class="wrapper">
+				<div class="pd-head reveal">
+					<h2 class="section-title">{t.outcome}</h2>
+				</div>
+				{data.outcome.highlights && (
+					<ul class="pd-highlights reveal">
+						{data.outcome.highlights.map((h) => <li>{h}</li>)}
+					</ul>
+				)}
+				<div class="pd-steps reveal" data-stagger>
+					{data.outcome.steps.map((step) => (
+						<div class="pd-step">
+							<span class="num"></span>
+							<p>{step}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== NEXT PROJECT ===================== -->
+		{nextEntry && (
+			<section class="pd-section">
+				<div class="wrapper">
+					<div class="pd-next reveal">
+						<span class="pd-next-eyebrow">{t.nextProject}</span>
+						<h3><a href={`/work/${nextEntry.id}`}>{nextEntry.data.title} →</a></h3>
+						<a class="pd-btn-primary" href="/work/">{t.seeAllWork}</a>
+					</div>
+				</div>
+			</section>
+		)}
+
 		<div class="wrapper">
 			<ContactCTA />
 		</div>
-	</div>
+	</main>
 </BaseLayout>
 
 <style>
-	.project-header {
+	/* ── Hero ── */
+	.pd-hero {
 		padding-top: 2.5rem;
-		padding-bottom: 2.5rem;
+		padding-bottom: 3rem;
 	}
 
-	.back-link {
+	.pd-back {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
-		margin-bottom: 1.25rem;
+		margin-bottom: 1.5rem;
 		font-weight: 700;
+		font-size: 0.9rem;
+		color: var(--on-surface-variant);
+		transition: color var(--theme-transition);
+	}
+
+	.pd-back:hover,
+	.pd-back:focus {
 		color: var(--primary);
 	}
 
-	.hero-shell {
+	.pd-hero-grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1.25rem;
-		padding: 1.2rem;
-		border-radius: var(--radius-xl);
-		background: var(--surface-container-low);
-		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
-		box-shadow: var(--shadow-sm);
+		gap: 2rem;
+		align-items: center;
 	}
 
-	.hero-main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	.pd-eyebrow {
+		display: inline-block;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--chroma-purple);
+		margin-bottom: 0.75rem;
 	}
 
-	.tags {
-		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
+	.pd-title {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		line-height: 0.98;
+		letter-spacing: -0.03em;
+		color: var(--on-surface);
+		margin-bottom: 1.25rem;
 	}
 
-	.hero-media {
-		border-radius: calc(var(--radius-xl) - 0.3rem);
-		overflow: hidden;
-		min-height: 16rem;
-	}
-
-	.hero-media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.description {
+	.pd-lede {
 		font-size: var(--text-lg);
 		max-width: 52ch;
 		color: var(--on-surface-variant);
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
 	}
 
-	.project-content {
-		padding-top: 0.25rem;
+	.pd-tags {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-bottom: 1.5rem;
 	}
 
-	.content {
-		max-width: 65ch;
-		margin-inline: auto;
+	.pd-links {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
-	.prose-card {
-		padding: 1.4rem;
+	.pd-btn-primary,
+	.pd-btn-ghost {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.6rem 1.4rem;
+		border-radius: 999px;
+		font-weight: 700;
+		font-size: 0.9rem;
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s, transform 0.2s;
+	}
+
+	.pd-btn-primary {
+		background: var(--chroma-ocean);
+		color: #fff;
+	}
+
+	.pd-btn-primary:hover {
+		background: var(--chroma-ocean-strong);
+		transform: translateY(-1px);
+	}
+
+	.pd-btn-ghost {
+		background: transparent;
+		color: var(--on-surface);
+		border: 1.5px solid var(--outline-variant);
+	}
+
+	.pd-btn-ghost:hover {
+		border-color: var(--on-surface);
+		transform: translateY(-1px);
+	}
+
+	.pd-hero-visual {
 		border-radius: var(--radius-xl);
+		overflow: hidden;
+		min-height: 16rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	.pd-hero-visual img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	/* ── Sections ── */
+	.pd-section {
+		padding-block: 4rem;
+	}
+
+	.pd-head {
+		max-width: 680px;
+		margin-bottom: 2.5rem;
+	}
+
+	.pd-head p {
+		font-size: 1.05rem;
+		color: var(--on-surface-variant);
+		line-height: 1.7;
+		max-width: 68ch;
+	}
+
+	/* ── Solution columns ── */
+	.pd-cols {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.pd-cols-single {
+		max-width: 620px;
+	}
+
+	.pd-col {
 		background: var(--surface-container-lowest);
-		border: 1px solid color-mix(in srgb, var(--outline-variant) 28%, transparent);
+		border-radius: var(--radius-lg);
+		padding: 1.75rem;
+		border-top: 3px solid var(--pc);
 		box-shadow: var(--shadow-sm);
 	}
 
-	.content > :global(* + *) {
-		margin-top: 1.15rem;
-	}
-
-	.content :global(h1),
-	.content :global(h2),
-	.content :global(h3),
-	.content :global(h4),
-	.content :global(h5) {
-		margin: 1.5rem 0;
-	}
-
-	.content :global(img) {
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-		background: var(--gradient-subtle);
-		border: 1px solid color-mix(in srgb, var(--outline-variant) 35%, transparent);
-	}
-
-	.content :global(blockquote) {
+	.pd-col h3 {
 		font-size: var(--text-lg);
-		font-family: 'Newsreader', Georgia, serif;
-		font-weight: 500;
-		line-height: 1.25;
-		font-style: italic;
-		padding-inline-start: 1.5rem;
-		border-inline-start: 0.25rem solid var(--primary);
-		color: var(--gray-0);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: var(--pc);
 	}
 
-	.back-link,
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	.pd-col ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 	}
 
-	.back-link:hover,
-	.back-link:focus,
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.pd-col li {
+		font-size: 0.97rem;
+		line-height: 1.55;
+		color: var(--on-surface-variant);
+		padding-left: 1rem;
+		position: relative;
+	}
+
+	.pd-col li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--pc);
+	}
+
+	/* ── Tech stack ── */
+	.pd-stack-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.tool-card {
+		background: var(--surface-container-lowest);
+		border-radius: var(--radius-lg);
+		padding: 1.75rem;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.tool-card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-bottom: 1.25rem;
+		color: var(--tc);
+		font-weight: 800;
+	}
+
+	.tool-card-header h3 {
+		font-size: 1.05rem;
+		font-weight: 800;
+		color: var(--tc);
+	}
+
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+	}
+
+	.chips span {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--tc);
+		background: color-mix(in srgb, var(--tc) 12%, var(--surface-container-lowest));
+		padding: 0.4rem 0.85rem;
+		border-radius: 999px;
+	}
+
+	/* ── Architecture ── */
+	.pd-architecture-label {
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--on-surface-variant);
+		margin-bottom: 1rem;
+	}
+
+	.code-card {
+		position: relative;
+		width: 100%;
+		max-width: 640px;
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--chroma-ocean), var(--chroma-purple));
+		padding: 1.75rem;
+		overflow-x: auto;
+	}
+
+	.code-card pre {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		line-height: 1.7;
+		color: rgba(255, 255, 255, 0.85);
+		white-space: pre;
+	}
+
+	.pd-architecture-desc {
+		max-width: 70ch;
+		color: var(--on-surface-variant);
+		margin-top: 1.25rem;
+		line-height: 1.65;
+		font-size: 0.97rem;
+	}
+
+	/* ── Outcome ── */
+	.pd-highlights {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		margin-bottom: 2rem;
+		max-width: 760px;
+	}
+
+	.pd-highlights li {
+		font-size: 0.97rem;
+		line-height: 1.55;
+		color: var(--on-surface-variant);
+		padding-left: 1rem;
+		position: relative;
+	}
+
+	.pd-highlights li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--primary);
+	}
+
+	.pd-steps {
+		counter-reset: step;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		max-width: 760px;
+	}
+
+	.pd-step {
+		display: flex;
+		gap: 1.25rem;
+		align-items: flex-start;
+	}
+
+	.pd-step .num {
+		counter-increment: step;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.35rem;
+		color: var(--primary);
+		width: 2.75rem;
+		height: 2.75rem;
+		flex: none;
+		border-radius: 50%;
+		background: color-mix(in srgb, var(--primary) 12%, transparent);
+		display: grid;
+		place-items: center;
+	}
+
+	.pd-step .num::before {
+		content: counter(step);
+	}
+
+	.pd-step p {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--on-surface-variant);
+		padding-top: 0.5rem;
+	}
+
+	/* ── Next project ── */
+	.pd-next {
+		background: #0f121d;
+		color: #fff;
+		border-radius: var(--radius-xl);
+		padding: 3.5rem 2rem;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.pd-next-eyebrow {
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.pd-next h3 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 2rem;
+	}
+
+	.pd-next h3 a {
+		color: #fff;
 	}
 
 	@media (min-width: 50em) {
-		.project-header {
-			padding-top: 3rem;
+		.pd-hero {
+			padding-top: 3.5rem;
 		}
 
-		.hero-shell {
-			grid-template-columns: 1.1fr 1fr;
-			gap: 1.8rem;
-			padding: 1.4rem;
+		.pd-hero-grid {
+			grid-template-columns: 1.3fr 1fr;
+			gap: 3rem;
 		}
 
-		.prose-card {
-			padding: 2rem;
+		.pd-cols:not(.pd-cols-single) {
+			grid-template-columns: 1fr 1fr;
 		}
 
-		.content :global(blockquote) {
-			font-size: var(--text-2xl);
+		.pd-stack-grid {
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 		}
 	}
 </style>
-
-
-
-

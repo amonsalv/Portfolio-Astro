@@ -1,6 +1,6 @@
 ---
 title: Repostería Buen Corazón
-publishDate: 2022-03-04 
+publishDate: 2022-03-04
 img: /assets/stock-3.jpg
 img_alt: Una vitrina en una panadería artesanal mostrando una variedad de postres, incluyendo donas decoradas con glaseado, crema y varios ingredientes
 description: |
@@ -11,28 +11,27 @@ tags:
   - HTML
   - CSS
   - JavaScript
+liveUrl: https://amonsalv.github.io/Panaderia/
+githubUrl: https://github.com/amonsalv/Panaderia
+problem: |
+  Repostería Buen Corazón necesitaba mostrar sus productos artesanales en línea y permitir a los clientes navegar, agregar al carrito y comprar sin la fricción de una tienda puramente presencial.
+solution:
+  columns:
+    - title: Qué hace
+      items:
+        - Navega el catálogo completo de productos desde la página principal
+        - Ve información detallada de cada producto bajo demanda
+        - Agrega productos al carrito de compras y revísalo antes de pagar
+        - Regístrate para una experiencia personalizada como cliente recurrente
+techStack:
+  - category: Frontend
+    items:
+      - HTML
+      - CSS
+      - JavaScript
+outcome:
+  steps:
+    - El cliente navega el catálogo de productos en la página principal
+    - Los detalles del producto se abren al hacer clic, el carrito se actualiza en vivo
+    - Los usuarios registrados obtienen una experiencia personalizada entre visitas
 ---
-
-## Intención del Proyecto
-
-Este proyecto fue creado para mostrar los productos de panadería artesanal de Repostería Buen Corazón y proporcionar una experiencia interactiva para los usuarios. La aplicación web fue diseñada para ofrecer una experiencia de compra fluida, permitiendo a los usuarios navegar por los productos, ver información detallada y gestionar su carrito de compras con facilidad. Al incorporar autenticación de usuario, el proyecto también tiene como objetivo ofrecer una experiencia personalizada para clientes recurrentes.
-
-## Uso
-
-- **Ver Productos**: Navega por los productos mostrados en la página principal.
-- **Detalles del Producto**: Haz clic en el botón "Inicia" para ver información detallada sobre un producto.
-- **Agregar al Carrito**: Haz clic en el botón "Agregar al Carrito" para añadir un producto a tu carrito de compras.
-- **Ver Carrito**: Haz clic en el ícono del carrito para ver los productos en tu carrito.
-- **Registro de Usuario**: Llena el formulario de registro para crear una cuenta.
-
-## Estructura del Proyecto
-
-- `index.html`: El archivo HTML principal que contiene la estructura de la aplicación web.
-- `js/controladortienda.js`: Contiene la lógica principal para manejar las interacciones de productos y el carrito de compras.
-- `js/amplianinfo.js`: Contiene la función para mostrar información detallada del producto.
-- `js/llenadotienda.js`: Contiene la función para poblar la tienda con productos.
-
-#### Puedes encontrar el proyecto en los siguientes enlaces
-
-- Sitio web del proyecto: https://amonsalv.github.io/Panaderia/
-- Repositorio del proyecto: https://github.com/amonsalv/Panaderia

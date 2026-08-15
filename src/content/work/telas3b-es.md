@@ -12,82 +12,71 @@ tags:
   - TypeScript
   - MySQL
   - AWS
+problem: |
+  Telas 3B es una aplicación web empresarial desarrollada para optimizar y digitalizar el proceso de producción de una manufactura textil — realizada como parte de mi Tecnología en Análisis y Desarrollo de Software en el SENA. Antes de este sistema, el seguimiento de órdenes se hacía manualmente; hoy todo el flujo, desde que un cliente hace un pedido hasta que sale despachado, queda registrado y visible en tiempo real.
+solution:
+  intro: |
+    Dos dashboards, una sola fuente de verdad — el estado de la orden se actualiza en tiempo real a medida que el trabajo avanza en planta.
+  columns:
+    - title: Para Administradores
+      items:
+        - "Crean órdenes de producción y las asignan por etapas: Corte → Confección → Estampado → Despacho"
+        - Gestionan la base de datos de clientes con historial completo de pedidos
+        - Controlan el inventario de telas e insumos con alertas de stock mínimo
+        - Monitorean métricas del negocio desde un dashboard centralizado
+        - Generan reportes de producción con tiempos estimados vs. reales
+    - title: Para Operarios
+      items:
+        - Visualizan sus tareas asignadas por etapa de producción
+        - Registran el inicio y fin de cada trabajo
+        - Actualizan el progreso en tiempo real
+        - Ven el estado actual de las órdenes en las que trabajan
+techStack:
+  - category: Frontend
+    items:
+      - React 18
+      - TypeScript
+      - Vite
+      - Zustand
+      - React Router DOM
+      - CSS Modules
+  - category: Backend
+    items:
+      - Java 17
+      - Spring Boot 3
+      - JPA / Hibernate
+      - Maven
+  - category: Base de Datos
+    items:
+      - MySQL 8
+      - AWS RDS
+      - Modelo relacional de 6 tablas
+  - category: Auth & Infra
+    items:
+      - Firebase Authentication
+      - JWT
+      - AWS EC2
+      - pnpm
+      - ESLint
+      - Husky
+architecture:
+  code: |
+    React SPA (Vite)  ──→  Spring Boot REST API  ──→  MySQL (RDS)
+       Firebase Auth  ──→  Validación de token JWT
+  description: |
+    Separación clara entre el frontend SPA y un backend API stateless; control de acceso basado en roles (admin/operario) protegiendo rutas tanto en frontend como en backend; ORM con Hibernate/JPA; estado global reactivo con Zustand para sincronizar datos entre vistas sin prop-drilling; patrón Repository en el backend para desacoplar la lógica de negocio del acceso a datos.
+outcome:
+  highlights:
+    - "Diseño de base de datos: modelado relacional completo con 6 tablas (usuarios, clientes, órdenes, etapas de producción, tareas, inventario)"
+    - "API REST completa: endpoints CRUD para órdenes, tareas, clientes e inventario con Spring Boot"
+    - "Frontend full-featured: dashboard dual, formularios con validación, tablas paginadas, filtros avanzados"
+    - "Sistema de autenticación: integración Firebase con el backend mediante interceptores Axios"
+    - "Despliegue en AWS: backend en EC2, base de datos en RDS, frontend optimizado con Vite"
+  steps:
+    - El administrador crea una orden y asigna cantidad, tipo de tela y fechas.
+    - El sistema genera automáticamente las tareas por etapa — Corte, Confección, Estampado, Despacho.
+    - Los operarios ven sus tareas pendientes y registran inicio y fin de cada trabajo.
+    - "El estado de la orden se actualiza en tiempo real — pending → in-progress → completed."
+    - La orden se marca como finalizada cuando todas las etapas se completan.
+    - Se generan reportes de productividad y se controla el inventario utilizado automáticamente.
 ---
-
-## Descripción del Proyecto
-
-Telas 3B es una aplicación web empresarial desarrollada para optimizar y digitalizar el proceso de producción de una manufactura textil. Este proyecto fue realizado como parte de mi Tecnología en Análisis y Desarrollo de Software en el SENA. Antes de este sistema, el seguimiento de órdenes se hacía manualmente; hoy todo el flujo —desde que un cliente hace un pedido hasta que sale despachado— queda registrado y visible en tiempo real.
-
-## ¿Qué hace el sistema?
-
-### Para Administradores
-- Crean órdenes de producción y las asignan por etapas: **Corte → Confección → Estampado → Despacho**
-- Gestionan la base de datos de clientes con historial completo de pedidos
-- Controlan el inventario de telas e insumos con alertas de stock mínimo
-- Monitorean métricas del negocio desde un dashboard centralizado
-- Generan reportes de producción con tiempos estimados vs. reales
-
-### Para Operarios
-- Visualizan sus tareas asignadas por etapa de producción
-- Registran el inicio y fin de cada trabajo
-- Actualizan el progreso en tiempo real
-- Ven el estado actual de las órdenes en las que trabajan
-
-## Stack Tecnológico
-
-### Frontend
-- **React 18** · **TypeScript** · **Vite** · **Zustand** · **React Router DOM**
-- **CSS Modules** con variables CSS personalizadas
-
-### Backend
-- **Java 17** · **Spring Boot 3** · **JPA/Hibernate** · **Maven**
-- Arquitectura REST API stateless
-
-### Base de Datos
-- **MySQL 8** alojada en AWS RDS
-- Modelado relacional con 6 tablas principales
-
-### Autenticación
-- **Firebase Authentication** (OAuth2 / JWT)
-- Validación de tokens en backend
-- Control de acceso basado en roles
-
-### Infraestructura
-- **AWS EC2** para el backend
-- **AWS RDS** para la base de datos
-- **pnpm** · **ESLint** · **Prettier** · **Husky** · **GitHub**
-
-## Arquitectura
-
-Arquitectura en capas con patrón MVC y comunicación desacoplada vía REST API:
-
-```
-React SPA (Vite)  ──→  Spring Boot REST API  ──→  MySQL (RDS)
-   Firebase Auth  ──→  Token JWT validation
-```
-
-**Características arquitectónicas:**
-
-- Separación clara entre frontend SPA y backend API stateless
-- Control de acceso basado en roles (admin / operator) protegiendo rutas tanto en frontend como en backend
-- ORM con Hibernate/JPA para mapeo objeto-relacional sin SQL manual
-- Estado global reactivo con Zustand para sincronizar datos entre vistas sin prop-drilling
-- Patrón Repository en el backend para desacoplar la lógica de negocio del acceso a datos
-
-## Lo que construí
-
-- **Diseño de base de datos**: Modelado completo de la base de datos relacional con 6 tablas (usuarios, clientes, órdenes, etapas de producción, tareas, inventario)
-- **API REST completa**: Endpoints para CRUD de órdenes, tareas, clientes e inventario con Spring Boot
-- **Frontend full-featured**: Dashboard dual (admin/operario), formularios con validación, tablas paginadas y filtros avanzados
-- **Sistema de autenticación**: Integración Firebase con backend mediante interceptores Axios
-- **Flujo de producción automatizado**: Las órdenes avanzan automáticamente de `pending` → `in-progress` → `completed` según el operario completa sus etapas
-- **Despliegue en AWS**: Backend en EC2, base de datos en RDS, frontend optimizado con Vite
-
-## Flujo de Trabajo
-
-1. El administrador crea una orden y asigna cantidad, tipo de tela y fechas
-2. El sistema genera automáticamente las tareas por etapa (Corte, Confección, Estampado, Despacho)
-3. Los operarios ven sus tareas pendientes y registran inicio/fin
-4. El sistema actualiza el estado de la orden en tiempo real
-5. Cuando todas las etapas se completan, la orden se marca como finalizada
-6. Se generan reportes de productividad y se controla el inventario utilizado
