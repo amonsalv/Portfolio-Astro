@@ -10,33 +10,29 @@ tags:
   - Desarrollo
   - Angular
   - TypeScript
+liveUrl: https://hotelesquimbaya.vercel.app/
+githubUrl: https://github.com/amonsalv/hotelesquimbaya
+problem: |
+  Un proyecto de curso en el CESDE: construir una experiencia de reservas al estilo Airbnb — buscar, reservar y gestionar habitaciones de hotel — respaldada por una API real para operaciones CRUD sobre reservas. Desarrollado completamente en Angular con TypeScript para una mejor organización de componentes, con la guía de mi profesor Juan José Gallego.
+solution:
+  columns:
+    - title: Qué hace
+      items:
+        - Navega cabañas y habitaciones de distintas propiedades de Quimbaya
+        - Ve disponibilidad e información detallada de cada habitación
+        - Crea una reserva a través de un formulario validado
+        - Gestiona o cancela reservas existentes a través de la API
+techStack:
+  - category: Frontend
+    items:
+      - Angular
+      - TypeScript
+      - HTML
+      - CSS
+outcome:
+  steps:
+    - El usuario navega las cabañas y habitaciones disponibles
+    - El usuario revisa detalles y disponibilidad de la habitación
+    - El usuario envía una reserva a través de un formulario validado
+    - La reserva se crea mediante una llamada CRUD a la API y puede gestionarse después
 ---
-
-> Quiero agradecer a mi profesor Juan José Gallego, por ayudarnos a crear este proyecto, su paciencia para enseñar y su conocimiento.
-
-## Intención del Proyecto
-
-Este proyecto se originó de un proyecto de curso mientras estudiaba en CESDE. Tenía la intención de crear una página tipo Airbnb con conexión a una API para realizar operaciones CRUD para reservas y crear reservas a través de formularios. Esto fue desarrollado completamente en Angular con TypeScript para asegurar una mejor organización de componentes.
-
-## Tecnologías Utilizadas
-
-El proyecto ha sido desarrollado usando las siguientes tecnologías:
-
-- **Angular**: Un framework de desarrollo de aplicaciones web de código abierto basado en TypeScript. Angular permite crear aplicaciones de página única (SPA) de manera eficiente y escalable.
-- **HTML**: Utilizado para definir la estructura y contenido de las páginas web.
-- **CSS**: Utilizado para dar estilo y diseño a las páginas web.
-- **TypeScript**: Un lenguaje de programación basado en JavaScript que añade características adicionales, como tipado estático, proporcionando mayor robustez al código.
-
-## Estructura del Repositorio
-
-El repositorio está organizado de la siguiente manera:
-
-- `app/`: Esta carpeta contiene el código fuente de la aplicación Angular.
-- `docs/`: Aquí encontrarás documentación adicional relacionada con el proyecto.
-- `tests/`: Esta carpeta contiene los archivos de prueba para el código.
-- `README.md`: Este archivo, que estás leyendo actualmente, proporciona información general sobre el repositorio.
-
-#### Puedes encontrar el proyecto en los siguientes enlaces
-
-- Sitio web del proyecto: https://hotelesquimbaya.vercel.app/
-- Repositorio del proyecto: https://github.com/amonsalv/hotelesquimbaya

@@ -10,39 +10,29 @@ tags:
   - Dev
   - Angular
   - TypeScript
+liveUrl: https://hotelesquimbaya.vercel.app/
+githubUrl: https://github.com/amonsalv/hotelesquimbaya
+problem: |
+  A course project at CESDE: build an Airbnb-style booking experience — search, reserve, and manage hotel rooms — backed by a real API for CRUD operations on reservations. Built entirely in Angular with TypeScript for better component organization, with guidance from my instructor Juan José Gallego.
+solution:
+  columns:
+    - title: What it does
+      items:
+        - Browse cabins and rooms across different Quimbaya properties
+        - View availability and detailed room information
+        - Create a reservation through a validated booking form
+        - Manage or cancel existing reservations via the API
+techStack:
+  - category: Frontend
+    items:
+      - Angular
+      - TypeScript
+      - HTML
+      - CSS
+outcome:
+  steps:
+    - User browses available cabins and rooms
+    - User reviews room details and availability
+    - User submits a reservation through a validated form
+    - Reservation is created via a CRUD call to the API and can be managed later
 ---
-
-
-> I want to thank my teacher Juan Jose Gallego, for helping us to create this project, his patience to teach and his knowledge.
-
-## Intention of the Project
-
-This project originated from a course project while studying at CESDE. I intended to create an Airbnb-type page with a connection to an API to perform CRUD operations for reservations and to create reservations through forms. This was entirely developed in Angular with TypeScript to ensure better organization of components.
-
-
-## Technologies Used
-
-The project has been developed using the following technologies:
-
-- **Angular**: An open source web application development framework based on TypeScript. Angular allows creating single page applications (SPA) in an efficient and scalable way.
-- **HTML**: Used to define the structure and content of web pages.
-- **CSS**: Used to style and design web pages.
-- **TypeScript**: A programming language based on JavaScript that adds additional features, such as static typing, providing greater robustness to the code.
-
-## Repository Structure
-
-The repository is organized as follows:
-
-- `app/`: This folder contains the source code of the Angular application.
-- `docs/`: Here you will find additional documentation related to the project.
-- `tests/`: This folder contains the test files for the code.
-- `README.md`: This file, which you are currently reading, provides general information about the repository.
-
-
-#### You can find the project at the following links
-
-- Project website: https://hotelesquimbaya.vercel.app/
-- Project repository: https://github.com/amonsalv/hotelesquimbaya
-
-
-
