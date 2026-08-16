@@ -12,8 +12,7 @@ const projects = allProjects
 	.sort(
 		(a: CollectionEntry<'work'>, b: CollectionEntry<'work'>) =>
 			b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-	)
-	.slice(0, 3);
+	);
 ---
 
 <BaseLayout title="Ana Monsalve | Developer & Painter" description="Ana Monsalve — Software Development Apprentice at NTT DATA, automation engineer, and artist from Medellín, Colombia.">
@@ -108,9 +107,13 @@ const projects = allProjects
 						projects.map((project, idx) => {
 							const spanishId = project.id.includes('.md') ? project.id.replace('.md', '-es.md') : `${project.id}-es`;
 							const spanishProject = allProjects.find((p) => p.id === spanishId);
-							const slot = `slot-${idx + 1}`;
+							const slot = `slot-${(idx % 3) + 1}`;
+							// A trailing group of exactly 1 project (count % 3 === 1) would
+							// otherwise sit alone in a half-width column with an empty gap
+							// beside it — stretch it full-width instead.
+							const isTrailingSingle = idx === projects.length - 1 && projects.length % 3 === 1;
 							return (
-								<li class:list={['project-item', slot]} data-en-slug={project.id} data-es-slug={spanishId}>
+								<li class:list={['project-item', slot, isTrailingSingle && 'full-span']} data-en-slug={project.id} data-es-slug={spanishId}>
 									<div class="project-en" style="display: block;">
 										<a class="work-card" href={`/work/${project.id}`}>
 											<div class="meta">
@@ -153,7 +156,7 @@ const projects = allProjects
 							);
 						})
 					}
-					<li class="project-item slot-4">
+					<li class="project-item slot-cta">
 						<div class="work-card cta-dark-card">
 							<div class="cta-dark-content">
 								<span class="stars-icon">✦ ✦ ✦</span>
@@ -1152,13 +1155,22 @@ const projects = allProjects
 		.panel-art   { grid-column: span 2; }
 		.panel-roots { grid-column: span 2; }
 
+		/*
+		 * Grid scales to any project count: 2 cols, auto-flow row.
+		 * slot-1/slot-2 (no column span) fill col 1 / col 2 of a row;
+		 * slot-3 spans both columns, so it can't fit next to them and
+		 * auto-placement pushes it (and everything after) to a fresh
+		 * row. The 1-2-3 pattern then repeats every 3 projects without
+		 * any hand-numbered grid-row rules. The CTA card spans full
+		 * width too, so it always lands on its own row at the end.
+		 */
 		.work-bento {
 			grid-template-columns: 1.5fr 1fr;
+			grid-auto-flow: row;
 			gap: 1.25rem;
 		}
 
-		/* slot-1: col 1 row 1 — horizontal (meta left, image right) */
-		.slot-1 { grid-column: 1; grid-row: 1; }
+		/* slot-1: horizontal (meta left, image right) */
 		.slot-1 .work-card {
 			flex-direction: row;
 			min-height: 20rem;
@@ -1174,8 +1186,7 @@ const projects = allProjects
 			position: relative;
 		}
 
-		/* slot-2: col 2 row 1 — vertical */
-		.slot-2 { grid-column: 2; grid-row: 1; }
+		/* slot-2: vertical */
 		.slot-2 .work-card { flex-direction: column; }
 		.slot-2 .img-container {
 			height: 12rem;
@@ -1183,7 +1194,7 @@ const projects = allProjects
 		}
 
 		/* slot-3: full-width landscape — image left, meta right */
-		.slot-3 { grid-column: 1 / -1; grid-row: 2; }
+		.slot-3 { grid-column: 1 / -1; }
 		.slot-3 .work-card {
 			flex-direction: row;
 			min-height: 18rem;
@@ -1199,8 +1210,25 @@ const projects = allProjects
 			padding: 2.2rem;
 		}
 
-		/* slot-4: full-width CTA */
-		.slot-4 { grid-column: 1 / -1; grid-row: 3; }
+		/* CTA: always full-width, always last */
+		.slot-cta { grid-column: 1 / -1; }
+
+		/* Trailing lone project (count % 3 === 1): stretch full-width, no gap beside it */
+		.full-span { grid-column: 1 / -1; }
+		.full-span .work-card {
+			flex-direction: row;
+			min-height: 18rem;
+		}
+		.full-span .meta {
+			flex: 1;
+			justify-content: center;
+			padding: 2.2rem;
+		}
+		.full-span .img-container {
+			flex: 1.1;
+			min-height: 100%;
+			position: relative;
+		}
 
 	}
 
